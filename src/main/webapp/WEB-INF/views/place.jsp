@@ -74,7 +74,7 @@
 	vertical-align: middle;
 	width: 400px;
 	height: 75px;
-	background-image: url('resources/images/circle.png');
+	background-image: url('resources/image/circle.png');
 	background-size: 45px 45px;
 	background-repeat: no-repeat;
 	background-position: 340px 16px;
@@ -278,7 +278,7 @@
 			<div class = "place_name">해례커피
 				<div class="place_detail">서울특별시 은평구 통일로 83길 19 1층</div>
 				<div class="keep">
-					<img src="resources/images/keep.png" width="25px" height="25px">
+					<img src="resources/image/keep.png" width="25px" height="25px">
 				</div>
 			</div>
 			<div class = "place_name">해례커피
@@ -297,7 +297,7 @@
 	</div>
 	<div class="place_zone">
 		<div class="place_photo">
-			<img src="resources/images/place.png" width="444px" height="500px">
+			<img src="resources/image/place.png" width="444px" height="500px">
 		</div>
 	</div>
 </div>

@@ -20,7 +20,7 @@
 	display: inline-block;
 	width: 300px;
 	height: 500px;
-	background-image: url('resources/images/mark.png');
+	background-image: url('resources/image/logo.png');
 	background-size: 300px 500px;
 	background-repeat: no-repeat;
 }

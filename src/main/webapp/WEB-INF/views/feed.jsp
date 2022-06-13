@@ -74,7 +74,7 @@
 	vertical-align: middle;
 	width: 400px;
 	height: 75px;
-	background-image: url('resources/images/circle.png');
+	background-image: url('resources/image/circle.png');
 	background-size: 45px 45px;
 	background-repeat: no-repeat;
 	background-position: 340px 16px;
@@ -183,7 +183,7 @@
 	display: inline-block;
 	width: 250px;
 	height: 195px;
-	background-image: url('resources/images/photo.png');
+	background-image: url('resources/image/photo.png');
 	background-size: 250px 150px;
 	background-repeat: no-repeat;
 }
@@ -241,11 +241,11 @@
 				<br><br><br><br><br><br><br><br><br>
 				<div class="photo_name">새벽집 강남점1</div>
 				<div class="photo_star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/empty_star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/empty_star.png" class="star">
 					<div class="star_grade">4.0</div>
 				</div> 
 			</div>
@@ -253,11 +253,11 @@
 				<br><br><br><br><br><br><br><br><br>
 				<div class="photo_name">새벽집 강남점1</div>
 				<div class="photo_star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/empty_star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/empty_star.png" class="star">
 					<div class="star_grade">4.0</div>
 				</div>
 			</div>
@@ -265,49 +265,11 @@
 				<br><br><br><br><br><br><br><br><br>
 				<div class="photo_name">새벽집 강남점1</div>
 				<div class="photo_star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/empty_star.png" class="star">
-					<div class="star_grade">4.0</div>
-				</div>
-			</div>
-		</div>
-		<div class = "feed_subzone">
-			<div class="feed_photo">
-				<br><br><br><br><br><br><br><br><br>
-				<div class="photo_name">새벽집 강남점1</div>
-				<div class="photo_star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/empty_star.png" class="star">
-					<div class="star_grade">4.0</div>
-				</div>
-			</div>
-			<div class="feed_photo">
-				<br><br><br><br><br><br><br><br><br>
-				<div class="photo_name">새벽집 강남점1</div>
-				<div class="photo_star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/empty_star.png" class="star">
-					<div class="star_grade">4.0</div>
-				</div>
-			</div>
-			<div class="feed_photo">
-				<br><br><br><br><br><br><br><br><br>
-				<div class="photo_name">새벽집 강남점1</div>
-				<div class="photo_star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/empty_star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/empty_star.png" class="star">
 					<div class="star_grade">4.0</div>
 				</div>
 			</div>
@@ -317,11 +279,49 @@
 				<br><br><br><br><br><br><br><br><br>
 				<div class="photo_name">새벽집 강남점1</div>
 				<div class="photo_star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/star.png" class="star">
-					<img src="resources/images/empty_star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/empty_star.png" class="star">
+					<div class="star_grade">4.0</div>
+				</div>
+			</div>
+			<div class="feed_photo">
+				<br><br><br><br><br><br><br><br><br>
+				<div class="photo_name">새벽집 강남점1</div>
+				<div class="photo_star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/empty_star.png" class="star">
+					<div class="star_grade">4.0</div>
+				</div>
+			</div>
+			<div class="feed_photo">
+				<br><br><br><br><br><br><br><br><br>
+				<div class="photo_name">새벽집 강남점1</div>
+				<div class="photo_star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/empty_star.png" class="star">
+					<div class="star_grade">4.0</div>
+				</div>
+			</div>
+		</div>
+		<div class = "feed_subzone">
+			<div class="feed_photo">
+				<br><br><br><br><br><br><br><br><br>
+				<div class="photo_name">새벽집 강남점1</div>
+				<div class="photo_star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/star.png" class="star">
+					<img src="resources/image/empty_star.png" class="star">
 					<div class="star_grade">4.0</div>
 				</div>
 			</div>
