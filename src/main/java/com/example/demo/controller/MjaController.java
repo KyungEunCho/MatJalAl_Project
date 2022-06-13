@@ -22,6 +22,9 @@ public class MjaController {
 	      
 		return iMjaService.findAll();
 		// test
+		// test by kwak
+		
+		// 9exg branch test 9exg 111
 	}
 	
 	@GetMapping ("/signUp") 
