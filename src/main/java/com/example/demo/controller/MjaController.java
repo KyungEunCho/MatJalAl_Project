@@ -22,6 +22,8 @@ public class MjaController {
 	      
 		return iMjaService.findAll();
 		// test
+		
+		// branch test by ke
 	}
 	
 }
