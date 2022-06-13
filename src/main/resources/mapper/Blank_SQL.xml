@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace= "java @Mapper와 맵핑할 경로.파일명 작성"  -->
+<mapper namespace="com.example.demo.mapper.MjaMapper">
+ 
+ 	<!-- id="매핑할 매소드명"  -->
+ 	<select id="findAll" resultType="hashmap">
+ 		SELECT *
+ 		FROM MJATEST
+ 	</select>
+ 
+</mapper>
