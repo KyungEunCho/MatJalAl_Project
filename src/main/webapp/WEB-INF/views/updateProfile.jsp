@@ -10,6 +10,7 @@
 <body>
 <div class="wrap">
 <!-- test -->
+<!-- test2 -->
 	<div class="logo">
 		<img alt="logo" class="logo_image" src="resources/image/logo.png">
 		<span class="logo_text">Mat Jal Al</span>
