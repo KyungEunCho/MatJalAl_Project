@@ -23,7 +23,7 @@ public class MjaController {
 		return iMjaService.findAll();
 		// test
 		
-		// branch test 9exg
+		// 9exg branch test 9exg
 	}
 	
 }
