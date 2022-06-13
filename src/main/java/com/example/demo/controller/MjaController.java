@@ -42,7 +42,6 @@ public class MjaController {
 	@GetMapping("/login")
 	public String login() {
 		return "login";
->>>>>>> refs/heads/hw
 	}
 	
 	@GetMapping ("/signUp") 
