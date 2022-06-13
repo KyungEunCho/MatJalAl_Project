@@ -22,6 +22,7 @@ public class MjaController {
 	      
 		return iMjaService.findAll();
 		// test
+		// test by 9exg
 	}
 	
 }
