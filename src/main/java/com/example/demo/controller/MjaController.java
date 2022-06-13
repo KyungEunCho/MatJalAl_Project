@@ -21,7 +21,7 @@ public class MjaController {
 	public List <HashMap<String, Object>> findAll() {
 	      
 		return iMjaService.findAll();
-		// test
+		// test test
 	}
 	
 }
