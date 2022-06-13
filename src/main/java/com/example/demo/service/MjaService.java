@@ -16,6 +16,5 @@ public class MjaService implements IMjaService {
 
 	public List<HashMap<String, Object>> findAll() {
 		return mjaMapper.findAll();
-		// test s
 	}
 }
