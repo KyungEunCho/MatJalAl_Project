@@ -24,4 +24,16 @@ public class MjaController {
 		// test
 	}
 	
+	@GetMapping ("/signUp") 
+	public String signUp() {
+		
+		return "signUp";
+	} 
+	
+	@GetMapping ("/updateProfile") 
+	public String updateProfile() {
+		
+		return "updateProfile";
+	} 
+	
 }
