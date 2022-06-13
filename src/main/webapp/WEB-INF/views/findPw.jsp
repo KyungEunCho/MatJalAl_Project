@@ -10,7 +10,7 @@
 <body>
     <div class="body">
         <div class="logo">
-            <img alt="logo" class="logo_image" src="resources/image/logo_orange.png">
+            <img alt="logo" class="logo_image" src="resources/image/logo.png">
             <span class="logo_text">Mat Jal Al</span>
         </div>
         <hr>
