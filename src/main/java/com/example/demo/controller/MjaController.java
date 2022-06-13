@@ -16,12 +16,19 @@ public class MjaController {
 	@Autowired
 	private IMjaService iMjaService;
 	
-	@GetMapping("/findAll")
-	@ResponseBody
-	public List <HashMap<String, Object>> findAll() {
-	      
-		return iMjaService.findAll();
-		// test
+	@GetMapping("/feed")
+	public String feed() {
+		return "feed";
+	}
+	
+	@GetMapping("/place")
+	public String place() {
+		return "place";
+	}
+	
+	@GetMapping("/login")
+	public String login() {
+		return "login";
 	}
 	
 }
