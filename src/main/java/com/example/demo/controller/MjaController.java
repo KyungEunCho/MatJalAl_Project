@@ -25,6 +25,8 @@ public class MjaController {
 		// test by kwak
 		
 		// 9exg branch test 9exg 111
+		
+		// test 16:36
 	}
 	
 	@GetMapping ("/signUp") 
