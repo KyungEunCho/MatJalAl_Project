@@ -16,6 +16,7 @@ public class MjaController {
 	@Autowired
 	private IMjaService iMjaService;
 	
+<<<<<<< HEAD
 	@GetMapping("/findAll")
 	@ResponseBody
 	public List <HashMap<String, Object>> findAll() {
@@ -27,6 +28,21 @@ public class MjaController {
 		// 9exg branch test 9exg 111
 		
 		// test 16:36
+=======
+	@GetMapping("/feed")
+	public String feed() {
+		return "feed";
+	}
+	
+	@GetMapping("/place")
+	public String place() {
+		return "place";
+	}
+	
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+>>>>>>> refs/heads/hw
 	}
 	
 	@GetMapping ("/signUp") 
