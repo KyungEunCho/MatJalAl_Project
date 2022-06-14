@@ -19,7 +19,7 @@ public class MjaController {
 	@GetMapping("/feed")
 	public String feed() {
 		return "feed";
-	}
+	} // 피드
 	
 	@GetMapping("/place")
 	public String place() {
