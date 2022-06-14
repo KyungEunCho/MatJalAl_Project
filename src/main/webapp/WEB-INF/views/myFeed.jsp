@@ -228,15 +228,11 @@
 	font-size: 12pt;
 }
 
-<<<<<<< HEAD
-.map_api {
-=======
 .map_wrap {
->>>>>>> refs/heads/DH
 	width: 900px;
 	height: 350px;
-	border: 1px solid;
 }
+
 
 
 .keep_add_button {
@@ -324,8 +320,7 @@
 </head>
 
  <!-- 부트스트랩 -->
-<body>
- <!-- 
+<!-- <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-white">
 	  	 <img src="resources/image/logo_orange.png" width="30" height="40" style="margin-right: 10px;">
 	  <a class="navbar-brand" href="#" style="color: orange;">Mat Jal Al</a>
@@ -430,11 +425,6 @@
 					</div>
 				</div>
 			</div> <!-- portal_info end -->
-<<<<<<< HEAD
-			<div class = "map_api">
-				<img src = "resources/image/exMap.png" width = "898px" height = "348px"/>
-			</div>.
-=======
 			<div class = "map_wrap">
 			<div id = "map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
 			    <div id="menu_wrap" class="bg_white">
@@ -453,10 +443,7 @@
 			</div>   
 			    
 			    
->>>>>>> refs/heads/DH
 		</div> <!-- map_page end -->
-<<<<<<< HEAD
-=======
 		
 	<script>
 		// 마커를 담을 배열입니다
@@ -676,6 +663,5 @@
 		}
 		
 	</script>
->>>>>>> refs/heads/DH
 </body>
 </html>
