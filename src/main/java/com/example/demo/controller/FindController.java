@@ -30,9 +30,5 @@ public class FindController {
 		   return "findPw" ; 
 	   }
 	   
-		@GetMapping("/myFeed")
-		public String myFeed() {
-			return "myFeed";
-		}
 	   
 }

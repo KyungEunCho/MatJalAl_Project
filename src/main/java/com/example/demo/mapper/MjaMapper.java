@@ -10,4 +10,6 @@ public interface MjaMapper {
 
 	List<HashMap<String, Object>> findAll();
 
+	HashMap<String, String> getLogin(HashMap<String, String> params) throws Throwable;
+
 }
