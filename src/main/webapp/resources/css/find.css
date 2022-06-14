@@ -33,8 +33,10 @@ html, body {
     line-height: 180px;
  }
 hr {
-    border: 0.5px solid #fc6902;
+    height: 2px;
     margin: 0;
+    background-color: #fc6902;
+    border: none;
 }
 h4, pre {
 	margin: 0;

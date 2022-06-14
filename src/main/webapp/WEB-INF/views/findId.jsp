@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/find.css"/>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript"
-		src="resources/js/jquery/jquery-1.12.4.js"></script>
+		src="resources/js/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	
