@@ -53,6 +53,12 @@ public class MjaController {
 	public String updateProfile() {
 		
 		return "updateProfile";
-	} 
+	}
+	
+	@GetMapping("/myFeed")
+	public String myFeed() {
+		return "myFeed";
+	}
+	
 	
 }

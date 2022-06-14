@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e24d198715a0256d57d641e892714cdd&libraries=services,clusterer,drawing"></script>
 <link rel="stylesheet"
 	  href ="/resources/css/bootstrap.min.css">
 <style type="text/css">
@@ -281,6 +282,7 @@
 
  <!-- 부트스트랩 -->
 <body>
+ <!-- 
 	<nav class="navbar navbar-expand-lg navbar-light bg-white">
 	  	 <img src="resources/image/logo_orange.png" width="30" height="40" style="margin-right: 10px;">
 	  <a class="navbar-brand" href="#" style="color: orange;">Mat Jal Al</a>
@@ -306,7 +308,7 @@
 	    </form>
 	  </div>
 	</nav>
-
+ -->
 
 
 	<div class = "cont_wrap">
