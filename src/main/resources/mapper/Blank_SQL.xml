@@ -12,4 +12,10 @@
  		FROM MJATEST
  	</select>
  
+ 	<select id="getLogin" parameterType="hashmap" resultType="hashmap">
+		SELECT NICK_NAME, EMAIL
+		FROM MJA_USER_INFO
+		WHERE NICK_NAME = #{id}
+		AND PASSWORD = #{pw} 	
+ 	</select>
 </mapper>
