@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>비밀번호 찾기</title>
 <link rel="stylesheet" type="text/css" href="resources/css/find.css"/>
+<script type="text/javascript"
+		src="resources/js/jquery/jquery-1.12.4.min.js"></script>
 </head>
 <body>
     <div class="body">
