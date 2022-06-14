@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e24d198715a0256d57d641e892714cdd&libraries=services,clusterer,drawing"></script>
 <link rel="stylesheet"
 	  href ="/resources/css/bootstrap.min.css">
 <style type="text/css">
@@ -227,10 +228,9 @@
 	font-size: 12pt;
 }
 
-.map_api {
+#map {
 	width: 900px;
 	height: 350px;
-	border: 1px solid;
 }
 
 .keep_add_button {
@@ -280,7 +280,7 @@
 </head>
 
  <!-- 부트스트랩 -->
-<body>
+<!-- <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-white">
 	  	 <img src="resources/image/logo_orange.png" width="30" height="40" style="margin-right: 10px;">
 	  <a class="navbar-brand" href="#" style="color: orange;">Mat Jal Al</a>
@@ -306,7 +306,7 @@
 	    </form>
 	  </div>
 	</nav>
-
+ -->
 
 
 	<div class = "cont_wrap">
@@ -385,9 +385,18 @@
 					</div>
 				</div>
 			</div> <!-- portal_info end -->
-			<div class = "map_api">
-				<img src = "resources/image/exMap.png" width = "898px" height = "348px"/>
-			</div>.
+			<div id = "map">
+			</div>
 		</div> <!-- map_page end -->
+		
+		<script>
+			var container = document.getElementById('map');
+			var options = {
+				center: new kakao.maps.LatLng(33.450701, 126.570667),
+				level: 3
+			};
+	
+			var map = new kakao.maps.Map(container, options);
+		</script>
 </body>
 </html>
