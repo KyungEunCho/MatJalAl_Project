@@ -27,6 +27,7 @@ public class MjaController {
 		// 9exg branch test 9exg 111
 		
 		// test 16:36
+		// push 테스트
 	}	
 	@GetMapping("/feed")
 	public String feed() {
