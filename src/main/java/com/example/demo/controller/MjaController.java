@@ -41,6 +41,9 @@ public class MjaController {
 	@GetMapping("/login")
 	public String login() {
 		return "login";
+		
+		
+		// test 0614 10:43
 	}
 	
 	@GetMapping ("/signUp") 
