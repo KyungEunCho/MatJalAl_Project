@@ -28,4 +28,10 @@ public class FindController {
 		   //리턴할 페이지 명
 		   return "findPw" ; 
 	   }
+	   
+		@GetMapping("/myFeed")
+		public String myFeed() {
+			return "myFeed";
+		}
+	   
 }
