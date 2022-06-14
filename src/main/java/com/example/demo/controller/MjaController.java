@@ -31,6 +31,8 @@ public class MjaController {
 		// test 9exg 16:39
 		
 		// test 0614 10:39
+		
+		// test 0614 10:43
 	}
 	
 	@GetMapping ("/signUp") 
