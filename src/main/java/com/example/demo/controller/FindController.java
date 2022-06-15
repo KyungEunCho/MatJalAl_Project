@@ -14,7 +14,7 @@ public class FindController {
 	private IMjaService iMjaService;
 	
 	   // @GetMapping : Get방식으로 통신 하겠다. query parameter 방식으로 data를 주고받겠다. 일반적으로 select에 사용.
-	   @GetMapping ("/")
+	   @GetMapping ("/findId")
 	   public String findId() {
 	      //리턴할 페이지 명
 	      return "findId" ; 
