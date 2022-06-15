@@ -33,7 +33,7 @@ html, body {
     line-height: 180px;
  }
 hr {
-    height: 2px;
+    height: 1px;
     margin: 0;
     background-color: #fc6902;
     border: none;
@@ -57,7 +57,7 @@ h4, pre {
     font-size: 15px;
 }
 #findId {
-	border-right: 2px solid #fc6902;
+	border-right: 1px solid #fc6902;
 }
 #findId:hover, #findPw:hover {
 	color: #684107;
