@@ -38,7 +38,7 @@ public class MjaController {
 		// test 16:36
 		// push 테스트
 	}	
-	@GetMapping("/feed")
+	@RequestMapping("/feed")
 	public String feed() {
 		return "feed";
 	}
