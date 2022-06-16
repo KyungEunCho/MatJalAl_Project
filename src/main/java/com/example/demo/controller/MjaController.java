@@ -31,6 +31,7 @@ public class MjaController {
 	      
 		return iMjaService.findAll();
 	}	
+<<<<<<< HEAD
 	
 	@GetMapping("/main")
 	public String main() {
@@ -38,6 +39,9 @@ public class MjaController {
 	}
 	
 	@GetMapping("/feed")
+=======
+	@RequestMapping("/feed")
+>>>>>>> refs/heads/master
 	public String feed() {
 		return "feed";
 	}

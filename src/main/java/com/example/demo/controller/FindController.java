@@ -28,7 +28,11 @@ public class FindController {
 	   public String findPw() {
 		   //리턴할 페이지 명
 		   return "findPw" ; 
+<<<<<<< HEAD
 	   }
 	   
 	   
+=======
+	   } 
+>>>>>>> refs/heads/master
 }
