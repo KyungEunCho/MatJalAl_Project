@@ -10,4 +10,6 @@ public interface MjaMapper {
 
 	List<HashMap<String, Object>> findAll();
 
+	public List<HashMap<String, String>> feedList() throws Throwable;
+
 }

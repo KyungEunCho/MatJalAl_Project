@@ -12,4 +12,12 @@
  		FROM MJATEST
  	</select>
  
+ 	<select id="feedList" resultType="hashmap" parameterType="hashmap">
+ 		SELECT MF.FEED_NUM, MF.STAR, MFP.ATT_FILE, MS.STORE_NAME
+		FROM MJA_FEED MF INNER JOIN MJA_FEED_PHOTO MFP
+								 ON MF.FEED_NUM = MFP.FEED_NUM
+						 INNER JOIN MJA_STORE MS
+						 		 ON MF.STORE_NUM = MS.STORE_NUM
+		WHERE 1=1
+ 	</select>
 </mapper>

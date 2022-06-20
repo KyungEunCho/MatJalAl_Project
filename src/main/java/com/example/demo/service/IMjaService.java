@@ -7,4 +7,6 @@ public interface IMjaService {
 
 	public List<HashMap<String, Object>> findAll();
 
+	public List<HashMap<String, String>> feedList(HashMap<String, String> params) throws Throwable;
+
 }

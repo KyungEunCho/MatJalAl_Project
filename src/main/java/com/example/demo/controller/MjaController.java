@@ -2,24 +2,27 @@ package com.example.demo.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.service.IMjaService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class MjaController {
 
 	@Autowired
 	private IMjaService iMjaService;
-	
-	@GetMapping("/feed")
-	public String feed() {
-		return "feed";
-	} // 피드
 	
 	@GetMapping("/place")
 	public String place() {
@@ -31,4 +34,27 @@ public class MjaController {
 		return "login";
 	}
 	
+	@RequestMapping(value = "/feed")
+	public ModelAndView feed(@RequestParam HashMap<String, String> params,
+									ModelAndView mav) {
+		
+		mav.setViewName("feed");
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/feedAjax", method = RequestMethod.POST, 
+			produces = "text/json;charset=UTF-8")
+	@ResponseBody
+	public String feedAjax(@RequestParam HashMap<String, String> params, HttpSession session) throws Throwable {
+		ObjectMapper mapper = new ObjectMapper();
+		
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		List<HashMap<String, String>> list = iMjaService.feedList(params);
+			
+		modelMap.put("list", list);
+		
+		return mapper.writeValueAsString(modelMap);
+	}
 }

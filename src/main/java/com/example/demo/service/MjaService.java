@@ -17,4 +17,9 @@ public class MjaService implements IMjaService {
 	public List<HashMap<String, Object>> findAll() {
 		return mjaMapper.findAll();
 	}
+
+	@Override
+	public List<HashMap<String, String>> feedList(HashMap<String, String> params) throws Throwable {
+		return mjaMapper.feedList();
+	}
 }

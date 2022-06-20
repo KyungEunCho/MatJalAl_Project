@@ -213,6 +213,46 @@
 	color: black;
 }
 </style>
+<script type="text/javascript" src="resources/js/jquery/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	reloadList();
+});
+
+function reloadList() { // 목록 조회용 + 페이징 조회용
+	var params = $("#actionForm").serialize();
+	
+	$.ajax({
+		type : "post",
+		url : "feedAjax",
+		dataType : "json",
+		data : params,
+		success : function(res) {
+			console.log(res);
+			drawList(res.list);
+		},
+		error : function(result, status, error) {
+			console.log(result, responseText);
+		}
+	});
+}
+
+function drawList(list) {
+	var html = "";
+	
+	for(var data of list) {
+		html += "<tr no=\"" + data.FEED_NUM + "\">";
+		html += "<td>" + data.FEED_NUM + "</td>";
+		html += "<td>" + data.ATT_FILE + "</td>";
+		html += "<td>" + data.STORE_NAME + "</td>";
+		html += "<td>" + data.STAR + "</td>";
+		html += "</tr>";
+	}
+
+	$("tbody").html(html);
+	
+}
+</script>
 </head>
 <body>
 <div class="feed">
@@ -326,6 +366,19 @@
 				</div>
 			</div>
 		</div>
+		<form action="#" id="actionForm" method="post">
+			<table class="board_table">
+				<thead>
+					<tr>
+						<th>피드번호</th>
+						<th>피드사진</th>
+						<th>가게이름</th>
+						<th>별점</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</form>
 	</div>
 </div>
 </body>
