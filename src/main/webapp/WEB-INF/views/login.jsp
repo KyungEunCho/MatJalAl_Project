@@ -100,9 +100,11 @@ function kakaoLogin() {
 		</form>
 	</div>
 	<div class="login_btn">Login</div>
-	<dlv class="join_us">
+	<div class="join_us">
 		<div class="join">회원가입</div>
-		<div class="id_pw_find">아이디 / 비밀번호 찾기</div>
+			<a href="findId">
+				<span class="id_pw_find">아이디 / 비밀번호 찾기</span>
+			</a>
 		<div class="kakao_login">
 			<img src="/resources/image/icon-kakao.svg">
 			<a href="javascript:kakaoLogin();">
@@ -111,10 +113,9 @@ function kakaoLogin() {
 		</div>
 		<div class="naver_login">
 			<img src="/resources/image/login-naver.png">
-				<span>네이버 로그인</span>		
+			<span>네이버 로그인</span>		
 		</div>
-	</dlv>
-	
+	</div>
 </div>
 </body>
 </html>

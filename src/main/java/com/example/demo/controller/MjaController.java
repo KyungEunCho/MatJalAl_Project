@@ -31,15 +31,17 @@ public class MjaController {
 	public List <HashMap<String, Object>> findAll() {
 	      
 		return iMjaService.findAll();
-		// test
-		// test by kwak
-		
-		// 9exg branch test 9exg 111
-		
-		// test 16:36
-		// push 테스트
 	}	
+
+	
+	@GetMapping("/main")
+	public String main() {
+		return "main";
+	}
+	
 	@GetMapping("/feed")
+	@RequestMapping("/feed")
+
 	public String feed() {
 		return "feed";
 	}
@@ -52,9 +54,6 @@ public class MjaController {
 	@GetMapping("/login")
 	public String login() {
 		return "login";
-		
-		
-		// test 0614 10:43
 	}
 	
 	@RequestMapping(value = "loginAjax", method = RequestMethod.POST, produces = "text/json;charset=UTF-8")
