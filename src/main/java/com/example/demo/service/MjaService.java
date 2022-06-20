@@ -37,8 +37,7 @@ public class MjaService implements IMjaService {
 
 	@Override
 	public List<HashMap<String, String>> feedList(HashMap<String, String> params) throws Throwable {
-		// TODO Auto-generated method stub
-		return null;
+		return mjaMapper.feedList(params);
 	}
 	
 	public HashMap<String, String> imgRoute(String imgRoute) {
