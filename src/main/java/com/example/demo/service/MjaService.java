@@ -10,11 +10,25 @@ import com.example.demo.mapper.MjaMapper;
 
 @Service
 public class MjaService implements IMjaService {
-
+	
 	@Autowired
-	private MjaMapper mjaMapper;
+	private MjaMapper MjaMapper;
 
-	public List<HashMap<String, Object>> findAll() {
-		return mjaMapper.findAll();
+	@Override
+	public List<HashMap<String, String>> feedList(HashMap<String, String> params) throws Throwable {
+		// TODO Auto-generated method stub
+		return MjaMapper.getDataList(params);
 	}
+	
+	/*
+	 * @Override public List<HashMap<String, String>> getDataList(HashMap<String,
+	 * String> params) throws Throwable { return MjaMapper.getDataList(params); }
+	 */
+	/*
+	 * @Autowired private MjaMapper MjaMapper;
+	 * 
+	 * @Override public List<HashMap<String, String>> getDataList(String string,
+	 * HashMap<String, String> params) throws Throwable { return
+	 * MjaMapper.getDataList(params); }
+	 */
 }

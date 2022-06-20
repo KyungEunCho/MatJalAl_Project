@@ -16,19 +16,17 @@ public class MjaController {
 	@Autowired
 	private IMjaService iMjaService;
 	
-	@GetMapping("/findAll")
-	@ResponseBody
-	public List <HashMap<String, Object>> findAll() {
-	      
-		return iMjaService.findAll();
-		// test
-		// test by kwak
-		
-		// 9exg branch test 9exg 111
-		
-		// test 16:36
-		// push 테스트
-	}	
+	/*
+	 * @GetMapping("/findAll")
+	 * 
+	 * @ResponseBody public List <HashMap<String, Object>> findAll() {
+	 * 
+	 * // return iMjaService.findAll(); // test // test by kwak
+	 * 
+	 * // 9exg branch test 9exg 111
+	 * 
+	 * // test 16:36 // push 테스트 }
+	 */	
 	@GetMapping("/feed")
 	public String feed() {
 		return "feed";
