@@ -46,7 +46,14 @@ public class MjaController {
 		return "updateProfile";
 	} 
 
-	@RequestMapping("/myFeed")
+
+	@GetMapping ("/myFeed") 
+	public String myFeed() {
+		
+		return "myFeed";
+	} 
+	
+/*	@RequestMapping("/myFeed")
 	public ModelAndView imgRoute(@RequestParam(value = "imgRoute") String imgRoute,
 						ModelAndView mav) {
 		
@@ -58,7 +65,7 @@ public class MjaController {
 		mav.setViewName("myFeed");
 		
 		return mav; 
-	}
+	} */
 	
 /*	
 	@RequestMapping("/myFeed")

@@ -8,12 +8,12 @@
 <meta charset="UTF-8">
 <title>My Feed</title>
 <script type="text/javascript"
-		src="resources/js/jquery/jquery-1.12.4.min.js"></script>  
+		src="../resources/js/jquery/jquery-1.12.4.min.js"></script>  
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e24d198715a0256d57d641e892714cdd&libraries=services,clusterer,drawing"></script>
-<script type="text/javascript" src="resources/js/common/popup.js"></script>	<!-- popup end script -->
-<link rel="stylesheet" href ="/resources/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="resources/css/popup.css" />
-<link rel="stylesheet" type="text/css" href="resources/css/cmn.css" />
+<script type="text/javascript" src="../resources/js/common/popup.js"></script>	<!-- popup end script -->
+<link rel="stylesheet" href ="../resources/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/popup.css" />
+<link rel="stylesheet" type="text/css" href="../resources/css/cmn.css" />
 <style type="text/css">
 
 html {
@@ -334,6 +334,107 @@ td {
 	height: 25px;
 }
 
+.second_newFeed {
+	width: 610px;
+	height: 500px;
+	background-color:yellow; 
+}
+
+.second_NewFeed_title {
+	display: inline-block;
+	text-align: center;
+	line-height : 30px;
+	width: 610px;
+	height: 30px;
+}
+
+.second_NewFeed_contWrap {
+	width: 610px;
+	height: 400px;
+	display: inline-block;
+	border-top: 1px solid;
+	font-size: 11pt;
+}
+
+.second_newFeed_photoWrap {
+	display : inline-block;
+	width: 300px;
+	height: 400px;
+	margin-top: 10px;
+}
+
+.second_newFeed_detailWrap {
+	display : inline-block;
+	width: 300px;
+	height: 400px;
+	vertical-align : top;
+	margin-top : 10px;
+	background-color: orange;
+}
+
+.second_newFeed_user_info {
+	display : inline-block;
+	width: 305px;
+	height: 30px;
+	margin-top: 10px;
+}
+
+.second_newFeed_profile {
+	display : inline-block;
+	width: 35px;
+	height: 35px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+
+.second_newFeed_nick {
+	display : inline-block;
+	width: 250px;
+	height: 25px;
+	line-height: 30px;
+	font-size: 12pt;
+	vertical-align: top;
+}
+
+.second_newFeed_cont {
+	margin-left: 10px;
+	width: 250px;
+	height: 150px;
+}
+
+.hashTag {
+	color: blue;
+	font-size: 10pt;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.starWrap {
+	margin-left : 10px;
+	width: 250px;
+	height: 40px;
+}
+
+.star {
+	display : inline-block;
+	font-size: 15pt;
+	vertical-align: top;
+}
+
+.second_newFeed_star_img {
+	margin-right: -7px;
+	margin-left: 2px;
+	margin-bottom: 6px;
+	vertical-align: middle;
+	width: 35px;
+	height: 35px;
+}
+
+.second_newFeed_search_place {
+	height: 150px;
+	width: 300px;
+}
+
 .popup_cont {
 	width: auto;
 }
@@ -341,6 +442,8 @@ td {
 .popup_bg {
 	height: 180%;
 }
+
+.
 
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
@@ -419,7 +522,64 @@ $(document).ready(function() {
 			buttons : [{
 				name : "다음",
 				func : function() {
-					closePopup();
+					
+					makePopup ({
+						bg:false,
+						bgClose : false,
+						title : "새 피드다시 만들기",
+						width : 500,
+						height: 500,
+						contents :html,
+			 			contentsEvent : function() {
+							
+						},
+						buttons : [{
+							name : "다음",
+							func : function() {
+						
+						var html = "";
+								
+						html += "		<div class = \"second_newFeed\">";
+						html += "			<div class = \"second_NewFeed_title\">팝업 다 만들기</div>";
+						html += "			<div class = \"second_NewFeed_contWrap\">";
+						html += "				<div class = \"second_newFeed_photoWrap\">";
+						html += "					<img src = \"resources/image/noimage.jpeg\" width = \"300px\" height = \"400px\"/>";
+						html += "				</div>";
+						
+						html += "				<div class = \"second_newFeed_detailWrap\">";
+						html += "					<div class = \"second_newFeed_user_info\">";
+						html += "					<div class = \"second_newFeed_profile\">";
+						html += "						<img src = \"resources/image/noimage.jpeg\" width = \"30px\" height = \"30px\"/>";
+						html += "					</div>";
+						html += "						<div class = \"second_newFeed_nick\">닉네임이다</div>";
+						html += "					</div>";
+						html += "					<div class = \"second_newFeed_cont\">반갑다 5학년 3반이야";
+						html += "						<div class = \"hashTag\">#햄버거</div>";
+						html += "					</div>";
+						html += "					<div class=\"starWrap\">";
+						html += "						<div class = \"star\">";
+						html += "							<img src = \"resources/image/yellowStar.png\" class = \"second_newFeed_star_img\"/>";
+						html += "							<img src = \"resources/image/yellowStar.png\" class = \"second_newFeed_star_img\"/>";
+						html += "							<img src = \"resources/image/yellowStar.png\" class = \"second_newFeed_star_img\"/>";
+						html += "							<img src = \"resources/image/yellowStar.png\" class = \"second_newFeed_star_img\"/>";
+						html += "							<img src = \"resources/image/whiteStar.png\" class = \"second_newFeed_star_img\"/>";
+						html += "						</div>";
+						html += "					</div>";
+						html += "					<div class = \"second_newFeed_search_place\">";
+						html += "					</div>";
+						html += "				</div>	";
+						html += "			</div>";
+						html += "		</div>";
+								
+							}
+						}, {
+								name : "취소",
+									func : function() {
+										closePopup();
+									}
+						}]
+					}) // makePopup end
+
 				}
 			}, {
 					name : "취소",
@@ -430,7 +590,8 @@ $(document).ready(function() {
 		}) // makePopup end
 	}); // click end
 }); // ready end
-
+	
+	
 		
 		
 </script>
@@ -439,7 +600,7 @@ $(document).ready(function() {
 
 	<div class = "cont_wrap">
 		<div class = "feed_photo">
-		<img src = "${img}" width = "450px" height = "450px"/>
+		<img src = "resources/image/noimage.jpeg" width = "450px" height = "450px"/>
 		</div>
 		<div class = "feed_right">
 			<div class = "user_info">
