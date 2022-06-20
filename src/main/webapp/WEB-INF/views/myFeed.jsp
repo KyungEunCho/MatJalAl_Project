@@ -1,14 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>My Feed</title>
+<script type="text/javascript"
+		src="resources/js/jquery/jquery-1.12.4.min.js"></script>  
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e24d198715a0256d57d641e892714cdd&libraries=services,clusterer,drawing"></script>
-<link rel="stylesheet"
-	  href ="/resources/css/bootstrap.min.css">
+<script type="text/javascript" src="resources/js/common/popup.js"></script>	<!-- popup end script -->
+<link rel="stylesheet" href ="/resources/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="resources/css/popup.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/cmn.css" />
 <style type="text/css">
+
+html {
+	height: 180%;
+	overflow: auto;
+}
 
 .cont_wrap {
 	width: 900px;
@@ -54,6 +65,7 @@
 	height: 30px;
 	width: 300px;
 	margin-left: 10px; 
+	font-size: 12pt;
 }
 
 .update_btn {	
@@ -263,19 +275,71 @@
 
 #portal_button {
 	display : inline-block;
-/*	height: 30px;
-	width: 80px;
-	background-color: #ff6600b8;
-	text-align: center;
-	border-radius : 5px;
-	color : white;
-	line-height: 30px;
-	cursor: pointer; */
 	text-align: center;
 	height: 33px;
 	width: 82px;
 	cursor: pointer;
 	margin-right: 8px;
+}
+
+.newFeed {
+	width: auto;
+	height: auto;
+	background-color: white;
+	margin-left: 10px; 
+}
+
+.title_NewFeed {
+	display: inline-block;
+	text-align: center;
+	line-height : 30px;
+	width: 450px;
+	height: 30px;
+}
+
+.contWrap_NewFeed {
+	width: 450px;
+	height: 250px;
+	display: inline-block;
+	border-top: 1px solid;
+}
+
+.cont_NewFeed {
+	width: auto;
+	height: 200px;
+	position: relative;
+	top : calc(50% - 35%);
+	left : calc(50% - 25%);
+}
+
+.att_button {
+	height : 30px;
+	width: 120px;
+	font-size: 9pt;
+	border : 1px solid;
+	border-radius : 5px;
+	position: relative;
+	left : calc(100% - 62%);
+	cursor: pointer;
+	text-align: center;
+	font-size: 9pt;
+	color : white;
+	background-color: #ff6600b8;
+	line-height: 25px;
+}
+
+td {
+	display: block;
+	width: auto;
+	height: 25px;
+}
+
+.popup_cont {
+	width: auto;
+}
+
+.popup_bg {
+	height: 180%;
 }
 
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
@@ -317,40 +381,65 @@
 
 </style>
 </head>
-
- <!-- 부트스트랩 -->
-<!-- <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-white">
-	  	 <img src="resources/image/logo_orange.png" width="30" height="40" style="margin-right: 10px;">
-	  <a class="navbar-brand" href="#" style="color: orange;">Mat Jal Al</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" style="border-color:orange;">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
+<script type="text/javascript">
+$(document).ready(function() {
 	
-	  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-	    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-	      <li class="nav-item active">
-	        <a class="nav-link" href="#">Home <span class="sr-only">(current</span></a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="#">Link</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-	      </li>
-	    </ul>
-	    <form class="form-inline my-2 my-lg-0" >
-	      <input class="form-control mr-sm-2" type="search" placeholder="Search">
-	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  style="color: orange;">Search</button>
-	    </form>
-	  </div>
-	</nav>
- -->
+	$(".cmnt_add_button").on("click", function() {
+		
+		var html = "";
+		
+		html += " 		<div class = \"newFeed\">";
+		html += "			<div class = \"title_NewFeed\">새 게시물 만들기</div>";
+		html += "			<div class = \"contWrap_NewFeed\">";
+		html += "				<table class = \"cont_NewFeed\">";
+		html += "					<tbody>";
+		html += "						<tr>";
+		html += "							<td>1.사진 선택가능</td>";
+		html += "							<td>2.문구입력 - #태그 입력</td>";
+		html += "							<td>3.별점 - 클릭</td>";
+		html += "							<td>4.위치 - 검색</td>";
+		html += "							<td>4.공유하기 - KEEP버튼 클릭</td>";
+		html += "						</tr>";
+		html += "					</tbody>";
+		html += "				</table>";
+		html += "			</div>";
+		html += "			<div class = \"att_button\">사진 선택하기</div>";
+		html += "		</div>";
+		
+		makePopup ({
+			bg:true,
+			bgClose : false,
+			title : "새 피드 만들기",
+			width : 500,
+			height: 500,
+			contents :html,
+ 			contentsEvent : function() {
+				
+			},
+			buttons : [{
+				name : "다음",
+				func : function() {
+					closePopup();
+				}
+			}, {
+					name : "취소",
+						func : function() {
+							closePopup();
+						}
+			}]
+		}) // makePopup end
+	}); // click end
+}); // ready end
 
+		
+		
+</script>
+	
+	
 
 	<div class = "cont_wrap">
 		<div class = "feed_photo">
-		<img src = "resources/image/mcdonald.png" width = "450px" height = "450px"/>
+		<img src = "${img}" width = "450px" height = "450px"/>
 		</div>
 		<div class = "feed_right">
 			<div class = "user_info">
@@ -414,23 +503,23 @@
 				<div class = "keep_add_button">KEEP</div>
 				<div class = "portal_area">
 					<div id = "portal_button">
-						<img src = "resources/image/naver.png" width = "55px" height="20px"/>
+						<img src = "resources/image/naver.png" width = "55px" height="20px" id = "naver"/>
 					</div>
 					<div id = "portal_button">
-						<img src = "resources/image/daum.png" width = "60px" height="32px"/>
+						<img src = "resources/image/daum.png" width = "60px" height="32px" id = "daum"/>
 					</div>
 					<div id = "portal_button">
-						<img src = "resources/image/google.png" width = "55px" height="20px"/>
+						<img src = "resources/image/google.png" width = "55px" height="20px" id = "google"/>
 					</div>
 				</div>
 			</div> <!-- portal_info end -->
-			<div class = "map_wrap">
+			<div class = "map_wrap"><!-- 카카오맵 -->
 			<div id = "map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
 			    <div id="menu_wrap" class="bg_white">
 			        <div class="option">
 			            <div>
 			                <form onsubmit="searchPlaces(); return false;">
-			                    키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15"> 
+			                    키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15">
 			                    <button type="submit">검색하기</button> 
 			                </form>
 			            </div>
@@ -439,11 +528,11 @@
 			        <ul id="placesList"></ul>
 			        <div id="pagination"></div>
 			    </div>
-			</div>   
+			</div>   <!-- map_wrap end -->
 			    
 			    
 		</div> <!-- map_page end -->
-		
+
 	<script>
 		// 마커를 담을 배열입니다
 		var markers = [];

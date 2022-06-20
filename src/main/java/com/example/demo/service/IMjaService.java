@@ -7,4 +7,8 @@ public interface IMjaService {
 
 	public List<HashMap<String, Object>> findAll();
 
+	public HashMap<String, String> imgRoute(String imgRoute);
+
+	public HashMap<String, Integer> feedNum(int feedNum);
+
 }

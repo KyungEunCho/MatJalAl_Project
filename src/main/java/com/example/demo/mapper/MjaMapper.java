@@ -8,6 +8,9 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface MjaMapper {
 
-	List<HashMap<String, Object>> findAll();
+	public List<HashMap<String, Object>> findAll();
 
+	public HashMap<String, String> imgRoute(String imgRoute);
+
+	public HashMap<String, Integer> feedNum(int feedNum);
 }

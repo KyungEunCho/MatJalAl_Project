@@ -17,4 +17,13 @@ public class MjaService implements IMjaService {
 	public List<HashMap<String, Object>> findAll() {
 		return mjaMapper.findAll();
 	}
+	
+	public HashMap<String, String> imgRoute(String imgRoute) {
+		return mjaMapper.imgRoute(imgRoute);
+	}
+	
+	public HashMap<String, Integer> feedNum(int feedNum) {
+		return mjaMapper.feedNum(feedNum);
+	}
+
 }
