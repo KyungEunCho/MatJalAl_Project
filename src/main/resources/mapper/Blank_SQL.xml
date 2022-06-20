@@ -11,6 +11,18 @@
  		SELECT *
  		FROM MJATEST
  	</select>
+ 	
+ 	<select id = "imgRoute" resultType="hashmap">
+ 		SELECT *
+		FROM MJA_FEED_PHOTO
+		WHERE FEED_PHOTO_NUM = #{img}
+ 	</select>
+ 
+ 	<select id="feedNum" resultType="hashmap">
+ 		SELECT *
+ 		FROM MJA_FEED_COMMENT
+ 		WHERE FEED_NUM = #{feedNum}
+ 	</select>
  
  	<select id="getLogin" parameterType="hashmap" resultType="hashmap">
 		SELECT NICK_NAME, EMAIL

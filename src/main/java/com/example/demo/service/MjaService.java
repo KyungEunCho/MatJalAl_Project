@@ -22,4 +22,13 @@ public class MjaService implements IMjaService {
 	public HashMap<String, String> getLogin(HashMap<String, String> params) throws Throwable {
 		return mjaMapper.getLogin(params);
 	}
+	
+	public HashMap<String, String> imgRoute(String imgRoute) {
+		return mjaMapper.imgRoute(imgRoute);
+	}
+	
+	public HashMap<String, Integer> feedNum(int feedNum) {
+		return mjaMapper.feedNum(feedNum);
+	}
+
 }
