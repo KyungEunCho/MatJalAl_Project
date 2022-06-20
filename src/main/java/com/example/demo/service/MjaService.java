@@ -10,14 +10,12 @@ import com.example.demo.mapper.MjaMapper;
 
 @Service
 public class MjaService implements IMjaService {
-	
-	@Autowired
-	private MjaMapper MjaMapper;
 
-	@Override
-	public List<HashMap<String, String>> feedList(HashMap<String, String> params) throws Throwable {
-		// TODO Auto-generated method stub
-		return MjaMapper.getDataList(params);
+	@Autowired
+	private MjaMapper mjaMapper;
+
+	public List<HashMap<String, Object>> findAll() {
+		return mjaMapper.findAll();
 	}
 	
 	/*
@@ -31,4 +29,15 @@ public class MjaService implements IMjaService {
 	 * HashMap<String, String> params) throws Throwable { return
 	 * MjaMapper.getDataList(params); }
 	 */
+
+	@Override
+	public HashMap<String, String> getLogin(HashMap<String, String> params) throws Throwable {
+		return mjaMapper.getLogin(params);
+	}
+
+	@Override
+	public List<HashMap<String, String>> feedList(HashMap<String, String> params) throws Throwable {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -1,0 +1,76 @@
+@charset "EUC-KR";
+
+/* 공동 */
+html, body {
+	margin: 0;
+	height: 100%;
+	font-family: 고딕;
+	min-width: 1400px;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+.top_area, .left_area, .right_area{
+	/* 마우스 드래그 금지 */
+	-ms-user-select: none;
+	-moz-user-select: -moz-none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	user-select:none;
+}
+
+
+/* Top 구역 */
+.top_area {
+	height: 100px;
+	box-shadow: 0px 1px 4px 0px #b7b7b7;
+	background-color: #FFFFFF;
+	position: relative;
+	min-width: 1400px;
+	z-index: 10;
+	background-color: yellow;
+}
+
+/* Left 구역 */
+.left_area {
+	display: inline-block;
+	vertical-align: top;
+	width: 300px;
+	height: calc(100% - 100px);
+	box-shadow: 1px 0px 4px 0px #b7b7b7;
+	min-height: 600px;
+	background-color: maroon;
+}
+
+/* Center 구역 */
+.center_area {
+	display: inline-block;
+	vertical-align: top;
+	width: calc(100% - 340px);
+	min-width: 1060px;
+	height: calc(100% - 140px);
+	min-height: 560px; 
+	padding: 20px;
+	overflow-y: auto;
+	overflow-x: clip; 
+}
+
+.center_area_wrap {
+	white-space: normal !important;
+}
+
+
+/* Right 구역 */
+.right_area {
+	display: inline-block;
+	vertical-align: top;
+	width: calc(100% - 340px);
+	min-width: 1060px;
+	height: calc(100% - 140px);
+	min-height: 560px; 
+	padding: 20px;
+	overflow-y: auto;
+	overflow-x: clip; 
+	background-color: maroon;
+}
+

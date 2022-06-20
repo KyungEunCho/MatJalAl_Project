@@ -9,4 +9,6 @@ public interface IMjaService {
 
 	public List<HashMap<String, String>> feedList(HashMap<String, String> params) throws Throwable;
 
+	public HashMap<String, String> getLogin(HashMap<String, String> params) throws Throwable;
+
 }
