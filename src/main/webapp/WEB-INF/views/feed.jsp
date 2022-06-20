@@ -74,7 +74,7 @@
 	vertical-align: middle;
 	width: 400px;
 	height: 75px;
-	background-image: url('resources/image/circle.png');
+	background-image: url('resources/images/circle.png');
 	background-size: 45px 45px;
 	background-repeat: no-repeat;
 	background-position: 340px 16px;
@@ -183,7 +183,7 @@
 	display: inline-block;
 	width: 250px;
 	height: 195px;
-	background-image: url('resources/image/photo.png');
+	background-image: url('resources/images/photo.png');
 	background-size: 250px 150px;
 	background-repeat: no-repeat;
 }
@@ -213,6 +213,46 @@
 	color: black;
 }
 </style>
+<script type="text/javascript" src="resources/js/jquery/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	reloadList();
+});
+
+function reloadList() { // 목록 조회용 + 페이징 조회용
+	var params = $("#actionForm").serialize();
+	
+	$.ajax({
+		type : "post",
+		url : "feedAjax",
+		dataType : "json",
+		data : params,
+		success : function(res) {
+			console.log(res);
+			drawList(res.list);
+		},
+		error : function(result, status, error) {
+			console.log(result, responseText);
+		}
+	});
+}
+
+function drawList(list) {
+	var html = "";
+	
+	for(var data of list) {
+		html += "<tr no=\"" + data.FEED_NUM + "\">";
+		html += "<td>" + data.FEED_NUM + "</td>";
+		html += "<td>" + data.ATT_FILE + "</td>";
+		html += "<td>" + data.STORE_NAME + "</td>";
+		html += "<td>" + data.STAR + "</td>";
+		html += "</tr>";
+	}
+
+	$("tbody").html(html);
+	
+}
+</script>
 </head>
 <body>
 <div class="feed">
@@ -241,11 +281,11 @@
 				<br><br><br><br><br><br><br><br><br>
 				<div class="photo_name">새벽집 강남점1</div>
 				<div class="photo_star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/empty_star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/empty_star.png" class="star">
 					<div class="star_grade">4.0</div>
 				</div> 
 			</div>
@@ -253,11 +293,11 @@
 				<br><br><br><br><br><br><br><br><br>
 				<div class="photo_name">새벽집 강남점1</div>
 				<div class="photo_star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/empty_star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/empty_star.png" class="star">
 					<div class="star_grade">4.0</div>
 				</div>
 			</div>
@@ -265,11 +305,11 @@
 				<br><br><br><br><br><br><br><br><br>
 				<div class="photo_name">새벽집 강남점1</div>
 				<div class="photo_star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/empty_star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/empty_star.png" class="star">
 					<div class="star_grade">4.0</div>
 				</div>
 			</div>
@@ -279,11 +319,11 @@
 				<br><br><br><br><br><br><br><br><br>
 				<div class="photo_name">새벽집 강남점1</div>
 				<div class="photo_star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/empty_star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/empty_star.png" class="star">
 					<div class="star_grade">4.0</div>
 				</div>
 			</div>
@@ -291,11 +331,11 @@
 				<br><br><br><br><br><br><br><br><br>
 				<div class="photo_name">새벽집 강남점1</div>
 				<div class="photo_star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/empty_star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/empty_star.png" class="star">
 					<div class="star_grade">4.0</div>
 				</div>
 			</div>
@@ -303,11 +343,11 @@
 				<br><br><br><br><br><br><br><br><br>
 				<div class="photo_name">새벽집 강남점1</div>
 				<div class="photo_star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/empty_star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/empty_star.png" class="star">
 					<div class="star_grade">4.0</div>
 				</div>
 			</div>
@@ -317,15 +357,28 @@
 				<br><br><br><br><br><br><br><br><br>
 				<div class="photo_name">새벽집 강남점1</div>
 				<div class="photo_star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/star.png" class="star">
-					<img src="resources/image/empty_star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/star.png" class="star">
+					<img src="resources/images/empty_star.png" class="star">
 					<div class="star_grade">4.0</div>
 				</div>
 			</div>
 		</div>
+		<form action="#" id="actionForm" method="post">
+			<table class="board_table">
+				<thead>
+					<tr>
+						<th>피드번호</th>
+						<th>피드사진</th>
+						<th>가게이름</th>
+						<th>별점</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</form>
 	</div>
 </div>
 </body>
