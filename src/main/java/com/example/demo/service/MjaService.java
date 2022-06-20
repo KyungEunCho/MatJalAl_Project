@@ -17,9 +17,35 @@ public class MjaService implements IMjaService {
 	public List<HashMap<String, Object>> findAll() {
 		return mjaMapper.findAll();
 	}
+	
+	/*
+	 * @Override public List<HashMap<String, String>> getDataList(HashMap<String,
+	 * String> params) throws Throwable { return MjaMapper.getDataList(params); }
+	 */
+	/*
+	 * @Autowired private MjaMapper MjaMapper;
+	 * 
+	 * @Override public List<HashMap<String, String>> getDataList(String string,
+	 * HashMap<String, String> params) throws Throwable { return
+	 * MjaMapper.getDataList(params); }
+	 */
 
 	@Override
 	public HashMap<String, String> getLogin(HashMap<String, String> params) throws Throwable {
 		return mjaMapper.getLogin(params);
 	}
+
+	@Override
+	public List<HashMap<String, String>> feedList(HashMap<String, String> params) throws Throwable {
+		return mjaMapper.feedList(params);
+	}
+	
+	public HashMap<String, String> imgRoute(String imgRoute) {
+		return mjaMapper.imgRoute(imgRoute);
+	}
+	
+	public HashMap<String, Integer> feedNum(int feedNum) {
+		return mjaMapper.feedNum(feedNum);
+	}
+
 }

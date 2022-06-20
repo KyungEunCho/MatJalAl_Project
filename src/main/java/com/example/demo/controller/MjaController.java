@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.common.CommonProperties;
 import com.example.demo.service.IMjaService;
@@ -25,24 +26,29 @@ public class MjaController {
 	@Autowired
 	private IMjaService iMjaService;
 	
-	@GetMapping("/findAll")
-	@ResponseBody
-	public List <HashMap<String, Object>> findAll() {
-	      
-		return iMjaService.findAll();
-	}	
+	/*
+	 * @GetMapping("/findAll")
+	 * 
+	 * @ResponseBody public List <HashMap<String, Object>> findAll() {
+	 * 
+	 * // return iMjaService.findAll(); // test // test by kwak
+	 * 
+	 * // 9exg branch test 9exg 111
+	 * 
+	 * // test 16:36 // push 테스트 }
+	 */	
+	/*
+	 * @GetMapping("/findAll")
+	 * 
+	 * @ResponseBody public List <HashMap<String, Object>> findAll() {
+	 * 
+	 * return iMjaService.findAll(); }
+	 */	
 
 	
 	@GetMapping("/main")
 	public String main() {
 		return "main";
-	}
-	
-	@GetMapping("/feed")
-	@RequestMapping("/feed")
-
-	public String feed() {
-		return "feed";
 	}
 	
 	@GetMapping("/place")
@@ -95,12 +101,61 @@ public class MjaController {
 	public String updateProfile() {
 		
 		return "updateProfile";
+
+	} 
+
+	@RequestMapping("/myFeed")
+	public ModelAndView imgRoute(@RequestParam(value = "imgRoute") String imgRoute,
+						ModelAndView mav) {
+		
+		System.out.println(imgRoute + "#################");
+		
+		HashMap<String, String> img = iMjaService.imgRoute(imgRoute);
+		
+		mav.addObject("img", img.get("ATT_FILE"));
+		mav.setViewName("myFeed");
+		
+		return mav; 
+
 	}
 	
-	@GetMapping("/myFeed")
-	public String myFeed() {
-		return "myFeed";
+/*	
+	@RequestMapping("/myFeed")
+	public ModelAndView getComment(@RequestParam(value = "feedNum") int feedNum,
+									ModelAndView mav) {
+		
+		System.out.println(feedNum + "#################");
+		
+		HashMap<String, Integer> feedNumRes = iMjaService.feedNum(feedNum);
+		
+		mav.addObject("feedNum", feedNumRes.get("FEED_NUM"));
+		mav.setViewName("myFeed");
+		
+		return mav;	
+	}
+*/
+	
+	@RequestMapping(value = "/feed")
+	public ModelAndView feed(@RequestParam HashMap<String, String> params,
+									ModelAndView mav) {
+		
+		mav.setViewName("feed");
+		
+		return mav;
 	}
 	
-	
+	@RequestMapping(value = "/feedAjax", method = RequestMethod.POST, 
+			produces = "text/json;charset=UTF-8")
+	@ResponseBody
+	public String feedAjax(@RequestParam HashMap<String, String> params, HttpSession session) throws Throwable {
+		ObjectMapper mapper = new ObjectMapper();
+		
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		List<HashMap<String, String>> list = iMjaService.feedList(params);
+			
+		modelMap.put("list", list);
+		
+		return mapper.writeValueAsString(modelMap);
+	}
 }
