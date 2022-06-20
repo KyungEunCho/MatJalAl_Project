@@ -29,6 +29,19 @@ public class MjaController {
 		return "place";
 	}
 	
+	@GetMapping("/findAll")
+	@ResponseBody
+	public List <HashMap<String, Object>> findAll() {
+	      
+		return iMjaService.findAll();
+		// test
+		// test by kwak
+		
+		// 9exg branch test 9exg 111
+		
+		// test 16:36
+	}
+	
 	@GetMapping("/login")
 	public String login() {
 		return "login";
@@ -57,4 +70,22 @@ public class MjaController {
 		
 		return mapper.writeValueAsString(modelMap);
 	}
+	@GetMapping ("/signUp") 
+	public String signUp() {
+		
+		return "signUp";
+	} 
+	
+	@GetMapping ("/updateProfile") 
+	public String updateProfile() {
+		
+		return "updateProfile";
+	} 
+	
+	@GetMapping("/myFeed")
+	public String myFeed() {
+		return "myFeed";
+	}
+	
+	
 }
