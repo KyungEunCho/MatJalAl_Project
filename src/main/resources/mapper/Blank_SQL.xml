@@ -7,7 +7,7 @@
 <mapper namespace="com.example.demo.mapper.MjaMapper">
  
  	<!-- id="매핑할 매소드명"  -->
- 	<select id="getDataList" resultType="hashmap" parameterType="hashmap">
+ 	<select id="feedList" resultType="hashmap" parameterType="hashmap">
  		SELECT MF.FEED_NUM, MF.STAR, MFP.ATT_FILE, MS.STORE_NAME
 		FROM MJA_FEED MF INNER JOIN MJA_FEED_PHOTO MFP
 						         ON MF.FEED_NUM = MFP.FEED_NUM

@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface MjaMapper {
 
-	public List<HashMap<String, String>> getDataList(HashMap<String, String> params) throws Throwable;
+	public List<HashMap<String, String>> feedList(HashMap<String, String> params) throws Throwable;
 	
 	public List<HashMap<String, Object>> findAll();
 
