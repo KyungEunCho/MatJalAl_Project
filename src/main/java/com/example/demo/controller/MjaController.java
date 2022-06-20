@@ -51,13 +51,6 @@ public class MjaController {
 		return "main";
 	}
 	
-	@GetMapping("/feed")
-	@RequestMapping("/feed")
-
-	public String feed() {
-		return "feed";
-	} // 피드
-	
 	@GetMapping("/place")
 	public String place() {
 		return "place";
