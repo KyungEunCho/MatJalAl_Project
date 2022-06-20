@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.common.CommonProperties;
 import com.example.demo.service.IMjaService;
@@ -107,12 +108,39 @@ public class MjaController {
 	public String updateProfile() {
 		
 		return "updateProfile";
+
+	} 
+
+	@RequestMapping("/myFeed")
+	public ModelAndView imgRoute(@RequestParam(value = "imgRoute") String imgRoute,
+						ModelAndView mav) {
+		
+		System.out.println(imgRoute + "#################");
+		
+		HashMap<String, String> img = iMjaService.imgRoute(imgRoute);
+		
+		mav.addObject("img", img.get("ATT_FILE"));
+		mav.setViewName("myFeed");
+		
+		return mav; 
+
 	}
 	
-	@GetMapping("/myFeed")
-	public String myFeed() {
-		return "myFeed";
+/*	
+	@RequestMapping("/myFeed")
+	public ModelAndView getComment(@RequestParam(value = "feedNum") int feedNum,
+									ModelAndView mav) {
+		
+		System.out.println(feedNum + "#################");
+		
+		HashMap<String, Integer> feedNumRes = iMjaService.feedNum(feedNum);
+		
+		mav.addObject("feedNum", feedNumRes.get("FEED_NUM"));
+		mav.setViewName("myFeed");
+		
+		return mav;	
 	}
+*/
 	
 	
 }

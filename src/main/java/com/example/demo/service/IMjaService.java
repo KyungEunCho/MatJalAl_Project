@@ -11,4 +11,8 @@ public interface IMjaService {
 
 	public HashMap<String, String> getLogin(HashMap<String, String> params) throws Throwable;
 
+	public HashMap<String, String> imgRoute(String imgRoute);
+
+	public HashMap<String, Integer> feedNum(int feedNum);
+
 }

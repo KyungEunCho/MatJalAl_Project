@@ -40,4 +40,13 @@ public class MjaService implements IMjaService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public HashMap<String, String> imgRoute(String imgRoute) {
+		return mjaMapper.imgRoute(imgRoute);
+	}
+	
+	public HashMap<String, Integer> feedNum(int feedNum) {
+		return mjaMapper.feedNum(feedNum);
+	}
+
 }
