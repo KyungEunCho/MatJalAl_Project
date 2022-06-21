@@ -24,4 +24,11 @@
  		WHERE FEED_NUM = #{feedNum}
  	</select>
  
+ 	<select id="getNewFeed" resultType="hashmap" parameterType="hashmap">
+ 		SELECT ATT_FILE
+		FROM MJA_FEED_PHOTO
+		WHERE FEED_NUM = #{newFeedPhoto}
+ 	</select>
+ 
+ 
 </mapper>

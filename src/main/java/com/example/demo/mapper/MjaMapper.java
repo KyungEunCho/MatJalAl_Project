@@ -13,4 +13,6 @@ public interface MjaMapper {
 	public HashMap<String, String> imgRoute(String imgRoute);
 
 	public HashMap<String, Integer> feedNum(int feedNum);
+
+	public HashMap<String, String> getNewFeed(HashMap<String, String> params) throws Throwable;
 }

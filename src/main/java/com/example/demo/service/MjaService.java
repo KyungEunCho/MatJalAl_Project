@@ -26,4 +26,9 @@ public class MjaService implements IMjaService {
 		return mjaMapper.feedNum(feedNum);
 	}
 
+	@Override
+	public HashMap<String, String> getNewFeed(HashMap<String, String> params) throws Throwable {
+		return mjaMapper.getNewFeed(params);
+	}
+
 }

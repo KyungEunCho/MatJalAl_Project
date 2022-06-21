@@ -2,12 +2,15 @@ package com.example.demo.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.catalina.mapper.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -66,6 +69,23 @@ public class MjaController {
 		
 		return mav; 
 	} */
+	
+	@RequestMapping(value = "/newFeed", method = RequestMethod.POST,
+			produces = "text/json;charset=UTF-8")
+	
+	@ResponseBody
+	public String addNewFeed(@RequestParam HashMap<String, String> params) throws Throwable {
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		HashMap<String, String> photo = iMjaService.getNewFeed(params);
+		
+		modelMap.put("photo", photo);
+		
+		return mapper.writeValueAsString(modelMap);
+	}
 	
 /*	
 	@RequestMapping("/myFeed")

@@ -443,8 +443,6 @@ td {
 	height: 180%;
 }
 
-.
-
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 .map_wrap {position:relative;width:100%;height:500px;}
@@ -492,7 +490,9 @@ $(document).ready(function() {
 		var html = "";
 		
 		html += " 		<div class = \"newFeed\">";
-		html += "			<div class = \"title_NewFeed\">새 게시물 만들기</div>";
+		
+		html += " 		<div class = \"newFeed\">";
+		html += "			<div class = \"title_NewFeed\">사진 추가</div>";
 		html += "			<div class = \"contWrap_NewFeed\">";
 		html += "				<table class = \"cont_NewFeed\">";
 		html += "					<tbody>";
@@ -506,9 +506,10 @@ $(document).ready(function() {
 		html += "					</tbody>";
 		html += "				</table>";
 		html += "			</div>";
-		html += "			<div class = \"att_button\">사진 선택하기</div>";
+		html += "			<label class = \"att_button\" for = \"newFeedPhoto\">사진 선택하기";
+		html += "				<input type = file id = newFeedPhoto style=\"display: none;\"/>";
 		html += "		</div>";
-		
+					
 		makePopup ({
 			bg:true,
 			bgClose : false,
@@ -522,64 +523,15 @@ $(document).ready(function() {
 			buttons : [{
 				name : "다음",
 				func : function() {
-					
-					makePopup ({
-						bg:false,
-						bgClose : false,
-						title : "새 피드다시 만들기",
-						width : 500,
-						height: 500,
-						contents :html,
-			 			contentsEvent : function() {
-							
+					$.ajax ({
+						type : "post",
+						url : "newFeed",
+						dataType : "json",
+						data : params,
+						success : function(res) {
+								drawNewFeed();
 						},
-						buttons : [{
-							name : "다음",
-							func : function() {
-						
-						var html = "";
-								
-						html += "		<div class = \"second_newFeed\">";
-						html += "			<div class = \"second_NewFeed_title\">팝업 다 만들기</div>";
-						html += "			<div class = \"second_NewFeed_contWrap\">";
-						html += "				<div class = \"second_newFeed_photoWrap\">";
-						html += "					<img src = \"resources/image/noimage.jpeg\" width = \"300px\" height = \"400px\"/>";
-						html += "				</div>";
-						
-						html += "				<div class = \"second_newFeed_detailWrap\">";
-						html += "					<div class = \"second_newFeed_user_info\">";
-						html += "					<div class = \"second_newFeed_profile\">";
-						html += "						<img src = \"resources/image/noimage.jpeg\" width = \"30px\" height = \"30px\"/>";
-						html += "					</div>";
-						html += "						<div class = \"second_newFeed_nick\">닉네임이다</div>";
-						html += "					</div>";
-						html += "					<div class = \"second_newFeed_cont\">반갑다 5학년 3반이야";
-						html += "						<div class = \"hashTag\">#햄버거</div>";
-						html += "					</div>";
-						html += "					<div class=\"starWrap\">";
-						html += "						<div class = \"star\">";
-						html += "							<img src = \"resources/image/yellowStar.png\" class = \"second_newFeed_star_img\"/>";
-						html += "							<img src = \"resources/image/yellowStar.png\" class = \"second_newFeed_star_img\"/>";
-						html += "							<img src = \"resources/image/yellowStar.png\" class = \"second_newFeed_star_img\"/>";
-						html += "							<img src = \"resources/image/yellowStar.png\" class = \"second_newFeed_star_img\"/>";
-						html += "							<img src = \"resources/image/whiteStar.png\" class = \"second_newFeed_star_img\"/>";
-						html += "						</div>";
-						html += "					</div>";
-						html += "					<div class = \"second_newFeed_search_place\">";
-						html += "					</div>";
-						html += "				</div>	";
-						html += "			</div>";
-						html += "		</div>";
-								
-							}
-						}, {
-								name : "취소",
-									func : function() {
-										closePopup();
-									}
-						}]
-					}) // makePopup end
-
+					});
 				}
 			}, {
 					name : "취소",
@@ -591,7 +543,46 @@ $(document).ready(function() {
 	}); // click end
 }); // ready end
 	
+function drawNewFeed() {
 	
+	var html = "";
+	
+	html += "		<div class = \"second_newFeed\">";
+	html += "			<div class = \"second_NewFeed_title\">팝업 만들기</div>";
+	html += "			<div class = \"second_NewFeed_contWrap\">";
+	html += "				<div class = \"second_newFeed_photoWrap\">";
+	html += "					<img src = \"${newFeedPhoto}\" width = \"300px\" height = \"400px\"/>";
+	html += "					<div class = \"att_button\">사진 선택하기</div>";
+	html += "				</div>";
+	
+	html += "				<div class = \"second_newFeed_detailWrap\">";
+	html += "					<div class = \"second_newFeed_user_info\">";
+	html += "					<div class = \"second_newFeed_profile\">";
+	html += "						<img src = \"resources/image/noimage.jpeg\" width = \"30px\" height = \"30px\"/>";
+	html += "					</div>";
+	html += "						<div class = \"second_newFeed_nick\">닉네임이다</div>";
+	html += "					</div>";
+	html += "					<div class = \"second_newFeed_cont\">반갑다 5학년 3반이야";
+	html += "						<div class = \"hashTag\">#햄버거</div>";
+	html += "					</div>";
+	html += "					<div class=\"starWrap\">";
+	html += "						<div class = \"star\">";
+	html += "							<img src = \"resources/image/yellowStar.png\" class = \"second_newFeed_star_img\"/>";
+	html += "							<img src = \"resources/image/yellowStar.png\" class = \"second_newFeed_star_img\"/>";
+	html += "							<img src = \"resources/image/yellowStar.png\" class = \"second_newFeed_star_img\"/>";
+	html += "							<img src = \"resources/image/yellowStar.png\" class = \"second_newFeed_star_img\"/>";
+	html += "							<img src = \"resources/image/whiteStar.png\" class = \"second_newFeed_star_img\"/>";
+	html += "						</div>";
+	html += "					</div>";
+	html += "					<div class = \"second_newFeed_search_place\">";
+	html += "					</div>";
+	html += "				</div>";
+	html += "			</div>";
+	html += "		</div>";
+	
+	/* $("")append(html); */
+	
+}	
 		
 		
 </script>
@@ -600,12 +591,12 @@ $(document).ready(function() {
 
 	<div class = "cont_wrap">
 		<div class = "feed_photo">
-		<img src = "resources/image/noimage.jpeg" width = "450px" height = "450px"/>
+		<img src = "../resources/image/noimage.jpeg" width = "450px" height = "450px"/>
 		</div>
 		<div class = "feed_right">
 			<div class = "user_info">
 				<div class = "profile">
-					<img src = "resources/image/noimage.jpeg" width = "30px" height="30px"/>
+					<img src = "../resources/image/noimage.jpeg" width = "30px" height="30px"/>
 				</div>
 				<div class = "nick">this is nickname</div>
 				<div class = "update_btn">수정</div>
@@ -615,25 +606,25 @@ $(document).ready(function() {
 			</div>
 			<div class = "feed_cmnt">
 				<div class = "cmnt_user_info">
-					<img src = "resources/image/noimage.jpeg" width = "30px" height="30px" class = "feed_profile"/>
+					<img src = "../resources/image/noimage.jpeg" width = "30px" height="30px" class = "feed_profile"/>
 					<div class = "cmnt_nick">쉑쉑버거</div>
 					<div class = "cmnt_time">오늘</div>
 					<div class = "cmnt_cont">하이</div>
 				</div>
 				<div class = "cmnt_user_info">
-					<img src = "resources/image/noimage.jpeg" width = "30px" height="30px" class = "feed_profile"/>
+					<img src = "../resources/image/noimage.jpeg" width = "30px" height="30px" class = "feed_profile"/>
 					<div class = "cmnt_nick">맘스터치</div>
 					<div class = "cmnt_time">2일전</div>
 					<div class = "cmnt_cont">하이</div>
 				</div>
 				<div class = "cmnt_user_info">
-					<img src = "resources/image/noimage.jpeg" width = "30px" height="30px" class = "feed_profile"/>
+					<img src = "../resources/image/noimage.jpeg" width = "30px" height="30px" class = "feed_profile"/>
 					<div class = "cmnt_nick">롯데리아</div>
 					<div class = "cmnt_time">3일전</div>
 					<div class = "cmnt_cont">하이</div>
 				</div>
 				<div class = "cmnt_user_info">
-					<img src = "resources/image/noimage.jpeg" width = "30px" height="30px" class = "feed_profile"/>
+					<img src = "../resources/image/noimage.jpeg" width = "30px" height="30px" class = "feed_profile"/>
 					<div class = "cmnt_nick">버거킹</div>
 					<div class = "cmnt_time">일주일전</div>
 					<div class = "cmnt_cont">하이</div>
@@ -651,11 +642,11 @@ $(document).ready(function() {
 			<div class = "place_info">
 				<div class = "store_name">맥도날드</div>
 				<div class = "star">
-					<img src = "resources/image/yellowStar.png" class = "star_img"/>
-					<img src = "resources/image/yellowStar.png" class = "star_img"/>
-					<img src = "resources/image/yellowStar.png" class = "star_img"/>
-					<img src = "resources/image/yellowStar.png" class = "star_img"/>
-					<img src = "resources/image/whiteStar.png" class = "star_img"/>
+					<img src = "../resources/image/yellowStar.png" class = "star_img"/>
+					<img src = "../resources/image/yellowStar.png" class = "star_img"/>
+					<img src = "../resources/image/yellowStar.png" class = "star_img"/>
+					<img src = "../resources/image/yellowStar.png" class = "star_img"/>
+					<img src = "../resources/image/whiteStar.png" class = "star_img"/>
 				</div>
 				<div class = "adress">서울 금천구 벚꽃로 298 대륭포스트6차 1층</div>
 			</div> <!-- map_page end -->
@@ -664,13 +655,13 @@ $(document).ready(function() {
 				<div class = "keep_add_button">KEEP</div>
 				<div class = "portal_area">
 					<div id = "portal_button">
-						<img src = "resources/image/naver.png" width = "55px" height="20px" id = "naver"/>
+						<img src = "../resources/image/naver.png" width = "55px" height="20px" id = "naver"/>
 					</div>
 					<div id = "portal_button">
-						<img src = "resources/image/daum.png" width = "60px" height="32px" id = "daum"/>
+						<img src = "../resources/image/daum.png" width = "60px" height="32px" id = "daum"/>
 					</div>
 					<div id = "portal_button">
-						<img src = "resources/image/google.png" width = "55px" height="20px" id = "google"/>
+						<img src = "../resources/image/google.png" width = "55px" height="20px" id = "google"/>
 					</div>
 				</div>
 			</div> <!-- portal_info end -->
