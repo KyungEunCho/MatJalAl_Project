@@ -8,12 +8,12 @@
 <meta charset="UTF-8">
 <title>My Feed</title>
 <script type="text/javascript"
-		src="resources/js/jquery/jquery-1.12.4.min.js"></script>  
+		src="../resources/js/jquery/jquery-1.12.4.min.js"></script>  
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e24d198715a0256d57d641e892714cdd&libraries=services,clusterer,drawing"></script>
-<script type="text/javascript" src="resources/js/common/popup.js"></script>	<!-- popup end script -->
-<link rel="stylesheet" href ="/resources/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="resources/css/popup.css" />
-<link rel="stylesheet" type="text/css" href="resources/css/cmn.css" />
+<script type="text/javascript" src="../resources/js/common/popup.js"></script>	<!-- popup end script -->
+<link rel="stylesheet" href ="../resources/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/popup.css" />
+<link rel="stylesheet" type="text/css" href="../resources/css/cmn.css" />
 <style type="text/css">
 
 html {
@@ -445,7 +445,7 @@ $(document).ready(function() {
 		<div class = "feed_right">
 			<div class = "user_info">
 				<div class = "profile">
-					<img src = "resources/image/noimage.jpeg" width = "30px" height="30px"/>
+					<img src = "../resources/image/noimage.jpeg" width = "30px" height="30px"/>
 				</div>
 				<div class = "nick">this is nickname</div>
 				<div class = "update_btn">수정</div>
@@ -455,25 +455,25 @@ $(document).ready(function() {
 			</div>
 			<div class = "feed_cmnt">
 				<div class = "cmnt_user_info">
-					<img src = "resources/image/noimage.jpeg" width = "30px" height="30px" class = "feed_profile"/>
+					<img src = "../resources/image/noimage.jpeg" width = "30px" height="30px" class = "feed_profile"/>
 					<div class = "cmnt_nick">쉑쉑버거</div>
 					<div class = "cmnt_time">오늘</div>
 					<div class = "cmnt_cont">하이</div>
 				</div>
 				<div class = "cmnt_user_info">
-					<img src = "resources/image/noimage.jpeg" width = "30px" height="30px" class = "feed_profile"/>
+					<img src = "../resources/image/noimage.jpeg" width = "30px" height="30px" class = "feed_profile"/>
 					<div class = "cmnt_nick">맘스터치</div>
 					<div class = "cmnt_time">2일전</div>
 					<div class = "cmnt_cont">하이</div>
 				</div>
 				<div class = "cmnt_user_info">
-					<img src = "resources/image/noimage.jpeg" width = "30px" height="30px" class = "feed_profile"/>
+					<img src = "../resources/image/noimage.jpeg" width = "30px" height="30px" class = "feed_profile"/>
 					<div class = "cmnt_nick">롯데리아</div>
 					<div class = "cmnt_time">3일전</div>
 					<div class = "cmnt_cont">하이</div>
 				</div>
 				<div class = "cmnt_user_info">
-					<img src = "resources/image/noimage.jpeg" width = "30px" height="30px" class = "feed_profile"/>
+					<img src = "../resources/image/noimage.jpeg" width = "30px" height="30px" class = "feed_profile"/>
 					<div class = "cmnt_nick">버거킹</div>
 					<div class = "cmnt_time">일주일전</div>
 					<div class = "cmnt_cont">하이</div>
@@ -491,11 +491,11 @@ $(document).ready(function() {
 			<div class = "place_info">
 				<div class = "store_name">맥도날드</div>
 				<div class = "star">
-					<img src = "resources/image/yellowStar.png" class = "star_img"/>
-					<img src = "resources/image/yellowStar.png" class = "star_img"/>
-					<img src = "resources/image/yellowStar.png" class = "star_img"/>
-					<img src = "resources/image/yellowStar.png" class = "star_img"/>
-					<img src = "resources/image/whiteStar.png" class = "star_img"/>
+					<img src = "../resources/image/yellowStar.png" class = "star_img"/>
+					<img src = "../resources/image/yellowStar.png" class = "star_img"/>
+					<img src = "../resources/image/yellowStar.png" class = "star_img"/>
+					<img src = "../resources/image/yellowStar.png" class = "star_img"/>
+					<img src = "../resources/image/whiteStar.png" class = "star_img"/>
 				</div>
 				<div class = "adress">서울 금천구 벚꽃로 298 대륭포스트6차 1층</div>
 			</div> <!-- map_page end -->
@@ -504,13 +504,13 @@ $(document).ready(function() {
 				<div class = "keep_add_button">KEEP</div>
 				<div class = "portal_area">
 					<div id = "portal_button">
-						<img src = "resources/image/naver.png" width = "55px" height="20px" id = "naver"/>
+						<img src = "../resources/image/naver.png" width = "55px" height="20px" id = "naver"/>
 					</div>
 					<div id = "portal_button">
-						<img src = "resources/image/daum.png" width = "60px" height="32px" id = "daum"/>
+						<img src = "../resources/image/daum.png" width = "60px" height="32px" id = "daum"/>
 					</div>
 					<div id = "portal_button">
-						<img src = "resources/image/google.png" width = "55px" height="20px" id = "google"/>
+						<img src = "../resources/image/google.png" width = "55px" height="20px" id = "google"/>
 					</div>
 				</div>
 			</div> <!-- portal_info end -->
@@ -520,7 +520,7 @@ $(document).ready(function() {
 			        <div class="option">
 			            <div>
 			                <form onsubmit="searchPlaces(); return false;">
-			                    키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15">
+			                    키워드 : <input type="text" value="" id="keyword" size="15">
 			                    <button type="submit">검색하기</button> 
 			                </form>
 			            </div>
@@ -547,6 +547,32 @@ $(document).ready(function() {
 		// 지도를 생성합니다    
 		var map = new kakao.maps.Map(mapContainer, mapOption); 
 
+			if (navigator.geolocation) {
+		    
+		    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+		    navigator.geolocation.getCurrentPosition(function(position) {
+		        
+		        var lat = position.coords.latitude, // 위도
+		            lon = position.coords.longitude; // 경도
+		        
+		        var locPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+           		
+		     	// 지도 중심좌표를 접속위치로 변경합니다
+			    map.setCenter(locPosition);
+		        
+		    });
+		    
+		} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+		    
+		    var locPosition = new kakao.maps.LatLng(33.450701, 126.570667);
+			
+		 	// 지도 중심좌표를 접속위치로 변경합니다
+		    map.setCenter(locPosition);
+		 	
+		}
+		
+		
+		
 		// 장소 검색 객체를 생성합니다
 		var ps = new kakao.maps.services.Places();  
 
