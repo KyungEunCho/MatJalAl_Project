@@ -26,24 +26,29 @@ public class MjaController {
 	@Autowired
 	private IMjaService iMjaService;
 	
-	@GetMapping("/findAll")
-	@ResponseBody
-	public List <HashMap<String, Object>> findAll() {
-	      
-		return iMjaService.findAll();
-	}	
+	/*
+	 * @GetMapping("/findAll")
+	 * 
+	 * @ResponseBody public List <HashMap<String, Object>> findAll() {
+	 * 
+	 * // return iMjaService.findAll(); // test // test by kwak
+	 * 
+	 * // 9exg branch test 9exg 111
+	 * 
+	 * // test 16:36 // push 테스트 }
+	 */	
+	/*
+	 * @GetMapping("/findAll")
+	 * 
+	 * @ResponseBody public List <HashMap<String, Object>> findAll() {
+	 * 
+	 * return iMjaService.findAll(); }
+	 */	
 
 	
 	@GetMapping("/main")
 	public String main() {
 		return "main";
-	}
-	
-	@GetMapping("/feed")
-	@RequestMapping("/feed")
-
-	public String feed() {
-		return "feed";
 	}
 	
 	@GetMapping("/place")
@@ -130,5 +135,27 @@ public class MjaController {
 	}
 */
 	
+	@RequestMapping(value = "/feed")
+	public ModelAndView feed(@RequestParam HashMap<String, String> params,
+									ModelAndView mav) {
+		
+		mav.setViewName("feed");
+		
+		return mav;
+	}
 	
+	@RequestMapping(value = "/feedAjax", method = RequestMethod.POST, 
+			produces = "text/json;charset=UTF-8")
+	@ResponseBody
+	public String feedAjax(@RequestParam HashMap<String, String> params, HttpSession session) throws Throwable {
+		ObjectMapper mapper = new ObjectMapper();
+		
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		List<HashMap<String, String>> list = iMjaService.feedList(params);
+			
+		modelMap.put("list", list);
+		
+		return mapper.writeValueAsString(modelMap);
+	}
 }
