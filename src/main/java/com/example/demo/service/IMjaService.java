@@ -15,4 +15,11 @@ public interface IMjaService {
 
 	public HashMap<String, Integer> feedNum(int feedNum);
 
+	public String getAccessToken(String code) throws Throwable;
+
+	public HashMap<String, Object> getUserInfo(String access_Token) throws Throwable;
+
+
+	
+	
 }
