@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+.login {
+	position: absolute;
+	left: calc(50% - 25%);
+	display: inline-block;
+	vertical-align : top;
+	width: 900px;
+	height: auto;
+	margin-top: 200px;
+}
+
+.mark_area {
+	display: inline-block;
+	width: 200px;
+	height: 300px;
+	margin: 40px auto auto 20px;
+}
+
+.input {
+	position: absolute;
+	display: inline-block;
+	width: 497px;
+	height: 120px;
+	margin-left: 100px;
+	margin-top: 130px;
+}
+
+.input_id {
+	display: inline-block;
+	width: 305px;
+	height: 50px;
+	text-indent: 40px;
+	line-height: 50px;
+	background-color: #ff770017;
+	border-radius: 10px;
+	color: gray;
+}
+
+.input_pw {
+	display: inline-block;
+	width: 305px;
+	height: 50px;
+	margin-top: 10px;
+	text-indent: 40px;
+	line-height: 50px;
+	background-color: #ff770017;
+	border-radius: 10px;
+	color: gray;
+}
+
+.login_btn {
+	position: absolute;
+	display: inline-block;
+	width: 120px;
+	height: 113px;
+	text-align: center;
+	line-height: 113px;
+	margin-left: 420px;
+	margin-top: 130px;
+	background-color: #ff6600b8;
+	border-radius: 10px;
+	color: white;
+}
+
+.join_us {
+	position: absolute;
+	display: inline-block;
+	width: 497px;
+	height: 120px;
+	margin-left: 100px;
+	margin-top: 250px;
+}
+
+.join {
+	display: inline-block;
+	width: 163px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	border: 2px solid #ff770017;
+	border-radius: 10px;
+	font-size: 10pt;
+	margin-top: 20px;
+}
+
+.id_pw_find {
+	display: inline-block;
+	width: 264px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	border: 2px solid #ff770017;
+	border-radius: 10px;
+	font-size: 10pt;
+	background-color: #fff;
+	padding: 0;
+	cursor: pointer;
+}
+
+
+a {
+	text-decoration: none;
+}
+.kakao_login, .naver_login {
+	display: inline-block;
+	width: 213px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	font-size: 14px;
+	margin-top: 10px;
+	border-radius: 5.5px;	
+}
+.kakao_login {
+	border: 2px solid #fee500;
+	color: #3E1918;
+	background-color: #fee500;
+}
+.kakao_login a:link, .kakao_login a:visited {
+	color: #3E1918;
+}
+.naver_login {
+	border: 2px solid #02cf5d;
+	color: #fff;
+	background-color: #02cf5d;
+}
+.kakao_login img, .naver_login img {
+	position: relative;
+	top: 5px;
+	width: 20px;
+	padding-left: 9px;
+	padding-right: 7px;
+	border-right: 1px solid rgba(255,255,255,0.7);
+	float: left;
+}
