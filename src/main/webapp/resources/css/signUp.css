@@ -108,7 +108,7 @@ body {
 
 .logo {
 	display: flex;
-	padding-top: 40px;
+	padding-top: 20px;
 	width: 800px;
 	height: 140px;
 	/* background: aqua; */
@@ -129,7 +129,7 @@ body {
 }
 
 .cont {
-	margin: 20px;
+	margin: 5px 20px;
 	width: 760px;
 	height: 880px;
 	/* background: pink; */
@@ -137,21 +137,21 @@ body {
 
 .email {
 	margin: auto;
-	padding-top: 30px;
+	padding-top: 10px;
 	width: 500px;
 	height: 160px;
 	background: white;
 }
 .id, .nick_name {
 	margin: auto;
-	padding-top: 30px;
+	padding-top: 10px;
 	width: 500px;
 	height: 100px;
 	background: white;
 }
 .pw {
 	margin: auto;
-	padding-top: 30px;
+	padding-top: 10px;
 	width: 500px;
 	height: 210px;
 	background: white;

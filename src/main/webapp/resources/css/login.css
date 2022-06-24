@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+.logo_text {
+	color: #fc6902ff;
+	font-size: 32px;
+	font-weight: bold;
+	height: 140px;
+	line-height: 180px;
+}
 .login {
 	position: absolute;
 	left: calc(50% - 25%);
@@ -35,6 +42,9 @@
 	background-color: #ff770017;
 	border-radius: 10px;
 	color: gray;
+	border: none;
+	outline-color: #fc6902ff;
+    outline-width: 0.1px;
 }
 
 .input_pw {
@@ -47,6 +57,9 @@
 	background-color: #ff770017;
 	border-radius: 10px;
 	color: gray;
+	border: none;
+	outline-color: #fc6902ff;
+    outline-width: 0.1px;
 }
 
 .login_btn {

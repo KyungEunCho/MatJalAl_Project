@@ -8,6 +8,7 @@ html, body {
 	min-width: 1400px;
 	overflow-x: auto;
 	overflow-y: hidden;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .top_area, .left_area, .right_area{

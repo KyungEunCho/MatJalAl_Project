@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.example.demo.dto.Sign;
+
 @Mapper
 public interface MjaMapper {
 
@@ -17,4 +19,7 @@ public interface MjaMapper {
 	public HashMap<String, String> imgRoute(String imgRoute);
 
 	public HashMap<String, Integer> feedNum(int feedNum);
+	
+	//회원가입
+	public int signUp(Sign sign) throws Throwable;
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dto.Sign;
 import com.example.demo.mapper.MjaMapper;
 
 @Service
@@ -48,4 +49,10 @@ public class MjaService implements IMjaService {
 		return mjaMapper.feedNum(feedNum);
 	}
 
+	@Override
+	public int signUp(Sign sign) throws Throwable {
+		
+		int result = mjaMapper.signUp(sign);
+		return result;
+	}
 }

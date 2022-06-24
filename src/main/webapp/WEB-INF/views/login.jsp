@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인페이지</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="resources/css/login.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/common/popup.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/common/cmn.css" />
@@ -14,7 +17,6 @@
 <script type="text/javascript" src="resources/js/common/popup.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
-
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -148,7 +150,9 @@ function naverLogout() {
 	</div>
 	<div class="login_btn">Login</div>
 	<div class="join_us">
-		<div class="join">회원가입</div>
+		<a href="signUp">
+			<span class="join">회원가입</span>
+		</a>
 			<a href="findId">
 				<span class="id_pw_find">아이디 / 비밀번호 찾기</span>
 			</a>

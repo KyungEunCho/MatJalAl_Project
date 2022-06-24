@@ -8,7 +8,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.common.CommonProperties;
+import com.example.demo.dto.Sign;
 import com.example.demo.service.IMjaService;
 import com.example.demo.util.Utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -90,12 +93,22 @@ public class MjaController {
 		return mapper.writeValueAsString(modelMap);
 	}
 	
-	
-	@GetMapping ("/signUp") 
-	public String signUp() {
+	// 회원가입
+	@GetMapping ("/join") 
+	public String signUp(Model model) throws Throwable {
+		
+		model.addAttribute("title", "회원가입");
 		
 		return "signUp";
 	} 
+	
+	@PostMapping("/signUp")
+	public String postSign(Sign sign) throws Throwable {
+		
+		iMjaService.signUp(sign);
+		
+		return "redirect:login";
+	}
 	
 	@GetMapping ("/updateProfile") 
 	public String updateProfile() {

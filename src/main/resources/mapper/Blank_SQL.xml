@@ -34,4 +34,10 @@
 		WHERE NICK_NAME = #{id}
 		AND PASSWORD = #{pw} 	
  	</select>
+ 	
+ 	<!-- 회원가입 -->
+ 	<insert id="signUp" parameterType="Sign">
+ 		INSERT INTO dbsewoomch.MJA_USER_INFO(EMAIL, ID, NICK_NAME, PASSWORD, NAVER, KAKAOTALK, PROFILE_PHOTO)
+		 VALUES(#{EMAIL}, #{ID}, #{NICK_NAME}, #{PASSWORD}, #{NAVER}, #{KAKAOTALK}, #{PROFILE_PHOTO});
+ 	</insert>
 </mapper>
