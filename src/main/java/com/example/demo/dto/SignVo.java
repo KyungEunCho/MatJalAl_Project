@@ -1,7 +1,7 @@
 package com.example.demo.dto;
 
 
-public class Sign {
+public class SignVo {
 
 	private String USER_NUM;
 	private String EMAIL;

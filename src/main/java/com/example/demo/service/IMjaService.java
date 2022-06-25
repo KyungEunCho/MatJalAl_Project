@@ -3,7 +3,7 @@ package com.example.demo.service;
 import java.util.HashMap;
 import java.util.List;
 
-import com.example.demo.dto.Sign;
+import com.example.demo.dto.SignVo;
 
 public interface IMjaService {
 
@@ -18,7 +18,7 @@ public interface IMjaService {
 	public HashMap<String, Integer> feedNum(int feedNum);
 	
 	//회원가입
-	public int signUp(Sign sign) throws Throwable;
+	public int signUp(SignVo signVo) throws Throwable;
 
 	public String getAccessToken(String code) throws Throwable;
 

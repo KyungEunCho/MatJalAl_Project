@@ -13,7 +13,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dto.Sign;
+import com.example.demo.dto.SignVo;
 import com.example.demo.mapper.MjaMapper;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -59,14 +59,14 @@ public class MjaService implements IMjaService {
 		return mjaMapper.feedNum(feedNum);
 	}
 
-<<<<<<< HEAD
+
 	@Override
-	public int signUp(Sign sign) throws Throwable {
+	public int signUp(SignVo signVo) throws Throwable {
 		
-		int result = mjaMapper.signUp(sign);
+		int result = mjaMapper.signUp(signVo);
 		return result;
 	}
-=======
+
 	public String getAccessToken(String authorize_code) {
 		
 		String access_Token = "";
@@ -171,7 +171,4 @@ public class MjaService implements IMjaService {
 	}
 		return userInfo;
 	}
-
-
->>>>>>> refs/heads/master
 }
