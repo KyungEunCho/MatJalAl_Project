@@ -1,11 +1,15 @@
 package com.example.demo.dto;
 
+import javax.validation.constraints.Pattern;
 
 public class SignVo {
-
+	
 	private String USER_NUM;
+	@Pattern(regexp = "^([0-9a-zA-Z_\\.-]+)@([0-9a-zA-Z_-]+)(\\.[0-9a-zA-Z_-]+){1,2}$" , message = "올바른 이메일 형식이 아닙니다")
 	private String EMAIL;
+	@Pattern(regexp = "[A-Za-z0-9]{4,15}$", message = "아이디는 영어, 숫자 4 ~15자리로 입력 가능합니다")
 	private String ID;
+	@Pattern(regexp = "^[가-힣|a-z|A-Z|0-9|]+$", message = "닉네임은 한글, 영어, 숫자만 4 ~10자리로 입력 가능합니다")
 	private String NICK_NAME;
 	private String PASSWORD;
 	private String NAVER;

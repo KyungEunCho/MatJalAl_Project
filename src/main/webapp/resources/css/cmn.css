@@ -4,7 +4,7 @@ html, body {
 	margin: 0;
 	font-size: 0pt;
 	height: 100%;
-	font-family: 고딕;
+	font-family: 'Noto Serif KR', serif;
 	min-width: 1400px;
 	overflow-x: auto;
 	overflow-y: hidden;

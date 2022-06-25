@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인페이지</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Noto+Serif+KR:wght@300&display=swap');
+</style>
 <link rel="stylesheet" type="text/css" href="resources/css/login.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/common/popup.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/common/cmn.css" />

@@ -5,12 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>signUp</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Noto+Serif+KR:wght@300&display=swap');
+</style>
 <link rel="stylesheet" type="text/css" href="resources/css/signUp.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/common/popup.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/common/cmn.css" />
+<script type="text/javascript" src="resources/js/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -34,6 +35,46 @@ function checkEmpty(sel) {
 		return false;
 	}
 }
+function emailCheck(EMAIL) {
+	const regEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+	
+	if(regEmail.test(EMAIL)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+function idCheck(ID) {
+	const regId = /^[A-Za-z0-9]{4,15}$/;
+	
+	if(regId.test(ID)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+function nicknameCheck(NICK_NAME) {
+	const regNickname = /^[가-힣|a-z|A-Z|0-9|]+$/;
+	
+	if(regNickname.test(NICK_NAME)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+function lenthCheck(e, length) {
+	if(e.value.length >= length) {
+		return false;
+	}
+	
+	$(this).off().focusout(function() {
+		if(e.value.length > length) {
+			e.value = "";
+		}
+	})
+	
+	return true;
+}
 </script>
 </head>
 <body>
@@ -52,6 +93,7 @@ function checkEmpty(sel) {
 					<input type="text" class="box1" id="EMAIL" name="EMAIL" />
 					<div class="btn_check">중복</br>체크</div>
 					<div class="btn_check">인증번호</br>받기</div>
+					<span class="msg_box">${errorMsg.EMAIL}</span>
 				</div>
 				<div class="one_line">
 					<input type="text" class="box1" >
@@ -63,6 +105,7 @@ function checkEmpty(sel) {
 				<div class="one_line">
 					<input type="text" class="box1" id="ID" name="ID" />
 					<div class="btn_check">중복</br>체크</div>
+					<span class="msg_box">${errorMsg.ID}</span>
 				</div>
 			</div>
 			<div class="pw">
@@ -80,6 +123,7 @@ function checkEmpty(sel) {
 				<div class="one_line">
 					<input type="text" class="box1" id="NICK_NAME" name="NICK_NAME" />
 					<div class="btn_check">중복</br>체크</div>
+					<span class="msg_box">${errorMsg.NICK_NAME}</span>
 				</div>
 			</div>
 			<div class="sign_up">
