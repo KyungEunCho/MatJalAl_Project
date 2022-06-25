@@ -56,9 +56,37 @@ $(document).ready(function() {
 		}
 	})
 	
-});
+}); //ready end
 
-window.Kakao.init('e24d198715a0256d57d641e892714cdd');
+
+
+Kakao.init('e24d198715a0256d57d641e892714cdd'); //발급받은 키 중 javascript키를 사용해준다.
+console.log(Kakao.isInitialized()); // sdk초기화여부판단
+//카카오로그인
+function kakaoLogin() {
+    Kakao.Auth.login({
+      success: function (response) {
+        Kakao.API.request({
+          url: '/v2/user/me',
+          success: function (response) {
+        	  console.log(response)
+          },
+          fail: function (error) {
+            console.log(error)
+            console.log("실패");
+          },
+        })
+      },
+      fail: function (error) {
+        console.log(error)
+        console.log("에러");
+      },
+    })
+  }
+  
+  
+
+/* window.Kakao.init('e24d198715a0256d57d641e892714cdd');
 
 function kakaoLogin() {
     window.Kakao.Auth.login({
@@ -78,7 +106,7 @@ function kakaoLogin() {
             console.log(error);
         }
     });
-}
+} */
 
 /* ********** naver login ********** */
 /* var naverLogin = new naver.LoginWithNaverId(
@@ -156,12 +184,14 @@ function naverLogout() {
 			<a href="findId">
 				<span class="id_pw_find">아이디 / 비밀번호 찾기</span>
 			</a>
-		<div class="kakao_login">
+		<a class="kakao_login" href="https://kauth.kakao.com/oauth/authorize?client_id=86851554646c136ec78c91a58cf4acdd
+									&redirect_uri=http://localhost:8082/login
+									&response_type=code">
 			<img src="/resources/image/icon-kakao.svg">
-			<a href="javascript:kakaoLogin();">
 				<span>카카오 로그인</span>
-			</a>
-		</div>
+		</a>
+		
+		
 		<div class="naver_login" id="naverIdLogin_loginButton" href="javascript:void(0)">
 			<img src="/resources/image/login-naver.png">
 			<span>네이버 로그인</span>		

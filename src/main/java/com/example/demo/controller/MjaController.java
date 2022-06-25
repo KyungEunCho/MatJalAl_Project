@@ -59,17 +59,17 @@ public class MjaController {
 		return "place";
 	}
 	
-	@GetMapping("/login")
-	public String login() {
-		return "login";
-	}
+	/*
+	 * @GetMapping("/login") public String login() { System.out.println("여긴가");
+	 * return "login"; }
+	 */
 	
 	@RequestMapping(value = "loginAjax", method = RequestMethod.POST, produces = "text/json;charset=UTF-8")
 	@ResponseBody
 	public String loginAjax(@RequestParam HashMap<String, String> params, HttpSession session) throws Throwable {
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> modelMap = new HashMap<String, Object>();
-		
+		System.out.println("여긴가2");
 		try {
 			//패스워드 암호화
 			params.put("pw", Utils.encryptAES128(params.get("pw")));
@@ -117,36 +117,6 @@ public class MjaController {
 
 	} 
 
-	@RequestMapping("/myFeed")
-	public ModelAndView imgRoute(@RequestParam(value = "imgRoute") String imgRoute,
-						ModelAndView mav) {
-		
-		System.out.println(imgRoute + "#################");
-		
-		HashMap<String, String> img = iMjaService.imgRoute(imgRoute);
-		
-		mav.addObject("img", img.get("ATT_FILE"));
-		mav.setViewName("myFeed");
-		
-		return mav; 
-
-	}
-	
-/*	
-	@RequestMapping("/myFeed")
-	public ModelAndView getComment(@RequestParam(value = "feedNum") int feedNum,
-									ModelAndView mav) {
-		
-		System.out.println(feedNum + "#################");
-		
-		HashMap<String, Integer> feedNumRes = iMjaService.feedNum(feedNum);
-		
-		mav.addObject("feedNum", feedNumRes.get("FEED_NUM"));
-		mav.setViewName("myFeed");
-		
-		return mav;	
-	}
-*/
 	
 	@RequestMapping(value = "/feed")
 	public ModelAndView feed(@RequestParam HashMap<String, String> params,

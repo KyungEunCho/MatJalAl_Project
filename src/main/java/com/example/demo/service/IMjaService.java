@@ -20,4 +20,11 @@ public interface IMjaService {
 	//회원가입
 	public int signUp(Sign sign) throws Throwable;
 
+	public String getAccessToken(String code) throws Throwable;
+
+	public HashMap<String, Object> getUserInfo(String access_Token) throws Throwable;
+
+
+	
+	
 }
