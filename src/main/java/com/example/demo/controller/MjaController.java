@@ -102,13 +102,13 @@ public class MjaController {
 		return "signUp";
 	} 
 	
-	@PostMapping("/signUp")
-	public String postSign(Sign sign) throws Throwable {
-		
-		iMjaService.signUp(sign);
-		
-		return "redirect:login";
-	}
+	/*
+	 * @PostMapping("/signUp") public String postSign(Sign sign) throws Throwable {
+	 * 
+	 * iMjaService.signUp(sign);
+	 * 
+	 * return "redirect:login"; }
+	 */
 	
 	@GetMapping ("/updateProfile") 
 	public String updateProfile() {
