@@ -19,7 +19,5 @@ public interface MjaMapper {
 	public HashMap<String, String> imgRoute(String imgRoute);
 
 	public HashMap<String, Integer> feedNum(int feedNum);
-	
-	//회원가입
-	public int signUp(SignVo signVo) throws Throwable;
+
 }

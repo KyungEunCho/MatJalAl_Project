@@ -16,15 +16,9 @@ public interface IMjaService {
 	public HashMap<String, String> imgRoute(String imgRoute);
 
 	public HashMap<String, Integer> feedNum(int feedNum);
-	
-	//회원가입
-	public int signUp(SignVo signVo) throws Throwable;
 
 	public String getAccessToken(String code) throws Throwable;
 
 	public HashMap<String, Object> getUserInfo(String access_Token) throws Throwable;
-
-
-	
 	
 }

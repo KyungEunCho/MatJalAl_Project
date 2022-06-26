@@ -34,10 +34,4 @@
 		WHERE NICK_NAME = #{id}
 		AND PASSWORD = #{pw} 	
  	</select>
- 	
- 	<!-- 회원가입 -->
- 	<insert id="signUp" parameterType="com.example.demo.dto.SignVo">
- 		INSERT INTO dbsewoomch.MJA_USER_INFO(EMAIL, ID, NICK_NAME, PASSWORD)
-		 VALUES(#{EMAIL}, #{ID}, #{NICK_NAME}, #{PASSWORD});
- 	</insert>
 </mapper>

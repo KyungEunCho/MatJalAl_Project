@@ -7,9 +7,11 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +26,8 @@ public class MjaService implements IMjaService {
 
 	@Autowired
 	private MjaMapper mjaMapper;
-
+	private SqlSessionTemplate userSqlSession;
+	
 	public List<HashMap<String, Object>> findAll() {
 		return mjaMapper.findAll();
 	}
@@ -57,14 +60,6 @@ public class MjaService implements IMjaService {
 	
 	public HashMap<String, Integer> feedNum(int feedNum) {
 		return mjaMapper.feedNum(feedNum);
-	}
-
-
-	@Override
-	public int signUp(SignVo signVo) throws Throwable {
-		
-		int result = mjaMapper.signUp(signVo);
-		return result;
 	}
 
 	public String getAccessToken(String authorize_code) {
@@ -171,4 +166,5 @@ public class MjaService implements IMjaService {
 	}
 		return userInfo;
 	}
+
 }
