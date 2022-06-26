@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,6 +24,8 @@ public class SignController {
 
 	@Autowired
 	private ISignService iSignService;
+	@Autowired
+	private BCryptPasswordEncoder pwdEncoder;
 	
 	@GetMapping("/signUp")
 	public String signUp() {
@@ -53,7 +56,8 @@ public class SignController {
 			model.addAttribute("errorMsg", errorMsg);
 			return "signUp";
 		}
-		
+		String encPwd = pwdEncoder.encode(signVo.getPASSWORD());
+		signVo.setPASSWORD(encPwd);
 		iSignService.signUp(signVo);
 		
 		return "redirect:/login";
