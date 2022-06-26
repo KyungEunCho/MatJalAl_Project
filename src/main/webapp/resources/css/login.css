@@ -39,12 +39,13 @@
 	height: 50px;
 	text-indent: 40px;
 	line-height: 50px;
-	background-color: #ff770017;
 	border-radius: 10px;
-	color: gray;
+	background: #ff770017;
 	border: none;
+	color: gray;
 	outline-color: #fc6902ff;
     outline-width: 0.1px;
+    font-family: 'Noto Serif KR', serif;
 }
 
 .input_pw {
@@ -54,12 +55,13 @@
 	margin-top: 10px;
 	text-indent: 40px;
 	line-height: 50px;
-	background-color: #ff770017;
 	border-radius: 10px;
-	color: gray;
+	background: #ff770017;
 	border: none;
+	color: gray;
 	outline-color: #fc6902ff;
     outline-width: 0.1px;
+    font-family: 'Noto Serif KR', serif;
 }
 
 .login_btn {
@@ -96,7 +98,12 @@
 	font-size: 10pt;
 	margin-top: 20px;
 }
-
+.join:hover, .id_pw_find:hover {
+/* 	text-decoration: underline;
+	text-decoration-color: #684107;
+	text-underline-position : under; */
+	font-weight: 600;
+}
 .id_pw_find {
 	display: inline-block;
 	width: 264px;
@@ -106,7 +113,6 @@
 	border: 2px solid #ff770017;
 	border-radius: 10px;
 	font-size: 10pt;
-	background-color: #fff;
 	padding: 0;
 	cursor: pointer;
 }
@@ -115,6 +121,10 @@
 a {
 	text-decoration: none;
 }
+a:link, a:visited {
+	color: #684107;
+}
+
 .kakao_login, .naver_login {
 	display: inline-block;
 	width: 213px;
@@ -129,6 +139,7 @@ a {
 	border: 2px solid #fee500;
 	color: #3E1918;
 	background-color: #fee500;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 .kakao_login a:link, .kakao_login a:visited {
 	color: #3E1918;
@@ -137,6 +148,7 @@ a {
 	border: 2px solid #02cf5d;
 	color: #fff;
 	background-color: #02cf5d;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 .kakao_login img, .naver_login img {
 	position: relative;
@@ -146,4 +158,7 @@ a {
 	padding-right: 7px;
 	border-right: 1px solid rgba(255,255,255,0.7);
 	float: left;
+}
+.input input:focus {
+	outline: none;
 }

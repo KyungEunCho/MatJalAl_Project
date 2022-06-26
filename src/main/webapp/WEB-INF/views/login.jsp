@@ -7,9 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인페이지</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Noto+Serif+KR:wght@300&display=swap');
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Noto+Serif+KR&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="resources/css/login.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/common/popup.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/common/cmn.css" />
@@ -183,7 +183,7 @@ function naverLogout() {
 		<a href="${contextPath}/signUp">
 			<span class="join">회원가입</span>
 		</a>
-			<a href="findId">
+			<a href="${contextPath}/findId">
 				<span class="id_pw_find">아이디 / 비밀번호 찾기</span>
 			</a>
 		<a class="kakao_login" href="https://kauth.kakao.com/oauth/authorize?client_id=86851554646c136ec78c91a58cf4acdd

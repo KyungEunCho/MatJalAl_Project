@@ -5,18 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>signUp</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Noto+Serif+KR:wght@300&display=swap');
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="resources/css/common/cmn.css?after" />
 <link rel="stylesheet" type="text/css" href="resources/css/signUp.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/common/popup.css" />
-<link rel="stylesheet" type="text/css" href="resources/css/common/cmn.css" />
 <script type="text/javascript" src="resources/js/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="resources/js/signUp.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	
-	$("#ID").focusout(function() {
+	$("#ID").keypress(function() {
 		const ID = $("#ID").val().replaceAll("", "");
 		const msgBox = $(this).siblings(".msg_box");
 		
