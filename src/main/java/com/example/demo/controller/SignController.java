@@ -1,80 +1,58 @@
 package com.example.demo.controller;
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.example.demo.dto.SignVo;
 import com.example.demo.service.ISignService;
+import com.example.demo.util.Utils;
 
 @Controller
 public class SignController {
 
 	@Autowired
 	private ISignService iSignService;
-	@Autowired
-	private BCryptPasswordEncoder pwdEncoder;
 	
-	@GetMapping("/signUp")
-	public String signUp() {
+	@RequestMapping(value = "signUp")
+	public ModelAndView signUp(ModelAndView mav) {
 		
-		return "signUp";
+		mav.setViewName("signUp");
+		
+		return mav;
 	}
 	
-	// @Valid : 데이터 유효성 검증
-	// BindingResult : 검증 오류가 발생할 경우 오류 내용을 보관하는 스프링 프레임워크에서 제공하는 객체
-	@PostMapping("/signUp")
-	public String postJoin(@Valid SignVo signVo, BindingResult bindingResult, Model model) throws Throwable {
-		System.out.println(signVo);
-		if(bindingResult.hasErrors()) {
-			System.out.println("에러");
-			
-			List<FieldError> list = bindingResult.getFieldErrors();
-			Map<String, String> errorMsg = new HashMap<>();
-			
-			for(int i = 0; i<list.size(); i++) {
-				String field = list.get(i).getField();
-				String msg = list.get(i).getDefaultMessage();
+	@RequestMapping(value="sign")
+	public ModelAndView sign(@RequestParam HashMap<String, String> params, ModelAndView mav) throws Throwable {
+		
+		int cnt = iSignService.checkId(params);
+		
+		if(cnt == 0) {
+			try {
+				// 암호화
+				params.put("pw", Utils.encryptAES128(params.get("pw")));
 				
-				System.out.println("필드 = " + field);
-				System.out.println("메시지 = " + msg);
+				System.out.println(params.get("pw"));
+				// 복호화
+				System.out.println(Utils.decryptAES128(params.get("pw")));
 				
-				errorMsg.put(field, msg);
+				iSignService.sign(params);
+				
+				mav.setViewName("redirect:login");
+			} catch (Exception e) {
+				e.printStackTrace();
+				
+				mav.setViewName("sign");
 			}
-			model.addAttribute("errorMsg", errorMsg);
-			return "signUp";
+		} else {
+			mav.addObject("check", "false");
+			mav.setViewName("sign");
 		}
-		String encPwd = pwdEncoder.encode(signVo.getPASSWORD());
-		signVo.setPASSWORD(encPwd);
-		iSignService.signUp(signVo);
 		
-		return "redirect:/login";
-	}
-	
-	@ResponseBody
-	@GetMapping("/overlapCheck")
-	public int overlapCheck(String value, String valueType) {
-		// value = 중복 체크할 값
-		// valueType = ID, NICK_NAME
-		System.out.println(value);
-		System.out.println(valueType);
-		int count = iSignService.overlapCheck(value, valueType);
-		
-		System.out.println(count);
-		
-		return count;
+		return mav;
 	}
 	
 }

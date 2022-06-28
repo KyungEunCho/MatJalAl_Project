@@ -1,14 +1,6 @@
 /**
  * 
  */
- 
- function checkEmpty(sel) {
-	if($.trim($(sel).val()) == "") {
-		return true;
-	} else {
-		return false;
-	}
-}
 function emailCheck(EMAIL) {
 	const regEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
 	
@@ -85,7 +77,79 @@ const isSubmit = (function() {
 		isSubmit : isSubmit
 	}
 })();
+	$("#id").keypress(function() {
+		const ID = $("#ID").val().replaceAll("", "");
+		const msgBox = $(this).siblings(".msg_box");
+		
+		if(!ID) {
+			msgBox.text("아이디를 입력해주세요.");
+			isSubmit.setIdCheck(false);
+			return;
+		}
+			
+		if(!idCheck(ID)) {
+			msgBox.test("사용할 수 없는 아이디입니다.");
+			isSubmit.setIdCheck(false);
+			return;
+		}
+		const data = {
+				value : ID,
+				valueType : "ID"
+		};
+		if(overlapCheck(data)) {
+			msgBox.text("사용 가능합니다.");
+			isSubmit.setIdCheck(true);
+		} else {
+			msgBox.text("이미 사용중인 아이디입니다.");
+			isSubmit.setIdCheck(false);
+		}
+	});
+	$("#email").focusout(function() {
+		const EMAIL = $("#email").val();
+		const msgBox = $(this).siblings(".msg_box");
+		
+		if(checkEmpty(EMAIL)) {
+			msgBox.text("이메일을 입력해 주세요");
+			isSubmit.setEmailCheck(false);
+			return;
+		} 
+		if(!emailCheck(EMAIL)) {
+			msgBox.text("사용 불가능합니다");
+			isSubmit.setEmailCheck(false);
+		} else {
+			msgBox.text("");
+			isSubmit.setEmailCheck(true);
+		}
+	});
 
+	$("#NICK_NAME").focusout(function() {
+		const NICK_NAME = $("#NICK_NAME").val();
+		const msgBox = $(this).siblings(".msg_box");
+		
+		if(!NICK_NAME) {
+			msgBox.text("닉네임을 입력 해주세요");
+			isSubmit.setNicknameCheck(false);
+			return;
+		}
+		if(!nicknameCheck(NICK_NAME)) {
+			msgBox.text("닉네임은 한글, 영어, 숫자만 4~10자리로 입력 가능합니다.");
+			isSubmit.setNicknameCheck(false);
+			return;
+		}
+		
+		let data = {
+			value : NICK_NAME,
+			valueType : "NICK_NAME"
+		};
+		
+		if(!overlapCheck(data)) {
+			msgBox.text("이미 사용중인 닉네임입니다");
+			isSubmit.setNicknameCheck(false);
+		} else {
+			msgBox.text("사용 가능합니다");
+			isSubmit.setNicknameCheck(true);
+		}
+	});
 function overlapCheck(data) {
 	let isUseable = false;
 	$.ajax({

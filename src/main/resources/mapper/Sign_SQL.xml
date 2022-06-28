@@ -3,14 +3,14 @@
 <mapper namespace="sign">
  
  <!-- 회원가입 -->
- 	<insert id="signUp">
+ 	<insert id="sign" parameterType="hashmap">
  		INSERT INTO dbsewoomch.MJA_USER_INFO(EMAIL, ID, NICK_NAME, PASSWORD)
-		 VALUES(#{EMAIL}, #{ID}, #{NICK_NAME}, #{PASSWORD});
+		 VALUES(#{email}, #{id}, #{nickname}, #{pw});
  	</insert>
  	
-	<select id="overlapCheck" resultType="int">
-		SELECT COUNT(*)
-		FROM MJA_USER_INFO
-		WHERE ${valueType} = #{value}
-	</select>
+ 	<select id="checkId" parameterType="hashmap" resultType="Integer">
+ 		SELECT COUNT(*) AS CNT
+ 		FROM MJA_USER_INFO
+ 		WHERE ID = #{id}
+ 	</select>
 </mapper>

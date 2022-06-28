@@ -1,11 +1,10 @@
 package com.example.demo.mapper;
 
-import com.example.demo.dto.SignVo;
+import java.util.HashMap;
 
 public interface ISignDao {
 
-	public void signUp(SignVo signVo) throws Throwable;
+	public void sign(HashMap<String, String> params) throws Throwable;
 
-	public int overlapCheck(String value, String valueType);
-
+	public int checkId(HashMap<String, String> params) throws Throwable;
 }

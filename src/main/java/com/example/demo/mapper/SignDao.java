@@ -16,17 +16,12 @@ public class SignDao implements ISignDao {
 	private SqlSession sql;
 
 	@Override
-	public void signUp(SignVo signVo) throws Throwable {
-		sql.insert("sign.signUp", signVo);
+	public void sign(HashMap<String, String> params) throws Throwable {
+		sql.insert("sign.sign", params);	
 	}
 
 	@Override
-	public int overlapCheck(String value, String valueType) {
-		Map<String, String> map = new HashMap<>();
-		map.put("value", value);
-		map.put("valueType", valueType);
-		
-		return sql.selectOne("sign.overlapCheck" ,map);
+	public int checkId(HashMap<String, String> params) throws Throwable {
+		return sql.selectOne("sign.checkId", params);
 	}
-
 }
