@@ -163,4 +163,10 @@ input:focus {
 	background: #ff770017;
 	outline: none;
 }
+.id_ok, .id_already {
+	display: none;
+	font-size: 10pt;
+	color: red;
+	margin: 0 0 10px 50px;
+}
 

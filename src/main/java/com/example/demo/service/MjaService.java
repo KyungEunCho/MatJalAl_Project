@@ -14,7 +14,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dto.SignVo;
+import com.example.demo.dto.UserVo;
 import com.example.demo.mapper.MjaMapper;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;

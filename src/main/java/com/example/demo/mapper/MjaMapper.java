@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.example.demo.dto.SignVo;
+import com.example.demo.dto.UserVo;
 
 @Mapper
 public interface MjaMapper {
