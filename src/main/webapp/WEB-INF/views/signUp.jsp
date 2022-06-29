@@ -16,6 +16,9 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	
+	$(".btn_check").on("click", function() {
+		checkId();
+	});
 
 	$(".btn_big").on("click", function() {
 		if(checkEmpty("#id")) {
@@ -42,6 +45,26 @@ function checkEmpty(sel) {
 		return false;
 	}
 }
+function checkId(){
+    var id = $('#id').val(); //id값이 "id"인 입력란의 값을 저장
+    $.ajax({
+        url:'/idCheck', //Controller에서 인식할 주소
+        type:'post', //POST 방식으로 전달
+        data:{id:id},
+        success:function(result){
+            if(result != 1){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
+                $('.id_ok').css("display","inline-block"); 
+                $('.id_already').css("display", "none");
+            } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
+                $('.id_already').css("display","inline-block");
+                $('.id_ok').css("display", "none");
+            }
+        },
+        error:function(){
+            alert("에러입니다");
+        }
+    });
+}
 </script>
 </head>
 <body>
@@ -60,6 +83,8 @@ function checkEmpty(sel) {
 					<input type="text" class="box1" id="id" name="id" maxlength="15" placeholder="아이디를 입력해주세요"/>
 					<div class="btn_check">중복</br>체크</div>
 				</div>
+				<div class="id_ok">사용할 수 있는 아이디입니다.</div>
+				<div class="id_already">중복된 아이디가 있습니다.</div>
 				<%-- <div class="msg_box">${errorMsg.ID}</div> --%>
 			</div>
 			<div class="box_email">

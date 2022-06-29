@@ -4,8 +4,10 @@ import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.service.ISignService;
@@ -26,9 +28,9 @@ public class SignController {
 	}
 	
 	@RequestMapping(value="sign")
-	public ModelAndView sign(@RequestParam HashMap<String, String> params, ModelAndView mav) throws Throwable {
+	public ModelAndView sign(@RequestParam HashMap<String, String> params,@RequestParam("id") String id, ModelAndView mav) throws Throwable {
 		
-		int cnt = iSignService.checkId(params);
+		int cnt = iSignService.idCheck(id);
 		
 		if(cnt == 0) {
 			try {
@@ -54,5 +56,12 @@ public class SignController {
 		
 		return mav;
 	}
-	
+	//아이디 체크
+	@PostMapping(value = "/idCheck")
+	@ResponseBody
+	public int idCheck(@RequestParam("id") String id) throws Throwable {
+		int cnt = iSignService.idCheck(id);
+		
+		return cnt;
+	}
 }
