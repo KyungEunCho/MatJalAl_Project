@@ -14,7 +14,7 @@ public interface MjaMapper {
 	
 	public List<HashMap<String, Object>> findAll();
 
-	HashMap<String, String> getLogin(HashMap<String, String> params) throws Throwable;
+	public HashMap<String, String> getLogin(HashMap<String, String> params) throws Throwable;
 
 	public HashMap<String, String> imgRoute(String imgRoute);
 

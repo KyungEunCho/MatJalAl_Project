@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.example.demo.dto.SignVo;
+import com.example.demo.dto.kakaoDTO;
 
 public interface IMjaService {
 
@@ -17,8 +18,6 @@ public interface IMjaService {
 
 	public HashMap<String, Integer> feedNum(int feedNum);
 
-	public String getAccessToken(String code) throws Throwable;
 
-	public HashMap<String, Object> getUserInfo(String access_Token) throws Throwable;
 	
 }
