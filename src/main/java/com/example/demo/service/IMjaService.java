@@ -3,6 +3,8 @@ package com.example.demo.service;
 import java.util.HashMap;
 import java.util.List;
 
+import com.example.demo.dto.SignVo;
+
 public interface IMjaService {
 
 	//public List<HashMap<String, String>> getDataList(HashMap<String, String> params) throws Throwable;
@@ -18,8 +20,5 @@ public interface IMjaService {
 	public String getAccessToken(String code) throws Throwable;
 
 	public HashMap<String, Object> getUserInfo(String access_Token) throws Throwable;
-
-
-	
 	
 }

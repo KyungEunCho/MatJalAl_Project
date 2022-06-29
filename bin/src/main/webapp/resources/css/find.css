@@ -1,0 +1,147 @@
+@charset "UTF-8";
+html, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.body {
+	display: block;
+	background-color: white;
+	width: 800px;
+	height: 100%;
+	margin: 0 auto;
+}
+.logo {
+    display: flex;
+    padding-top: 40px;
+    width: 800px;
+    height: 140px;
+    /* background: aqua; */
+ }
+ 
+ .logo > img {
+    margin: 20px 20px 20px 260px;
+    width: 70px;
+    height: 100px;
+ }
+ 
+ .logo_text {
+    color: #fc6902ff;
+    font-size: 32px;
+    font-weight: bold;
+    height: 140px;
+    line-height: 180px;
+ }
+hr {
+    height: 1px;
+    margin: 0;
+    background-color: #fc6902;
+    border: none;
+}
+h4, pre {
+	margin: 0;
+	padding: 0;
+	outline: none;
+}
+
+#findId, #findPw {
+    width: 390px;
+	height: 30px;
+	border: none;
+    padding: 0;
+    cursor: pointer;
+    background-color: #fff;
+    text-align: center;
+    margin: 0 auto;
+    color: #684107;
+    font-size: 15px;
+}
+#findId {
+	border-right: 1px solid #fc6902;
+}
+#findId:hover, #findPw:hover {
+	color: #684107;
+	font-weight: 900;
+}
+/* 중간 */
+.middle {
+    width: 400px;
+    padding: 30px;
+    margin: auto;
+    height: 300px;
+    list-style: none;
+}
+.con {
+    color: #684107;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "애플산들";
+    padding-left: 10px;
+   	margin: 10px 5px;
+}
+.box {
+    margin: 0 0 8px 10px;
+}
+#find_email, #find_num {
+    padding: 5px 0px 5px 5px;
+    width: 320px;
+    height: 40px;
+    background: #ff770017;
+    border-radius: 10px;
+    border: none;
+    color: #684107;
+    font-weight: bold;
+    font-size: 10pt;
+    text-indent: 11px;
+    border: none;
+    outline-color: #fc6902ff;
+    outline-width: 0.1px;
+}
+#vcode, #vcode2 {
+    display: inline-block;
+    float: right;
+    border-radius: 10px;
+    width: 55px;
+   height: 50px;
+    font-size: 8pt;
+    background: #ff6600b8;
+    border: none;
+    color: #fff;
+    white-space: pre-wrap;
+    cursor: pointer;
+    padding-left: 9px;
+}
+#searchBox {
+	display: none;
+}
+.box1 {
+	border-radius: 10px;
+	background: #ff770017;
+	border: none;
+	margin: 10px;
+	padding-top: 10px;
+}
+.box2 {
+	width: 350px;
+	height: 20px;
+	padding: 0px 0px 8px 10px;
+}
+.box2 label {
+	display: inline-block;
+	vertical-align: middle;
+	padding-bottom: 8px;
+	font-size: 10pt;
+	font-family: "애플산들";
+	font-weight: 900;
+	color: #684107;
+}
+#a, #b, #c {
+	display: none;
+	padding: 5px 0px 0px 7px;
+	height: 15px;
+	color: #684107;
+	font-size: 9pt;
+}
+#c {
+	color: red;
+}

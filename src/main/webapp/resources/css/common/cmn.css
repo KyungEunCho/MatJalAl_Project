@@ -1,13 +1,13 @@
 @charset "EUC-KR";
 
-/* 공동 */
+/* 공통 */
 html, body {
 	margin: 0;
 	height: 100%;
-	font-family: 고딕;
+	font-family: 'Noto Serif KR', serif;	
 	min-width: 1400px;
-	overflow-x: auto;
-	overflow-y: hidden;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 .top_area, .left_area, .right_area{

@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>로그인페이지</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Noto+Serif+KR&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="resources/css/login.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/common/popup.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/common/cmn.css" />
@@ -14,7 +19,6 @@
 <script type="text/javascript" src="resources/js/common/popup.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
-
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -176,8 +180,10 @@ function naverLogout() {
 	</div>
 	<div class="login_btn">Login</div>
 	<div class="join_us">
-		<div class="join">회원가입</div>
-			<a href="findId">
+		<a href="${contextPath}/signUp">
+			<span class="join">회원가입</span>
+		</a>
+			<a href="${contextPath}/findId">
 				<span class="id_pw_find">아이디 / 비밀번호 찾기</span>
 			</a>
 		<a class="kakao_login" href="https://kauth.kakao.com/oauth/authorize?client_id=86851554646c136ec78c91a58cf4acdd

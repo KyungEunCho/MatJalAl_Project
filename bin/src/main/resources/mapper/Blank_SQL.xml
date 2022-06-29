@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace= "java @Mapper와 맵핑할 경로.파일명 작성"  -->
+<mapper namespace="com.example.demo.mapper.MjaMapper">
+ 
+ 	<!-- id="매핑할 매소드명"  -->
+ 	<select id="feedList" resultType="hashmap" parameterType="hashmap">
+ 		SELECT MF.FEED_NUM, MF.STAR, MFP.ATT_FILE, MS.STORE_NAME
+		FROM MJA_FEED MF INNER JOIN MJA_FEED_PHOTO MFP
+						         ON MF.FEED_NUM = MFP.FEED_NUM
+						 INNER JOIN MJA_STORE MS
+				 				 ON MF.STORE_NUM = MS.STORE_NUM
+		WHERE 1 = 1
+ 	</select>
+ 	
+ 	<select id = "imgRoute" resultType="hashmap">
+ 		SELECT *
+		FROM MJA_FEED_PHOTO
+		WHERE FEED_PHOTO_NUM = #{img}
+ 	</select>
+ 
+ 	<select id="feedNum" resultType="hashmap">
+ 		SELECT *
+ 		FROM MJA_FEED_COMMENT
+ 		WHERE FEED_NUM = #{feedNum}
+ 	</select>
+ 
+ 	<select id="getLogin" parameterType="hashmap" resultType="hashmap">
+		SELECT NICK_NAME, EMAIL
+		FROM MJA_USER_INFO
+		WHERE NICK_NAME = #{id}
+		AND PASSWORD = #{pw} 	
+ 	</select>
+</mapper>

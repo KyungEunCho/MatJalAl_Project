@@ -6,12 +6,15 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dto.SignVo;
 import com.example.demo.mapper.MjaMapper;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -22,7 +25,8 @@ public class MjaService implements IMjaService {
 
 	@Autowired
 	private MjaMapper mjaMapper;
-
+	private SqlSessionTemplate userSqlSession;
+	
 	public List<HashMap<String, Object>> findAll() {
 		return mjaMapper.findAll();
 	}
@@ -161,6 +165,5 @@ public class MjaService implements IMjaService {
 	}
 		return userInfo;
 	}
-
 
 }
