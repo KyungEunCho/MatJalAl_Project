@@ -28,6 +28,19 @@
  		WHERE FEED_NUM = #{feedNum}
  	</select>
  
+<!--  	<insert id="kakaoinsert" parameterType="MjaDto">
+ 		INSERT INTO MJA_KAKAO_LOGIN (KAKAO_NAME, KAKAO_EMAIL)
+ 		VALUES (#{kname}, #{kemail})
+ 	</insert>
+ 
+ 	<select id="findkakao" resultType="hashmap" parameterType="hashmap">
+ 		SELECT *
+ 		FROM MJA_KAKAO_LOGIN
+ 		WHERE KAKAO_NAME = #{kname} 
+ 		AND KAKAO_EMAIL = #{kemail}
+ 	</select> -->
+ 
+ 
  	<select id="getLogin" parameterType="hashmap" resultType="hashmap">
 		SELECT NICK_NAME, EMAIL
 		FROM MJA_USER_INFO

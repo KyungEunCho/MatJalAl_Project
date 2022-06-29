@@ -32,7 +32,7 @@ public class MemberContoller {
 			// 위에서 만든 코드 아래에 코드 추가
 			String access_Token = ims.getAccessToken(code);
 			System.out.println("###access_Token#### : " + access_Token);
-			
+
 			// 위에서 만든 코드 아래에 코드 추가
 			HashMap<String, Object> userInfo = ims.getUserInfo(access_Token);
 			System.out.println("###access_Token#### : " + access_Token);
@@ -47,8 +47,5 @@ public class MemberContoller {
 			 */
 	    	}
 
-		
-		
-		
 	}
 
