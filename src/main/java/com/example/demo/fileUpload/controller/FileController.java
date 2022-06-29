@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.demo.controller.Log;
@@ -99,5 +100,12 @@ public class FileController {
 	public void forGues() {
 		logger.info("file==========================");
 	}
-
+    
+    @RequestMapping(value = "/FileUpload")
+	public ModelAndView FileUpload(ModelAndView mav) {
+		
+		mav.setViewName("FileUpload");
+		
+		return mav;
+	}
 }
