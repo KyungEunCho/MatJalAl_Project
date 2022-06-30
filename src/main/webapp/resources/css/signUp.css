@@ -58,7 +58,7 @@ body {
 	font-family: 'Noto Serif KR', serif;
 }
 
-.btn_check {
+.btn_check, .id_check {
 	padding: 5px;
 	margin: 3px 0 0 10px;
 	width: 55px;
@@ -169,4 +169,5 @@ input:focus {
 	color: red;
 	margin: 0 0 10px 50px;
 }
+
 
