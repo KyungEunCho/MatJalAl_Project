@@ -19,7 +19,7 @@ public class SignController {
 	@Autowired
 	private ISignService iSignService;
 	
-	@RequestMapping(value = "signUp")
+	@RequestMapping(value = "/signUp")
 	public ModelAndView signUp(ModelAndView mav) {
 		
 		mav.setViewName("signUp");
@@ -27,7 +27,7 @@ public class SignController {
 		return mav;
 	}
 	
-	@RequestMapping(value="sign")
+	@RequestMapping(value="/sign")
 	public ModelAndView sign(@RequestParam HashMap<String, String> params,@RequestParam("id") String id, ModelAndView mav) throws Throwable {
 		
 		int cnt = iSignService.idCheck(id);
