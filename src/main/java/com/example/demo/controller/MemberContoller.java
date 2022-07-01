@@ -41,7 +41,8 @@ public class MemberContoller {
 			// 위에서 만든 코드 아래에 코드 추가
 			kakaoDTO userInfo = ms.getUserInfo(access_Token);
 			System.out.println("###access_Token#### : " + access_Token);
-			
+//			System.out.println("###nickname#### : " + userInfo.get("nickname"));
+//			System.out.println("###email#### : " + userInfo.get("email"));
 			// 아래 코드가 추가되는 내용
 			session.invalidate();
 			// 위 코드는 session객체에 담긴 정보를 초기화 하는 코드.

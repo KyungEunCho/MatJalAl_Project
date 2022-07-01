@@ -16,7 +16,7 @@ public class myFeedController {
 	@Autowired
 	private IMjaService iMjaService;
 	
-	@RequestMapping("/myFeed")
+/*	@RequestMapping("/myFeed")
 	public ModelAndView imgRoute(@RequestParam(value = "imgRoute") String imgRoute,
 						ModelAndView mav) {
 		
@@ -29,7 +29,9 @@ public class myFeedController {
 		
 		return mav; 
 
-	}
+	} */
+	
+
 	
 	/*	
 	@RequestMapping("/myFeed")

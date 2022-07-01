@@ -440,7 +440,7 @@ $(document).ready(function() {
 
 	<div class = "cont_wrap">
 		<div class = "feed_photo">
-		<img src = "${img}" width = "450px" height = "450px"/>
+		<img src = "../resources/image/noimage.jpeg" width = "450px" height = "450px"/>
 		</div>
 		<div class = "feed_right">
 			<div class = "user_info">
