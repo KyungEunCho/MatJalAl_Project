@@ -6,4 +6,9 @@
 		FROM MJA_USER_INFO 
 		WHERE id= #{id}
 	</select>
+	<select id="emailCheck" parameterType="String" resultType="int">
+		SELECT COUNT(email) 
+		FROM MJA_USER_INFO 
+		WHERE email= #{email}
+	</select>
 </mapper>
