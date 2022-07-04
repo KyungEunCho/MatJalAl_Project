@@ -9,4 +9,6 @@ public interface ISignDao {
 	public int checkId(HashMap<String, String> params) throws Throwable;
 
 	public int idCheck(String id) throws Throwable;
+
+	public int emailCheck(String email) throws Throwable;
 }

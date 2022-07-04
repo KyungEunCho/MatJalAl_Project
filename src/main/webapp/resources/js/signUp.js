@@ -1,175 +1,125 @@
 /**
  * 
  */
-function emailCheck(email) {
-	const regEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
-	
-	if(regEmail.test(email)) {
+// 빈 함수 체크
+ function checkEmpty(sel) {
+	if($.trim($(sel).val()) == "") {
 		return true;
 	} else {
 		return false;
 	}
 }
-function idCheck(id) {
-	const regId = /^[A-Za-z0-9]{4,15}$/;
-	
-	if(regId.test(id)) {
-		return true;
+function checkData() {
+	if(checkEmpty("#id")) {
+		Swal.fire({
+			  title: '아이디를 입력해주세요.',
+			  showConfirmButton: true,
+			  confirmButtonColor: '#ff6600b8' /* 버튼색깔 */
+		});		
+	}else if(checkEmpty("#email")) {
+		Swal.fire({
+			  title: '이메일을 입력해주세요.',
+			  showConfirmButton: true,
+			  confirmButtonColor: '#ff6600b8' /* 버튼색깔 */
+		});
+		$("#email").focus();
+	} else if(checkEmpty("#nickname")) {
+		Swal.fire({
+			  title: '닉네임을 입력해주세요.',
+			  showConfirmButton: true,
+			  confirmButtonColor: '#ff6600b8' /* 버튼색깔 */
+		});
+		$("#nickname").focus();
+	} else if(checkEmpty("#password")) {
+		Swal.fire({
+			  title: '이메일을 입력해주세요.',
+			  showConfirmButton: true,
+			  confirmButtonColor: '#ff6600b8' /* 버튼색깔 */
+		});
+		$("#password").focus();
 	} else {
-		return false;
+		$("#signUpForm").submit();			
 	}
 }
-function nicknameCheck(nickname) {
-	const regNickname = /^[가-힣|a-z|A-Z|0-9|]+$/;
+//아이디 중복체크
+function checkId(){
+    var id = $('#id').val();
+	var id_rule = /^[a-zA-z0-9]{4,12}$/;
 	
-	if(regNickname.test(nickname)) {
-		return true;
-	} else {
-		return false;
-	}
+    $.ajax({
+        url:'/idCheck', //Controller에서 인식할 주소
+        type:'post', //POST 방식으로 전달
+        data:{id:id},
+        success:function(cnt){
+            if(cnt != 1){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
+            	if(!id) {
+        			Swal.fire({
+        				  title: '아이디를 입력해주세요.',
+        				  showConfirmButton: true,
+        				  confirmButtonColor: '#ff6600b8' /* 버튼색깔 */
+        			});
+        			$("#id").focus();          		
+            	} else if(!id_rule.test(id)) {
+					Swal.fire({
+						  title: '아이디 형식에 맞게 입력해주세요.',
+						  showConfirmButton: true,
+						  confirmButtonColor: '#ff6600b8' /* 버튼색깔 */
+					});
+					$("#id").focus();            		
+            	} else {
+	                $('.id_ok').css("display","inline-block"); 
+	                $('.id_already').css("display", "none");  
+            	}
+            } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
+                $('.id_already').css("display","inline-block");
+                $('.id_ok').css("display", "none");
+            }
+        },
+        error:function(){
+            alert("에러입니다");
+        }
+    });
 }
-function lenthCheck(e, length) {
-	if(e.value.length >= length) {
-		return false;
-	}
-	
-	$(this).off().focusout(function() {
-		if(e.value.length > length) {
-			e.value = "";
-		}
-	})
-	
-	return true;
-}
-
-const isSubmit = (function() {
-	var emailCheck = false;
-	var idCheck = false;
-	var nicknameCheck = false;
-		
-	const setEmailCheck = function(set) {
-		emailCheck = set ? true : false;
-		isSubmit();
-	}
-	const setIdCheck = function(set) {
-		idCheck = set ? true : false;
-		isSubmit();
-	}
-	const setNicknameCheck = function(set) {
-		nicknameCheck = set ? true : false;
-		isSubmit();
-	}
-	
-	const isSubmit = function() {
-		if(emailCheck && idCheck && nicknameCheck) {
-			$(".btn_big").css("background", "#2AC1BC");
-			return true;
-		} else {
-			$(".btn_big").css("background", "#ddd");
-			return false;
-		}
-	}
-		
-	return {
-		setEmailCheck : setEmailCheck,
-		setIdCheck : setIdCheck,
-		setNicknameCheck : setNicknameCheck,
-		isSubmit : isSubmit
-	}
-})();
-	$("#id").keypress(function() {
-		const id = $("#id").val().replaceAll("", "");
-		const msgBox = $(this).siblings(".msg_box");
-		
-		if(!id) {
-			msgBox.text("아이디를 입력해주세요.");
-			isSubmit.setIdCheck(false);
-			return;
-		}
-			
-		if(!idCheck(id)) {
-			msgBox.test("사용할 수 없는 아이디입니다.");
-			isSubmit.setIdCheck(false);
-			return;
-		}
-		const data = {
-				value : id,
-				valueType : "id"
-		};
-		if(overlapCheck(data)) {
-			msgBox.text("사용 가능합니다.");
-			isSubmit.setIdCheck(true);
-		} else {
-			msgBox.text("이미 사용중인 아이디입니다.");
-			isSubmit.setIdCheck(false);
-		}
-	});
-	$("#email").focusout(function() {
-		const email = $("#email").val();
-		const msgBox = $(this).siblings(".msg_box");
-		
-		if(checkEmpty(email)) {
-			msgBox.text("이메일을 입력해 주세요");
-			isSubmit.setEmailCheck(false);
-			return;
-		} 
-		if(!emailCheck(email)) {
-			msgBox.text("사용 불가능합니다");
-			isSubmit.setEmailCheck(false);
-		} else {
-			msgBox.text("");
-			isSubmit.setEmailCheck(true);
-		}
-	});
-
-	$("#nickname").focusout(function() {
-		const nickname = $("#nickname").val();
-		const msgBox = $(this).siblings(".msg_box");
-		
-		if(!nickname) {
-			msgBox.text("닉네임을 입력 해주세요");
-			isSubmit.setNicknameCheck(false);
-			return;
-		}
-		if(!nicknameCheck(nickname)) {
-			msgBox.text("닉네임은 한글, 영어, 숫자만 4~10자리로 입력 가능합니다.");
-			isSubmit.setNicknameCheck(false);
-			return;
-		}
-		
-		let data = {
-			value : nickname,
-			valueType : "nickname"
-		};
-		
-		if(!overlapCheck(data)) {
-			msgBox.text("이미 사용중인 닉네임입니다");
-			isSubmit.setNicknameCheck(false);
-		} else {
-			msgBox.text("사용 가능합니다");
-			isSubmit.setNicknameCheck(true);
-		}
-	});
-function overlapCheck(data) {
-	let isUseable = false;
+// 이메일 중복체크
+function checkEmail() {
+	var email = $("#email").val();
+	var email_rule = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 	$.ajax({
-		url: "/overlapCheck",
-		type: "get",
-		data: data,
-		async: false
-	})
-	.done(function(result){
-		if(result == 0 ) {
-			isUseable = true;
-		} 
-	})
-	.fail(function(){
-		alert("에러");
-	});
+		url: '/emailCheck',
+		type: 'post',
+		data: {email:email},
+		success: function(mail){
+			if(mail != 1) {
+				if(!email) {
+					Swal.fire({
+						  title: '이메일을 입력해주세요.',
+						  showConfirmButton: true,
+						  confirmButtonColor: '#ff6600b8' /* 버튼색깔 */
+					});
+					$("#email").focus();
+					console.log(email);
+				} else if(!email_rule.test(email)) {
+					Swal.fire({
+						  title: '이메일 형식에 맞게 입력해주세요.',
+						  showConfirmButton: true,
+						  confirmButtonColor: '#ff6600b8' /* 버튼색깔 */
+					});
+					$("#email").focus();
+				} else {
+					 $('.email_ok').css("display","inline-block");
+					 $('.email_already').css("display", "none");
+				}
+			} else {
+				$('.email_already').css("display","inline-block");
+			    $('.email_ok').css("display", "none");
+			}	
+		},
+		error: function() {
+		 alert("에러입니다");
+		}
+	});	
+}		
 	
-	return isUseable;
-	
-}
 
 
 

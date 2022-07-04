@@ -32,4 +32,10 @@ public class SignDao implements ISignDao {
 		int cnt = sql.selectOne(NAMESPACE+".idCheck", id);
 		return cnt;
 	}
+
+	@Override
+	public int emailCheck(String email) throws Throwable {
+		int mail = sql.selectOne(NAMESPACE+".emailCheck", email);
+		return mail;
+	}
 }
