@@ -109,6 +109,15 @@ public class MjaController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/myFeed")
+	public ModelAndView myFeed(@RequestParam HashMap<String, String> params,
+									ModelAndView mav) {
+		
+		mav.setViewName("myFeed");
+		
+		return mav;
+	}
+	
 	@RequestMapping(value = "/feedAjax", method = RequestMethod.POST, 
 			produces = "text/json;charset=UTF-8")
 	@ResponseBody

@@ -8,7 +8,6 @@
 <script type="text/javascript" src="resources/js/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	console.log("ggg");
 	'use strict';
 
 	var singleUploadForm = document.querySelector('#singleUploadForm');
