@@ -62,6 +62,7 @@ public class FileController {
                 .stream()
                 .map(file -> uploadFile(file))
                 .collect(Collectors.toList());
+        
     }
 
     @GetMapping("/downloadFile/{fileName:.+}")

@@ -30,6 +30,7 @@ public class UploadFileResponse {
       this.fileDownloadUri = fileDownloadUri;
    }
 
+   
    public String getFileType() {
       return fileType;
    }

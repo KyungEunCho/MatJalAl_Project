@@ -5,7 +5,8 @@ import org.springframework.http.HttpStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class MyFileNotFoundException extends RuntimeException {
-    public MyFileNotFoundException(String message) {
+    
+	public MyFileNotFoundException(String message) {
         super(message);
     }
 
