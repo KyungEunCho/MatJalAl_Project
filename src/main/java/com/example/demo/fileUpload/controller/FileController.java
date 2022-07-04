@@ -1,4 +1,4 @@
-package com.example.demo.FileUpload.controller;
+package com.example.demo.fileUpload.controller;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -24,8 +24,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.demo.controller.Log;
-import com.example.demo.FileUpload.domain.UploadFileResponse;
-import com.example.demo.FileUpload.service.FileStorageService;
+import com.example.demo.fileUpload.domain.UploadFileResponse;
+import com.example.demo.fileUpload.service.FileStorageService;
 
 import ch.qos.logback.classic.Logger;
 

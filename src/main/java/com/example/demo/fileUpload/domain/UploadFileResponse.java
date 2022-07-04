@@ -1,4 +1,4 @@
-package com.example.demo.FileUpload.domain;
+package com.example.demo.fileUpload.domain;
 
 public class UploadFileResponse {
    private String fileName;

@@ -1,4 +1,4 @@
-package com.example.demo.FileUpload.service;
+package com.example.demo.fileUpload.service;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.demo.FileUpload.exception.FileStorageException;
-import com.example.demo.FileUpload.exception.MyFileNotFoundException;
-import com.example.demo.FileUpload.property.FileStorageProperties;
+import com.example.demo.fileUpload.exception.FileStorageException;
+import com.example.demo.fileUpload.exception.MyFileNotFoundException;
+import com.example.demo.fileUpload.property.FileStorageProperties;
 
 @Service
 public class FileStorageService {
