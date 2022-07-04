@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,7 +30,7 @@ public class MemberContoller {
 	} */
 		
 		@RequestMapping(value="/login", method=RequestMethod.GET)
-		public String login(@RequestParam(value = "code", required = false) String code) throws Throwable {
+		public String login(@RequestParam(value = "code", required = false) String code) {
 			System.out.println("#########" + code);
 			
 			// 위에서 만든 코드 아래에 코드 추가
@@ -41,8 +40,11 @@ public class MemberContoller {
 			// 위에서 만든 코드 아래에 코드 추가
 			kakaoDTO userInfo = ms.getUserInfo(access_Token);
 			System.out.println("###access_Token#### : " + access_Token);
-//			System.out.println("###nickname#### : " + userInfo.get("nickname"));
-//			System.out.println("###email#### : " + userInfo.get("email"));
+			
+	//		 System.out.println("###nickname#### : " + userInfo.get("nickname"));
+	//		 System.out.println("###email#### : " + userInfo.get("email"));
+			 
+			
 			// 아래 코드가 추가되는 내용
 			session.invalidate();
 			// 위 코드는 session객체에 담긴 정보를 초기화 하는 코드.

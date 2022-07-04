@@ -28,7 +28,7 @@
  		WHERE FEED_NUM = #{feedNum}
  	</select>
  
-<!--  	<insert id="kakaoinsert" parameterType="MjaDto">
+ <!--  	<insert id="kakaoinsert" parameterType="hashmap">
  		INSERT INTO MJA_KAKAO_LOGIN (KAKAO_NAME, KAKAO_EMAIL)
  		VALUES (#{kname}, #{kemail})
  	</insert>
@@ -38,7 +38,7 @@
  		FROM MJA_KAKAO_LOGIN
  		WHERE KAKAO_NAME = #{kname} 
  		AND KAKAO_EMAIL = #{kemail}
- 	</select> -->
+ 	</select>  -->
  
  
  	<select id="getLogin" parameterType="hashmap" resultType="hashmap">

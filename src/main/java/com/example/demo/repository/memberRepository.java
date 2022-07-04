@@ -22,7 +22,7 @@ public class memberRepository {
 	public kakaoDTO findkakao(HashMap<String, Object> userInfo) {
 		System.out.println("RN:"+userInfo.get("nickname"));
 		System.out.println("RE:"+userInfo.get("email"));
-		return sql.selectOne("Member.findKakao", userInfo);
+	return sql.selectOne("Member.findKakao", userInfo);
 	}
 
 

@@ -102,7 +102,7 @@ public class MjaController {
 	@RequestMapping(value = "/myFeed")
 	public ModelAndView myFeed(@RequestParam HashMap<String, String> params,
 									ModelAndView mav) {
-		
+		System.out.println("####");
 		mav.setViewName("myFeed");
 		
 		return mav;

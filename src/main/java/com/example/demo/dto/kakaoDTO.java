@@ -9,5 +9,4 @@ public class kakaoDTO {
 	private String k_name;
 	private String k_email;
 
-
 	}

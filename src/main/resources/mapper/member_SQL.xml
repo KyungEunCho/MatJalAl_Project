@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Member"> 
- <!--
+<mapper namespace="Member">
+
 	<select id="findKakao" parameterType="hashmap" resultType="hashmap">
-		select * from kakao_table where k_name=#{nickname} and k_email=#{email}
+		SELECT *
+		FROM MJA_KAKAO_LOGIN
+		WHERE KAKAO_NAME = #{nickname} 
+		AND KAKAO_EMAIL = #{email}
 	</select>
 
 	<insert id="kakaoInsert" parameterType="hashmap">
-		insert into kakao_table(k_name, k_email)
-			values(#{nickname}, #{email})
+		INSERT INTO MJA_KAKAO_LOGIN (KAKAO_NAME, KAKAO_EMAIL)
+ 		VALUES (#{nickname}, #{email})
 	</insert>
-	-->
-</mapper> 
+
+</mapper>
