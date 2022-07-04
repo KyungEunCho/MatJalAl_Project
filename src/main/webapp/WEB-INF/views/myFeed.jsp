@@ -70,15 +70,15 @@ html {
 
 .update_btn {	
 	display : inline-block;
-	height: 15px;
+	height: 20px;
 	width: 40px;
 	background-color: #ff6600b8;
 	text-align: center;
 	border-radius : 3px;
 	color : white;
-	line-height: 15px;
+	line-height: 20px;
 	cursor: pointer;
-	font-size: 1pt;
+	font-size: 8pt;
 	margin-left: 30px;
 }
 
@@ -142,7 +142,7 @@ html {
 }
 
 .keep {
-	width : 60px;
+	width : 65px;
 	font-weight: bold;
 	font-size: 8pt;
 	margin-left: 20px;
@@ -326,7 +326,7 @@ html {
 	font-size: 9pt;
 	color : white;
 	background-color: #ff6600b8;
-	line-height: 25px;
+	line-height: 26px;
 }
 
 td {
@@ -343,6 +343,121 @@ td {
 	height: 180%;
 }
 
+.second_newFeed {
+	width: 610px;
+	height: 500px;
+	background-color:yellow; 
+}
+
+.second_NewFeed_title {
+	display: inline-block;
+	text-align: center;
+	line-height : 30px;
+	width: 610px;
+	height: 30px;
+}
+
+.second_NewFeed_contWrap {
+	width: 680px;
+	height: 500px;
+	display: inline-block;
+	border-top: 1px solid;
+	font-size: 11pt;
+}
+
+.second_newFeed_photoWrap {
+	display : inline-block;
+	width: 350px;
+	height: 400px;
+	margin-top: 10px;
+}
+
+.second_newFeed_detailWrap {
+	display : inline-block;
+	width: 320px;
+	height: 400px;
+	vertical-align : top;
+	margin-top : 10px;
+}
+
+.second_newFeed_user_info {
+	display : inline-block;
+	width: 305px;
+	height: 30px;
+	margin-top: 10px;
+}
+
+.second_newFeed_profile {
+	display : inline-block;
+	width: 35px;
+	height: 35px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+
+.second_newFeed_nick {
+	display : inline-block;
+	width: 250px;
+	height: 25px;
+	line-height: 30px;
+	font-size: 12pt;
+	vertical-align: top;
+}
+
+.second_newFeed_cont {
+	margin-left: 10px;
+	width: 250px;
+	height: 150px;
+}
+
+.hashTag {
+	color: blue;
+	font-size: 10pt;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.starWrap {
+	margin-left : 10px;
+	width: 250px;
+	height: 40px;
+}
+
+.star {
+	display : inline-block;
+	font-size: 15pt;
+	vertical-align: top;
+}
+
+.second_newFeed_star_img {
+	margin-right: -7px;
+	margin-left: 2px;
+	margin-bottom: 6px;
+	vertical-align: middle;
+	width: 35px;
+	height: 35px;
+}
+
+.second_newFeed_search_place {
+	height: 170px;
+	width: 300px;
+}
+
+.share {
+	height : 30px;
+	width: 120px;
+	font-size: 9pt;
+	border : 1px solid;
+	border-radius : 5px;
+	cursor: pointer;
+	text-align: center;
+	font-size: 9pt;
+	color : white;
+	background-color: #ff6600b8;
+	line-height: 25px;
+	position: relative;
+	left : calc(43%);
+}
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 .map_wrap {position:relative;width:100%;height:500px;}
@@ -414,30 +529,83 @@ $(document).ready(function() {
 			width : 500,
 			height: 500,
 			contents :html,
- 			contentsEvent : function() {
+			contentsEvent : function() {
 				
 			},
 			buttons : [{
 				name : "다음",
 				func : function() {
-					closePopup();
-				}
+					if($(".att_button").length == 0) {
+						alert("사진을 선택하세요.");
+						$(".att_button").focus();
+					} else {
+						closePopup();
+					}
+					
+			var html = "";
+					
+			html += "						<div class = \"second_NewFeed_contWrap\">";
+			html += "							<div class = \"second_newFeed_photoWrap\">";
+			html += "								<img src = \"resources/image/noimage.jpeg\" width = \"350px\" height = \"400px\"/>";
+			html += "							</div>";
+			html += "							<div class = \"second_newFeed_detailWrap\">";
+			html += "								<div class = \"second_newFeed_user_info\">";
+			html += "								<div class = \"second_newFeed_profile\">";
+			html += "									<img src = \"resources/image/noimage.jpeg\" width = \"30px\" height = \"30px\"/>";
+			html += "								</div>";
+			html += "									<div class = \"second_newFeed_nick\">닉네임이다</div>";
+			html += "								</div>";
+			html += "								<div class = \"second_newFeed_cont\">반갑다 5학년 3반이야";
+			html += "									<div class = \"hashTag\">#햄버거</div>";
+			html += "								</div>";
+			html += "								<div class=\"starWrap\">";
+			html += "									<div class = \"star\">";
+			html += "										<img src = \"resources/image/yellowStar.png\" class = \"second_newFeed_star_img\"/>";
+			html += "										<img src = \"resources/image/yellowStar.png\" class = \"second_newFeed_star_img\"/>";
+			html += "										<img src = \"resources/image/yellowStar.png\" class = \"second_newFeed_star_img\"/>";
+			html += "										<img src = \"resources/image/yellowStar.png\" class = \"second_newFeed_star_img\"/>";
+			html += "										<img src = \"resources/image/whiteStar.png\" class = \"second_newFeed_star_img\"/>";
+			html += "									</div>";
+			html += "								</div>";
+			html += "								<div class = \"second_newFeed_search_place\">";
+			html += "								</div>";
+			html += "							</div>";
+			html += "						</div>";
+			html += "						<div class = \"share\">공유하기</div>";
+			html += "					</div> <!-- newFeed end -->";
+					
+					makePopup ({
+						bg:true,
+						bgClose : false,
+						title : "피드",
+						width : 700,
+						height: 600,
+						contents :html,
+						contentsEvent : function() {
+							$(".share").on("click", function() {
+								closePopup();
+							});
+						},
+/* 						buttons : [{
+							name : "다음",
+							func : function() {
+								closePopup();
+							}
+						}] */
+					}); // popup end
+				} // 상위 function end
 			}, {
 					name : "취소",
 						func : function() {
 							closePopup();
 						}
-			}]
-		}) // makePopup end
+			}] // buttons end
+		}); // makePopup end
 	}); // click end
 }); // ready end
 
-		
-		
-</script>
-	
-	
 
+</script>
 	<div class = "cont_wrap">
 		<div class = "feed_photo">
 		<img src = "../resources/image/noimage.jpeg" width = "450px" height = "450px"/>
@@ -520,7 +688,7 @@ $(document).ready(function() {
 			        <div class="option">
 			            <div>
 			                <form onsubmit="searchPlaces(); return false;">
-			                    키워드 : <input type="text" value="" id="keyword" size="15">
+			                    키워드 : <input type="text" value="이태원" id="keyword" size="15">
 			                    <button type="submit">검색하기</button> 
 			                </form>
 			            </div>
