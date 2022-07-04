@@ -1,28 +1,28 @@
 /**
  * 
  */
-function emailCheck(EMAIL) {
+function emailCheck(email) {
 	const regEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
 	
-	if(regEmail.test(EMAIL)) {
+	if(regEmail.test(email)) {
 		return true;
 	} else {
 		return false;
 	}
 }
-function idCheck(ID) {
+function idCheck(id) {
 	const regId = /^[A-Za-z0-9]{4,15}$/;
 	
-	if(regId.test(ID)) {
+	if(regId.test(id)) {
 		return true;
 	} else {
 		return false;
 	}
 }
-function nicknameCheck(NICK_NAME) {
+function nicknameCheck(nickname) {
 	const regNickname = /^[가-힣|a-z|A-Z|0-9|]+$/;
 	
-	if(regNickname.test(NICK_NAME)) {
+	if(regNickname.test(nickname)) {
 		return true;
 	} else {
 		return false;
@@ -78,23 +78,23 @@ const isSubmit = (function() {
 	}
 })();
 	$("#id").keypress(function() {
-		const ID = $("#ID").val().replaceAll("", "");
+		const id = $("#id").val().replaceAll("", "");
 		const msgBox = $(this).siblings(".msg_box");
 		
-		if(!ID) {
+		if(!id) {
 			msgBox.text("아이디를 입력해주세요.");
 			isSubmit.setIdCheck(false);
 			return;
 		}
 			
-		if(!idCheck(ID)) {
+		if(!idCheck(id)) {
 			msgBox.test("사용할 수 없는 아이디입니다.");
 			isSubmit.setIdCheck(false);
 			return;
 		}
 		const data = {
-				value : ID,
-				valueType : "ID"
+				value : id,
+				valueType : "id"
 		};
 		if(overlapCheck(data)) {
 			msgBox.text("사용 가능합니다.");
@@ -105,15 +105,15 @@ const isSubmit = (function() {
 		}
 	});
 	$("#email").focusout(function() {
-		const EMAIL = $("#email").val();
+		const email = $("#email").val();
 		const msgBox = $(this).siblings(".msg_box");
 		
-		if(checkEmpty(EMAIL)) {
+		if(checkEmpty(email)) {
 			msgBox.text("이메일을 입력해 주세요");
 			isSubmit.setEmailCheck(false);
 			return;
 		} 
-		if(!emailCheck(EMAIL)) {
+		if(!emailCheck(email)) {
 			msgBox.text("사용 불가능합니다");
 			isSubmit.setEmailCheck(false);
 		} else {
@@ -122,24 +122,24 @@ const isSubmit = (function() {
 		}
 	});
 
-	$("#NICK_NAME").focusout(function() {
-		const NICK_NAME = $("#NICK_NAME").val();
+	$("#nickname").focusout(function() {
+		const nickname = $("#nickname").val();
 		const msgBox = $(this).siblings(".msg_box");
 		
-		if(!NICK_NAME) {
+		if(!nickname) {
 			msgBox.text("닉네임을 입력 해주세요");
 			isSubmit.setNicknameCheck(false);
 			return;
 		}
-		if(!nicknameCheck(NICK_NAME)) {
+		if(!nicknameCheck(nickname)) {
 			msgBox.text("닉네임은 한글, 영어, 숫자만 4~10자리로 입력 가능합니다.");
 			isSubmit.setNicknameCheck(false);
 			return;
 		}
 		
 		let data = {
-			value : NICK_NAME,
-			valueType : "NICK_NAME"
+			value : nickname,
+			valueType : "nickname"
 		};
 		
 		if(!overlapCheck(data)) {

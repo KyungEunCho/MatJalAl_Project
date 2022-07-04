@@ -8,4 +8,6 @@ public interface ISignService {
 
 	public int checkId(HashMap<String, String> params) throws Throwable;
 
+	public int idCheck(String id) throws Throwable;
+
 }

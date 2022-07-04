@@ -16,7 +16,6 @@ public class myFeedController {
 	@Autowired
 	private IMjaService iMjaService;
 	
-	
 	/*
 	 * @RequestMapping("/myFeed") public ModelAndView imgRoute(@RequestParam(value =
 	 * "imgRoute") String imgRoute, ModelAndView mav) {
@@ -31,6 +30,22 @@ public class myFeedController {
 	 * 
 	 * }
 	 */
+/*	@RequestMapping("/myFeed")
+	public ModelAndView imgRoute(@RequestParam(value = "imgRoute") String imgRoute,
+						ModelAndView mav) {
+		
+		System.out.println(imgRoute + "#################");
+		
+		HashMap<String, String> img = iMjaService.imgRoute(imgRoute);
+		
+		mav.addObject("img", img.get("ATT_FILE"));
+		mav.setViewName("myFeed");
+		
+		return mav; 
+
+	} */
+	
+
 	
 	/*	
 	@RequestMapping("/myFeed")

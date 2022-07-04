@@ -32,7 +32,7 @@ import ch.qos.logback.classic.Logger;
 @Log
 @RestController
 public class FileController {
-	
+   
     private static final Logger logger = (Logger) LoggerFactory.getLogger(FileController.class);
 
     @Autowired
@@ -40,9 +40,9 @@ public class FileController {
     
     @PostMapping("/uploadFile")
     public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
-    	System.out.println("---------------uploadFile");
-		logger.info("uploadFile");
-    	
+       System.out.println("---------------uploadFile");
+      logger.info("uploadFile");
+       
         String fileName = fileStorageService.storeFile(file);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -57,7 +57,7 @@ public class FileController {
 
     @PostMapping("/uploadMultipleFiles")
     public List<UploadFileResponse> uploadMultipleFiles(
-  										@RequestParam("files") MultipartFile[] files) {
+                                @RequestParam("files") MultipartFile[] files) {
         return Arrays.asList(files)
                 .stream()
                 .map(file -> uploadFile(file))
@@ -66,7 +66,7 @@ public class FileController {
 
     @GetMapping("/downloadFile/{fileName:.+}")
     public ResponseEntity<UrlResource> downloadFile(@PathVariable String fileName, 
-  															HttpServletRequest request) {
+                                               HttpServletRequest request) {
         // Load file as Resource
         UrlResource resource = fileStorageService.loadFileAsResource(fileName);
 
@@ -74,7 +74,7 @@ public class FileController {
         String contentType = null;
         try {
             contentType = request.getServletContext().getMimeType(resource.getFile()
-  																			.getAbsolutePath());
+                                                           .getAbsolutePath());
         } catch (IOException ex) {
             logger.info("Could not determine file type.");
         }
@@ -87,25 +87,25 @@ public class FileController {
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(contentType))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" 
-  																		+ resource.getFilename() + "\"")
+                                                        + resource.getFilename() + "\"")
                 .body(resource);
     }
     
     @GetMapping("/downloadFile")
-	public String g() {
-    	return "downloadFile";
-	}
+   public String g() {
+       return "downloadFile";
+   }
     
     @RequestMapping("/uploadFile")
-	public void forGues() {
-		logger.info("file==========================");
-	}
+   public void forGues() {
+      logger.info("file==========================");
+   }
     
     @RequestMapping(value = "/FileUpload")
-	public ModelAndView FileUpload(ModelAndView mav) {
-		
-		mav.setViewName("FileUpload");
-		
-		return mav;
-	}
+   public ModelAndView FileUpload(ModelAndView mav) {
+      
+      mav.setViewName("FileUpload");
+      
+      return mav;
+   }
 }

@@ -10,8 +10,8 @@ import com.example.demo.fileUpload.property.FileStorageProperties;
 @EnableConfigurationProperties(FileStorageProperties.class)
 public class MatJalAlApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MatJalAlApplication.class, args);
-	}
+   public static void main(String[] args) {
+      SpringApplication.run(MatJalAlApplication.class, args);
+   }
 
 }

@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.example.demo.dto.SignVo;
+import com.example.demo.dto.UserVo;
 
 @Mapper
 public interface MjaMapper {
@@ -14,7 +14,7 @@ public interface MjaMapper {
 	
 	public List<HashMap<String, Object>> findAll();
 
-	HashMap<String, String> getLogin(HashMap<String, String> params) throws Throwable;
+	public HashMap<String, String> getLogin(HashMap<String, String> params) throws Throwable;
 
 	public HashMap<String, String> imgRoute(String imgRoute);
 

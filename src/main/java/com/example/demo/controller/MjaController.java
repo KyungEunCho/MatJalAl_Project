@@ -99,21 +99,21 @@ public class MjaController {
 
 	} 
 
+	@RequestMapping(value = "/myFeed")
+	public ModelAndView myFeed(@RequestParam HashMap<String, String> params,
+									ModelAndView mav) {
+		
+		mav.setViewName("myFeed");
+		
+		return mav;
+	}
+	
 	
 	@RequestMapping(value = "/feed")
 	public ModelAndView feed(@RequestParam HashMap<String, String> params,
 									ModelAndView mav) {
 		
 		mav.setViewName("feed");
-		
-		return mav;
-	}
-	
-	@RequestMapping(value = "/myFeed")
-	public ModelAndView myFeed(@RequestParam HashMap<String, String> params,
-									ModelAndView mav) {
-		
-		mav.setViewName("myFeed");
 		
 		return mav;
 	}
