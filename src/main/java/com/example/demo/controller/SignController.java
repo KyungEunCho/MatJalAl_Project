@@ -35,11 +35,11 @@ public class SignController {
 		if(cnt == 0) {
 			try {
 				// 암호화
-				params.put("pw", Utils.encryptAES128(params.get("pw")));
+				params.put("password", Utils.encryptAES128(params.get("password")));
 				
-				System.out.println(params.get("pw"));
+				System.out.println(params.get("password"));
 				// 복호화
-				System.out.println(Utils.decryptAES128(params.get("pw")));
+				System.out.println(Utils.decryptAES128(params.get("password")));
 				
 				iSignService.sign(params);
 				
@@ -63,5 +63,13 @@ public class SignController {
 		int cnt = iSignService.idCheck(id);
 		
 		return cnt;
+	}
+	//이메일 체크
+	@PostMapping(value = "/emailCheck")
+	@ResponseBody
+	public int emailCheck(@RequestParam("email") String email) throws Throwable {
+		int mail = iSignService.emailCheck(email);
+		
+		return mail;
 	}
 }

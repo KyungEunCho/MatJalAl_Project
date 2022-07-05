@@ -28,4 +28,10 @@ public class SignService implements ISignService {
 		int cnt = iSignDao.idCheck(id);
 		return cnt;
 	}
+
+	@Override
+	public int emailCheck(String email) throws Throwable {
+		int mail = iSignDao.emailCheck(email);
+		return mail;
+	}
 }

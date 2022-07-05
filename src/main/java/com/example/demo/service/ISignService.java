@@ -10,4 +10,6 @@ public interface ISignService {
 
 	public int idCheck(String id) throws Throwable;
 
+	public int emailCheck(String email) throws Throwable;
+
 }
