@@ -38,4 +38,10 @@ public class SignDao implements ISignDao {
 		int mail = sql.selectOne(NAMESPACE+".emailCheck", email);
 		return mail;
 	}
+
+	@Override
+	public int nicknameCheck(String nick_name) throws Throwable {
+		int name = sql.selectOne(NAMESPACE+".nicknameCheck", nick_name);
+		return name;
+	}
 }

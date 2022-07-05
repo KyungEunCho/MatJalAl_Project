@@ -20,8 +20,8 @@ body {
 	padding: 10px;
 	margin-left: 40px;
 	width: 430px;
-	height: 30px;
-	line-height: 40px;
+/* 	height: 30px;
+	line-height: 40px; */
 	/* background: lime; */
 	color: #684107;
 	font-weight: bold;
@@ -35,7 +35,7 @@ body {
 .box1 {
 	padding: 5px;
 	margin: 0 0 5px 40px;
-	width: 300px;
+	width: 385px;
 	height: 40px;
 	border-radius: 10px;
 	border: none;
@@ -58,7 +58,7 @@ body {
 	font-family: 'Noto Serif KR', serif;
 }
 
-.btn_check, .id_check, .email_check {
+.nickname_check, .id_check, .email_check {
 	padding: 5px;
 	margin: 3px 0 0 10px;
 	width: 55px;
@@ -70,7 +70,7 @@ body {
 	text-align: center;
 	cursor: pointer;
 }
-.btn_big {
+#btn_big {
 	padding: 5px;
 	margin: 3px 0 0 50px;
 	width: 380px;
@@ -81,8 +81,12 @@ body {
 	color: #fff;
 	font-size: 13pt;
 	text-align: center;
+	cursor: pointer;
 }
-
+#btn_big.allCheck {
+	background: #5f0081;
+	cursor: pointer;
+}
 .btn_check:hover, .btn_big:hover {
 	cursor: pointer;
 }
@@ -135,26 +139,27 @@ body {
 }
 
 .box_email {
-	margin: auto;
+	margin: 10px auto;
 	padding-top: 10px;
 	width: 500px;
 	height: 100px;
 	background: white;
 }
 .box_id, .box_nick_name {
-	margin: auto;
+	margin: 5px auto;
 	padding-top: 10px;
 	width: 500px;
 	height: 100px;
 	background: white;
 }
 .box_pw {
-	margin: auto;
+	margin: 5px auto;
 	padding-top: 10px;
 	width: 500px;
-	height: 210px;
+	height: 245px;
 	background: white;
 }
+
 .msg_box {
 	font-size: 10pt;
 	color: red;
@@ -164,11 +169,46 @@ input:focus {
 	background: #ff770017;
 	outline: none;
 }
-.id_ok, .id_already, .email_ok, .email_already {
+/* 공통 클래스 */
+.hide {
+  display: none;
+}
+.id_ok, .id_message, .id_overlap, .id_blank, 
+.email_ok, .email_overlap, .email_message,
+.nickname_ok, .nickname_overlap, .nickname_message,
+.pw_ok, .pw_comb, .pw_length, .pw_contn, .pw_success, .pw_false {
 	display: none;
-	font-size: 10pt;
+	font-size: 9pt;
 	color: red;
 	margin: 0 0 10px 50px;
+}
+/* 경고 메세지 */
+.msg {
+  display: block;
+  width: 100%;
+  font-size: 12px;
+  color: #684107;
+  margin-bottom: 5px;
+}
+.msg:before {
+  display: inline-block;
+  content: "";
+  clear: both;
+  vertical-align: middle;
+  width: 3px;
+  height: 3px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: #333;
+}
+.msg.hide {
+  display: none;
+}
+.msg.success {
+  color: green;
+}
+.msg.success:before {
+  background: green;
 }
 
 

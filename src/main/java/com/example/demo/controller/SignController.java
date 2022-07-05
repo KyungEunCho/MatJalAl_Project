@@ -62,6 +62,11 @@ public class SignController {
 	public int idCheck(@RequestParam("id") String id) throws Throwable {
 		int cnt = iSignService.idCheck(id);
 		
+		if(cnt == 1) {
+			System.out.println("아이디 중복");	
+		} else {
+			System.out.println("아이디 사용 가능");
+		}
 		return cnt;
 	}
 	//이메일 체크
@@ -71,5 +76,14 @@ public class SignController {
 		int mail = iSignService.emailCheck(email);
 		
 		return mail;
+	}
+	
+	//닉네임 체크
+	@PostMapping(value = "/nicknameCheck")
+	@ResponseBody
+	public int nicknameCheck(@RequestParam("nick_name") String nick_name) throws Throwable {
+		int name = iSignService.nicknameCheck(nick_name);
+		
+		return name;
 	}
 }

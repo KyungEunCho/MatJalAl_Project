@@ -5,7 +5,7 @@
  <!-- 회원가입 -->
  	<insert id="sign" parameterType="hashmap">
  		INSERT INTO dbsewoomch.MJA_USER_INFO(EMAIL, ID, NICK_NAME, PASSWORD)
-		 VALUES(#{email}, #{id}, #{nickname}, #{password});
+		 VALUES(#{email}, #{id}, #{nick_name}, #{password});
  	</insert>
  	
  	<select id="checkId" parameterType="hashmap" resultType="Integer">
