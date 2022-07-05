@@ -27,25 +27,11 @@ public class MjaService implements IMjaService {
 
 	@Autowired
 	private MjaMapper mjaMapper;
-	private memberRepository mr;
-	
 	
 	
 	public List<HashMap<String, Object>> findAll() {
 		return mjaMapper.findAll();
 	}
-	
-	/*
-	 * @Override public List<HashMap<String, String>> getDataList(HashMap<String,
-	 * String> params) throws Throwable { return MjaMapper.getDataList(params); }
-	 */
-	/*
-	 * @Autowired private MjaMapper MjaMapper;
-	 * 
-	 * @Override public List<HashMap<String, String>> getDataList(String string,
-	 * HashMap<String, String> params) throws Throwable { return
-	 * MjaMapper.getDataList(params); }
-	 */
 
 	@Override
 	public HashMap<String, String> getLogin(HashMap<String, String> params) throws Throwable {

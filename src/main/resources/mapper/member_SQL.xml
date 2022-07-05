@@ -3,16 +3,18 @@
 
 <mapper namespace="Member">
 
-	<select id="findKakao" parameterType="hashmap" resultType="hashmap">
+	<insert id="kakaoInsert" parameterType="hashmap">
+		INSERT INTO MJA_KAKAO_LOGIN (KAKAO_NAME, KAKAO_EMAIL)
+ 		VALUES (#{nickname}, #{email})
+	</insert>
+
+	<select id="findKakao" parameterType="hashmap" resultType="kdto">
 		SELECT *
 		FROM MJA_KAKAO_LOGIN
 		WHERE KAKAO_NAME = #{nickname} 
 		AND KAKAO_EMAIL = #{email}
 	</select>
 
-	<insert id="kakaoInsert" parameterType="hashmap">
-		INSERT INTO MJA_KAKAO_LOGIN (KAKAO_NAME, KAKAO_EMAIL)
- 		VALUES (#{nickname}, #{email})
-	</insert>
+
 
 </mapper>
