@@ -34,4 +34,10 @@ public class SignService implements ISignService {
 		int mail = iSignDao.emailCheck(email);
 		return mail;
 	}
+
+	@Override
+	public int nicknameCheck(String nick_name) throws Throwable {
+		int name = iSignDao.nicknameCheck(nick_name);
+		return name;
+	}
 }
