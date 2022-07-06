@@ -56,7 +56,7 @@ $(document).ready(function() {
 
 				</div>
 					<div class="id_message hide msg">4자 이상의 영문,숫자 혹은 영문과 숫자를 조합</div>
-					<div class="id_ok hide msg">사용할 수 있는 아이디입니다.</div>
+					<div class="id_ok hide msg success">사용할 수 있는 아이디입니다.</div>
 					<div class="id_overlap hide msg">중복된 아이디가 있습니다.</div>
 			</div>
 			<div class="box_email">
@@ -64,7 +64,7 @@ $(document).ready(function() {
 				<div class="one_line">
 					<input type="text" class="box1" id="email" name="email" placeholder="이메일을 입력해주세요"/>
 				</div>
-				<div class="email_ok hide msg">사용할 수 있는 이메일입니다.</div>
+				<div class="email_ok hide msg success">사용할 수 있는 이메일입니다.</div>
 				<div class="email_overlap hide msg">중복된 이메일이 있습니다.</div>
 				<div class="email_message hide msg">올바른 이메일 형식이 아닙니다.</div>
 			</div>
@@ -82,14 +82,14 @@ $(document).ready(function() {
 					<input type="password" class="box2" id="password2" name="password2" placeholder="비밀번호를 한번 더 입력해주세요"/>
 				</div>
 				<div class="pw_false hide msg">동일한 비밀번호를 입력해주세요.</div>
-				<div class="pw_success hide msg">동일한 비밀번호가 입력되었습니다.</div>
+				<div class="pw_success hide msg success">동일한 비밀번호가 입력되었습니다.</div>
 			</div>
 			<div class="box_nick_name">
 				<div class="nm">닉네임</div>
 				<div class="one_line">
 					<input type="text" class="box1" id="nick_name" name="nick_name" placeholder="사용할 닉네임을 입력해주세요"/>
 				</div>
-				<div class="nickname_ok hide msg">사용할 수 있는 닉네임입니다.</div>
+				<div class="nickname_ok hide msg success">사용할 수 있는 닉네임입니다.</div>
 				<div class="nickname_overlap hide msg">중복된 닉네임이 있습니다.</div>
 				<div class="nickname_message hide msg">닉네임은 한글 2~10자, 영문 및 숫자 2~20자 입니다(특수문자 포함X).</div>
 			</div>

@@ -19,11 +19,6 @@ public class SignService implements ISignService {
 	}
 
 	@Override
-	public int checkId(HashMap<String, String> params) throws Throwable {
-		return iSignDao.checkId(params);
-	}
-
-	@Override
 	public int idCheck(String id) throws Throwable {
 		int cnt = iSignDao.idCheck(id);
 		return cnt;

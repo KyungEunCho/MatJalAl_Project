@@ -23,11 +23,6 @@ public class SignDao implements ISignDao {
 	}
 
 	@Override
-	public int checkId(HashMap<String, String> params) throws Throwable {
-		return sql.selectOne("sign.checkId", params);
-	}
-
-	@Override
 	public int idCheck(String id) throws Throwable {
 		int cnt = sql.selectOne(NAMESPACE+".idCheck", id);
 		return cnt;

@@ -28,11 +28,14 @@ public class SignController {
 	}
 	
 	@RequestMapping(value="/sign")
-	public ModelAndView sign(@RequestParam HashMap<String, String> params,@RequestParam("id") String id, ModelAndView mav) throws Throwable {
+	public ModelAndView sign(@RequestParam HashMap<String, String> params, @RequestParam("id") String id, 
+							 @RequestParam("email") String email, @RequestParam("nick_name") String nick_name, ModelAndView mav) throws Throwable {
 		
 		int cnt = iSignService.idCheck(id);
+		int mail = iSignService.emailCheck(email);
+		int name = iSignService.nicknameCheck(nick_name);
 		
-		if(cnt == 0) {
+		if(cnt == 0 && mail == 0 && name == 0) {
 			try {
 				// 암호화
 				params.put("password", Utils.encryptAES128(params.get("password")));
@@ -59,7 +62,7 @@ public class SignController {
 	//아이디 체크
 	@PostMapping(value = "/idCheck")
 	@ResponseBody
-	public int idCheck(@RequestParam("id") String id) throws Throwable {
+	public int check(@RequestParam("id") String id) throws Throwable {
 		int cnt = iSignService.idCheck(id);
 		
 		if(cnt == 1) {
