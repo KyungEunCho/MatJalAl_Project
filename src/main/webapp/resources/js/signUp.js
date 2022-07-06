@@ -47,6 +47,13 @@ function checkData() {
 			  confirmButtonColor: '#ff6600b8' /* 버튼색깔 */
 		});
 		$("#password").focus();
+	} else if(checkEmpty("#password2")) {
+		Swal.fire({
+			  title: '비밀번호를 한번 더 입력해주세요.',
+			  showConfirmButton: true,
+			  confirmButtonColor: '#ff6600b8' /* 버튼색깔 */
+		});
+		$("#password2").focus();
 	} else {
 		if(isAllCheck()) {
 			$("#signUpForm").submit();									
