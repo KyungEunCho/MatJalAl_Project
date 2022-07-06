@@ -6,12 +6,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+
 if('${check}' == "false") {
-	alert("중복된 아이디가 있습니다");	
+	alert("중복된 내용이 있습니다.");
 } else {
 	alert("작성 중 문제가 발생하였습니다");	
 }
-history.back();
+history.back();	
 </script>
 </head>
 <body>

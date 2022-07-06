@@ -210,5 +210,10 @@ input:focus {
 .msg.success:before {
   background: green;
 }
-
+#btn_big.allCheck {
+  color: #fff;
+  border: 2px solid #5f0081;
+  background: #5f0081;
+  cursor: pointer;	
+}
 

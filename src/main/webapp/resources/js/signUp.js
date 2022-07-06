@@ -32,7 +32,8 @@ function checkData() {
 			  confirmButtonColor: '#ff6600b8' /* 버튼색깔 */
 		});
 		$("#email").focus();
-	} else if(checkEmpty("#nick_name")) {
+	} 
+	else if(checkEmpty("#nick_name")) {
 		Swal.fire({
 			  title: '닉네임을 입력해주세요.',
 			  showConfirmButton: true,
@@ -47,7 +48,15 @@ function checkData() {
 		});
 		$("#password").focus();
 	} else {
-		$("#signUpForm").submit();			
+		if(isAllCheck()) {
+			$("#signUpForm").submit();									
+		} else {
+			Swal.fire({
+				title: '모든 조건이 충족되어야 합니다.',
+				showConfirmButton: true,
+				confirmButtonColor: '#ff6600b8' /* 버튼색깔 */
+			});			
+		}
 	}
 }
 
@@ -187,24 +196,23 @@ function passwordRetypeFn() {
 		passwordSuccess.classList.add('hide');		
 	}
 }
-inputPassword2.onclick = passwordRetypeFn;
 inputPassword2.onkeyup = passwordRetypeFn;
 
 //------------------------ 최종 체크 ------------------------//
-function allCheck() {
+function isAllCheck() {
 	if(isMoreThan4Length(inputId.value) && idChar(inputId.value) && 
 	   isMoreThan4Length(inputEmail.value) && emailChar(inputEmail.value) &&
 	   isMoreThan2Length(inputNickname.value) && nickNameChar(inputNickname.value)) {
 		if((isMoreThan10Length(inputPassword.value)) && (isPasswordEng(inputPassword.value) + isPasswordNum(inputPassword.value)
 			+ isPasswordSpeci(inputPassword.value) >=2) && (isPasswordChar(inputPassword.value)) && (isPasswordBlank(inputPassword.value))
 			&& (!isPasswordRepeat(inputPassword.value))) {
-			if(isMatch(inputPassword.value, inputPassword2.value)) {
-				return true;
-			}
+				if(isMatch(inputPassword.value, inputPassword2.value)) {
+					return true;
+				}
 		}
 	} else {
 		return false;
-	}
+	}		
 }
 
 /*//[회원가입 버튼] 배경 활성화 함수

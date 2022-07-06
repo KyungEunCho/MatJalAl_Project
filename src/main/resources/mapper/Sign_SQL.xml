@@ -7,10 +7,5 @@
  		INSERT INTO dbsewoomch.MJA_USER_INFO(EMAIL, ID, NICK_NAME, PASSWORD)
 		 VALUES(#{email}, #{id}, #{nick_name}, #{password});
  	</insert>
- 	
- 	<select id="checkId" parameterType="hashmap" resultType="Integer">
- 		SELECT COUNT(*) AS CNT
- 		FROM MJA_USER_INFO
- 		WHERE ID = #{id}
- 	</select>
+
 </mapper>
