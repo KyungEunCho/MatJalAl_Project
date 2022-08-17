@@ -145,7 +145,7 @@ function makePopup(option) {
 					}
 				}
 			} else {
-				html += "<div class=\"cmn_btn_mr\" id=\"popup" + depth + "Btn\">확인</div>";
+				// html += "<div class=\"cmn_btn_mr\" id=\"popup" + depth + "Btn\">확인</div>";
 			}
 			
 			html += "	</div>";

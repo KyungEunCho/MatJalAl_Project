@@ -586,7 +586,7 @@ $(document).ready(function() {
 								closePopup();
 							});
 						},
-/* 						buttons : [{
+ 		/* 				buttons : [{
 							name : "다음",
 							func : function() {
 								closePopup();
