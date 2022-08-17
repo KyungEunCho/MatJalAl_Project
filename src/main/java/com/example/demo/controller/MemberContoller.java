@@ -10,24 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.demo.dto.kakaoDTO;
-import com.example.demo.service.memberService;
+import com.example.demo.dto.KakaoDTO;
+import com.example.demo.service.MemberService;
 
 
 @Controller
 public class MemberContoller {
 	
 	@Autowired 
-	private memberService ms;
+	private MemberService ms;
 	
 	@Autowired
 	private HttpSession session;
-/*	@GetMapping("/login")
-	@ResponseBody
-	public List <HashMap<String, Object>> findAll() {
-	      
-		return null;
-	} */
+
 		
 		@RequestMapping(value="/login", method=RequestMethod.GET)
 		public String login(@RequestParam(value = "code", required = false) String code) {
@@ -38,7 +33,7 @@ public class MemberContoller {
 			System.out.println("###access_Token#### : " + access_Token);
 
 			// 위에서 만든 코드 아래에 코드 추가
-			kakaoDTO userInfo = ms.getUserInfo(access_Token);
+			KakaoDTO userInfo = ms.getUserInfo(access_Token);
 			System.out.println("###access_Token#### : " + access_Token);
 			
 	//		 System.out.println("###nickname#### : " + userInfo.get("nickname"));
