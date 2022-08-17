@@ -405,9 +405,11 @@ td {
 }
 
 .second_newFeed_cont {
+	display : block;
 	margin-left: 10px;
 	width: 250px;
 	height: 150px;
+	border: 0px solid;
 }
 
 .hashTag {
@@ -555,9 +557,9 @@ $(document).ready(function() {
 			html += "								</div>";
 			html += "									<div class = \"second_newFeed_nick\">닉네임이다</div>";
 			html += "								</div>";
-			html += "								<div class = \"second_newFeed_cont\">반갑다 5학년 3반이야";
-			html += "									<div class = \"hashTag\">#햄버거</div>";
-			html += "								</div>";
+			
+			html += "								<input type = \"text\" class = \"second_newFeed_cont\">";
+			html += "								<div class = \"hashTag\">#햄버거</div>";
 			html += "								<div class=\"starWrap\">";
 			html += "									<div class = \"star\">";
 			html += "										<img src = \"resources/image/yellowStar.png\" class = \"second_newFeed_star_img\"/>";
