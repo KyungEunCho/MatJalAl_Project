@@ -49,5 +49,10 @@ public class MjaService implements IMjaService {
 		return mjaMapper.feedNum(feedNum);
 	}
 
+	@Override
+	public List<HashMap<String, String>> addFeed(HashMap<String, String> params) throws Throwable {
+		return mjaMapper.addFeed(params);
+	}
+
 
 	}

@@ -47,4 +47,16 @@
 		WHERE NICK_NAME = #{id}
 		AND PASSWORD = #{pw} 	
  	</select>
+ 	
+ 	<insert id = "addFeed" parameterType="hashmap">
+		INSERT INTO MJA_FEED (STORE_NUM, USER_NUM,  FEED_CMNT, STAR)
+		VALUES (#{store}, #{user}, #{cmnt}, #{star});
+ 	</insert>
+ 	
+ 	<insert id = "hashtag" parameterType="hashmap">
+		INSERT INTO MJA_HASHTAG (HASHTAG_NAME)
+		VALUES (#{hashtag});
+ 	</insert>
+ 	
+ 	
 </mapper>

@@ -17,6 +17,6 @@ public interface IMjaService {
 
 	public HashMap<String, Integer> feedNum(int feedNum);
 
-
+	public List<HashMap<String, String>> addFeed(HashMap<String, String> params) throws Throwable;
 	
 }

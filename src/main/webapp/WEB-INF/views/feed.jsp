@@ -8,6 +8,7 @@
 <script type="text/javascript"
 		src="../resources/js/jquery/jquery-1.12.4.min.js"></script>  
 <script type="text/javascript" src="../resources/js/common/popup.js"></script>	<!-- popup end script -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e24d198715a0256d57d641e892714cdd&libraries=services,clusterer,drawing"></script>
 <link rel="stylesheet" type="text/css" href="../resources/css/popup.css" />
 <link rel="stylesheet" type="text/css" href="../resources/css/cmn.css" />
 <link rel="stylesheet" type="text/css" href="../resources/css/newfeed.css" />
@@ -252,6 +253,7 @@
 
 .tr_hashTag_area {
 	margin-left: 10px;
+	margin-bottom: 15px;
 }
 
 #tag-list {
@@ -328,15 +330,66 @@ input[type="radio"]:checked + .start-radio-img {
     pointer-events: none;
 }
 
+.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
+.map_wrap {position:relative;width:100%;height:500px;}
+#menu_wrap {}
+#keyword {height: 18px;}
+.bg_white {background:#fff; margin-top: 20px; width: 310px;}
+#menu_wrap hr {display: block; height: 1px; width: 310px; border: 0; border-top: 2px solid #5F5F5F;margin:5px 0; margin-left: 3px; }
+#menu_wrap .option{margin-left: 8px;}
+#menu_wrap .option p {margin:10px 0;}  
+#menu_wrap .option button {margin-left:0px; border: 0px solid #ff6600b8; background-color: white; cursor: pointer; vertical-align: top;}
+#placesList li {list-style: none;}
+#placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
+#placesList .item span {display: block;margin-top:4px;}
+#placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+#placesList .item .info{padding:10px 0 10px 55px;}
+#placesList .info .gray {color:#8a8a8a;}
+#placesList .info .jibun {padding-left:26px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
+#placesList .info .tel {color:#009900;}
+#placesList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 10px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
+#placesList .item .marker_1 {background-position: 0 -10px;}
+#placesList .item .marker_2 {background-position: 0 -56px;}
+#placesList .item .marker_3 {background-position: 0 -102px}
+#placesList .item .marker_4 {background-position: 0 -148px;}
+#placesList .item .marker_5 {background-position: 0 -194px;}
+#placesList .item .marker_6 {background-position: 0 -240px;}
+#placesList .item .marker_7 {background-position: 0 -286px;}
+#placesList .item .marker_8 {background-position: 0 -332px;}
+#placesList .item .marker_9 {background-position: 0 -378px;}
+#placesList .item .marker_10 {background-position: 0 -423px;}
+#placesList .item .marker_11 {background-position: 0 -470px;}
+#placesList .item .marker_12 {background-position: 0 -516px;}
+#placesList .item .marker_13 {background-position: 0 -562px;}
+#placesList .item .marker_14 {background-position: 0 -608px;}
+#placesList .item .marker_15 {background-position: 0 -654px;}
+#pagination {margin:10px auto;text-align: center;}
+#pagination a {display:inline-block;margin-right:10px;}
+#pagination .on {font-weight: bold; cursor: default;color:#777;}
+
 </style>
 <script type="text/javascript" src="resources/js/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	reloadList();
 	
+	
 	$(".new_feed").on("click", function() {
 		
 		var html = "";
+		
+		
+		html += "		<form action = \"#\" id = \"addForm\" method = \"post\">";
+		html += "			<input type = \"hidden\" id = \"storeNum\" name = \"storeNum\" value = \"${store}\"/>";		
+ 		html += "			<input type = \"hidden\" id = \"userNum\" name = \"userNum\" value=\"${user}\"/>";		
+ 		html += "			<input type = \"hidden\" id = \"second_newFeed_cont\" name = \"second_newFeed_cont\" value=\"${cmnt}\"/>";
+		html += "			<input type = \"hidden\" id = \"star\" name = \"star\" value=\"${star}\"/>";
+		html += " 		</from>"
+		
+		html += "		<form action = \"#\" id = \"hashtagForm\" method = \"post\">";
+		html += "			<input type = \"hidden\" id = \"tag-list\" name = \"tag-list\" value = \"${hashtag}\"/>";
+		html += " 		</from>"
 		
 		html += "						<div class = \"second_NewFeed_contWrap\">";
 		html += "							<div class = \"second_newFeed_photoWrap\">";
@@ -350,65 +403,78 @@ $(document).ready(function() {
 		html += "									</div>";
 		html += "									<div class = \"second_newFeed_nick\">닉네임이다</div>";
 		html += "								</div>";
-		html += "								<textarea placeholder=\"내용을 입력하세요.\" class = \"second_newFeed_cont\"></textarea>";
-		html += "                               <div class=\"tr_hashTag_area\">                                                                                 " ;
-	    html += "                                   <div class=\"form-group\">                                                                                  " ;
-	    html += "                                       <input type=\"hidden\" value=\"\" name=\"tag\" id=\"rdTag\" />                                                " ;
-	    html += "                                   </div>                                                                                                    " ;
-	    html += "                                                                                                                                             " ;
-	    html += "                                    <ul id=\"tag-list\"></ul>                                                                                  " ;
-	    html += "                                                                                                                                             " ;
-	    html += "                                   <div class=\"form-group\">                                                                                  " ;
-	    html += "                                   	<input type=\"text\" id=\"tag\" size=\"7\" placeholder=\"엔터로 해시태그를 등록해주세요.\" style=\"width: 300px;\">	    " ;
-	    html += "                                   </div>                                                                                                    " ;
-		html += "                               </div>                                                                                                        " ;
+		html += "								<textarea placeholder=\"내용을 입력하세요.\" id = \"second_newFeed_cont\" class = \"second_newFeed_cont\"></textarea>";
+		html += "                               <div class=\"tr_hashTag_area\">";
+	    html += "                                   <div class=\"form-group\">";
+	    html += "                                       <input type=\"hidden\" value=\"\" name=\"tag\" id=\"rdTag\" />";
+	    html += "                                   </div>";
+	    html += "";
+	    html += "                                    <ul id=\"tag-list\"></ul>";
+	    html += "";
+	    html += "                                   <div class=\"form-group\">";
+	    html += "                                   	<input type=\"text\" id=\"tag\" size=\"7\" placeholder=\"엔터로 해시태그를 등록해주세요.\" style=\"width: 300px;\">";
+	    html += "                                   </div>";
+		html += "                               </div>";
 		html += "								<div class=\"starWrap\">";
 		html += "									<div class = \"star\">";
-	    html += "                                       <div class=\"start-radio\">                                                                                       ";
-	    html += "                                           <label class=\"start-radio-box\">                                                                               ";
-	    html += "                                               <input type=\"radio\" name=\"star\">                                                                          ";
-	    html += "                                               <span class=\"start-radio-img\"><span class=\"blind\">별0.5개</span></span>                                   ";
-	    html += "                                           </label>                                                                                                      ";
-	    html += "                                           <label class=\"start-radio-box\">                                                                               ";
-	    html += "                                               <input type=\"radio\" name=\"star\">                                                                          ";
-	    html += "                                               <span class=\"start-radio-img\"><span class=\"blind\">별1개</span></span>                                     ";
-	    html += "                                           </label>                                                                                                      ";
-	    html += "                                           <label class=\"start-radio-box\">                                                                               ";
-	    html += "                                               <input type=\"radio\" name=\"star\">                                                                          ";
-	    html += "                                               <span class=\"start-radio-img\"><span class=\"blind\">별1.5개</span></span>                                   ";
-	    html += "                                           </label>                                                                                                      ";
-	    html += "                                           <label class=\"start-radio-box\">                                                                               ";
-	    html += "                                               <input type=\"radio\" name=\"star\">                                                                          ";
-	    html += "                                               <span class=\"start-radio-img\"><span class=\"blind\">별2개</span></span>                                     ";
-	    html += "                                           </label>                                                                                                      ";
-	    html += "                                           <label class=\"start-radio-box\">                                                                               ";
-	    html += "                                               <input type=\"radio\" name=\"star\">                                                                          ";
-	    html += "                                               <span class=\"start-radio-img\"><span class=\"blind\">별2.5개</span></span>                                   ";
-	    html += "                                           </label>                                                                                                      ";
-	    html += "                                           <label class=\"start-radio-box\">                                                                               ";
-	    html += "                                               <input type=\"radio\" name=\"star\">                                                                          ";
-	    html += "                                               <span class=\"start-radio-img\"><span class=\"blind\">별3개</span></span>                                     ";
-	    html += "                                           </label>                                                                                                      ";
-	    html += "                                           <label class=\"start-radio-box\">                                                                               ";
-	    html += "                                               <input type=\"radio\" name=\"star\">                                                                          ";
-	    html += "                                               <span class=\"start-radio-img\"><span class=\"blind\">별3.5개</span></span>                                   ";
-	    html += "                                           </label>                                                                                                      ";
-	    html += "                                           <label class=\"start-radio-box\">                                                                               ";
-	    html += "                                               <input type=\"radio\" name=\"star\">                                                                          ";
-	    html += "                                               <span class=\"start-radio-img\"><span class=\"blind\">별4개</span></span>                                     ";
-	    html += "                                           </label>                                                                                                      ";
-	    html += "                                           <label class=\"start-radio-box\">                                                                               ";
-	    html += "                                               <input type=\"radio\" name=\"star\">                                                                          ";
-	    html += "                                               <span class=\"start-radio-img\"><span class=\"blind\">별4.5개</span></span>                                   ";
-	    html += "                                           </label>                                                                                                      ";
-	    html += "                                           <label class=\"start-radio-box\">                                                                               ";
-	    html += "                                               <input type=\"radio\" name=\"star\">                                                                          ";
-	    html += "                                               <span class=\"start-radio-img\"><span class=\"blind\">별5개</span></span>                                     ";
-	    html += "                                           </label>                                                                                                      ";
-	    html += "                                       </div>																											";
+	    html += "                                       <div class=\"start-radio\">";
+	    html += "                                           <label class=\"start-radio-box\">";
+	    html += "                                               <input type=\"radio\" name=\"star\">";
+	    html += "                                               <span class=\"start-radio-img\"><span class=\"blind\">별0.5개</span></span>";
+	    html += "                                           </label>";
+	    html += "                                           <label class=\"start-radio-box\">";
+	    html += "                                               <input type=\"radio\" name=\"star\">";
+	    html += "                                               <span class=\"start-radio-img\"><span class=\"blind\">별1개</span></span>";
+	    html += "                                           </label>";
+	    html += "                                           <label class=\"start-radio-box\">";
+	    html += "                                               <input type=\"radio\" name=\"star\">";
+	    html += "                                               <span class=\"start-radio-img\"><span class=\"blind\">별1.5개</span></span>";
+	    html += "                                           </label>";
+	    html += "                                           <label class=\"start-radio-box\">";
+	    html += "                                               <input type=\"radio\" name=\"star\">";
+	    html += "                                               <span class=\"start-radio-img\"><span class=\"blind\">별2개</span></span>";
+	    html += "                                           </label>";
+	    html += "                                           <label class=\"start-radio-box\">";
+	    html += "                                               <input type=\"radio\" name=\"star\">";
+	    html += "                                               <span class=\"start-radio-img\"><span class=\"blind\">별2.5개</span></span>";
+	    html += "                                           </label>";
+	    html += "                                           <label class=\"start-radio-box\">";
+	    html += "                                               <input type=\"radio\" name=\"star\">";
+	    html += "                                               <span class=\"start-radio-img\"><span class=\"blind\">별3개</span></span>";
+	    html += "                                           </label>";
+	    html += "                                           <label class=\"start-radio-box\">";
+	    html += "                                               <input type=\"radio\" name=\"star\">";
+	    html += "                                               <span class=\"start-radio-img\"><span class=\"blind\">별3.5개</span></span>";
+	    html += "                                           </label>";
+	    html += "                                           <label class=\"start-radio-box\">";
+	    html += "                                               <input type=\"radio\" name=\"star\">";
+	    html += "                                               <span class=\"start-radio-img\"><span class=\"blind\">별4개</span></span>";
+	    html += "                                           </label>";
+	    html += "                                           <label class=\"start-radio-box\">";
+	    html += "                                               <input type=\"radio\" name=\"star\">";
+	    html += "                                               <span class=\"start-radio-img\"><span class=\"blind\">별4.5개</span></span>";
+	    html += "                                           </label>";
+	    html += "                                           <label class=\"start-radio-box\">";
+	    html += "                                               <input type=\"radio\" name=\"star\">";
+	    html += "                                               <span class=\"start-radio-img\"><span class=\"blind\">별5개</span></span>";
+	    html += "                                           </label>";
+	    html += "                                       </div>";
 		html += "									</div>";
 		html += "								</div>";
 		html += "								<div class = \"second_newFeed_search_place\">";
+		html += "								    <div id=\"menu_wrap\" class=\"bg_white\">";
+		html += "								        <div class=\"option\">";
+		html += "								            <div>";
+		html += "								                <form onsubmit=\"searchPlaces(); return false;\">";
+		html += "								                    <input type=\"text\" value=\"이태원\" id=\"keyword\" size=\"32\">";
+		html += "								                    <input type=\"button\"> <img src=\"resources/image/search.png\" class=\"srch_icon\" width = \"22px\" height = \"22px\">";
+		html += "								                </form>";
+		html += "								            </div>";
+		html += "								        </div>";
+		html += "								        <hr>";
+		html += "								        <ul id=\"placesList\"></ul>";
+		html += "								        <div id=\"pagination\"></div>";
+		html += "							    	</div>";
 		html += "								</div>";
 		html += "							</div>";
 		html += "						</div>";
@@ -420,7 +486,7 @@ $(document).ready(function() {
 			bgClose : false,
 			title : "새 피드 만들기",
 			width : 700,
-			height: 600,
+			height: 650,
 			contents :html,
 			contentsEvent : function() { // Ajax 넣는 곳
 				$('input[name="file_path"]').change(function(){
@@ -436,7 +502,29 @@ $(document).ready(function() {
 					} else if($("[name='star']").is(":checked") == false) {
 						alert("별점을 선택하세요.");
 					} else {
-						closePopup();
+						
+						var params = $("#addForm").serialize();
+						console.log(params);
+						// 위 둘은 아닐 수도있음
+						// 아작스 태우기
+						$.ajax ({
+							type : "post",
+							url : "addFeedAjax",
+							dataType : "json",
+							data : params,
+							success : function(res) {
+								if(res.res == "success") {
+								//	hashtag();
+									closePopup();
+								} else {
+									alert("생성중 문제가 발생하였습니다.");
+								}
+							},
+							error : function(request, status, error) {
+								console.log(request.responseText);
+							}
+						}); 
+						 
 					}
 				});
 				
@@ -504,7 +592,13 @@ $(document).ready(function() {
 			        tag[index] = "";
 			        $(this).parent().remove();
 			    });
-			}
+				
+				
+
+				
+				
+			    
+			} // function end
 		}); // makePopup end
 	}); // click end
 });
@@ -522,7 +616,7 @@ function reloadList() { // 목록 조회용 + 페이징 조회용
 			drawList(res.list);
 		},
 		error : function(result, status, error) {
-			console.log(result, responseText);
+			console.log(result);
 		}
 	});
 }
@@ -552,6 +646,27 @@ function setImageFromFile(input, expression) {
   reader.readAsDataURL(input.files[0]);
   }
 }
+
+function Hashtag() {
+	var params = $("#hashtagForm").serialize();
+	
+	$.ajax({
+		type : "post",
+		url : "hashtagAjax",
+		dataType : "json",
+		data : params,
+		success : function(res) {
+			console.log(res);
+			drawRoom(res.list);
+		},
+		error : function(request, status, error) {
+			console.log(request.responseText);
+		}
+	});
+	
+}
+
+
 </script>
 </head>
 <body>
@@ -577,7 +692,6 @@ function setImageFromFile(input, expression) {
 		<div class="feed_bottom_bar"></div>
 	</div>
 	<div class="feed_zone">
-		<div class = "feed_subzone">
 			<div class="feed_photo">
 				<div class="photo_name">새벽집 강남점1</div>
 				<div class="photo_star">
@@ -589,91 +703,8 @@ function setImageFromFile(input, expression) {
 					<div class="star_grade">4.0</div>
 				</div>
 			</div>
-			<div class="feed_photo">
-				<div class="photo_name">새벽집 강남점1</div>
-				<div class="photo_star">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/empty_star.png" class="stars">
-					<div class="star_grade">4.0</div>
-				</div>
-			</div>
-			<div class="feed_photo">
-				<div class="photo_name">새벽집 강남점1</div>
-				<div class="photo_star">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/empty_star.png" class="stars">
-					<div class="star_grade">4.0</div>
-				</div>
-			</div>
-		</div>
-		<div class = "feed_subzone">
-			<div class="feed_photo">
-				<div class="photo_name">새벽집 강남점1</div>
-				<div class="photo_star">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/empty_star.png" class="stars">
-					<div class="star_grade">4.0</div>
-				</div>
-			</div>
-			<div class="feed_photo">
-				<div class="photo_name">새벽집 강남점1</div>
-				<div class="photo_star">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/empty_star.png" class="stars">
-					<div class="star_grade">4.0</div>
-				</div>
-			</div>
-			<div class="feed_photo">
-				<div class="photo_name">새벽집 강남점1</div>
-				<div class="photo_star">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/empty_star.png" class="stars">
-					<div class="star_grade">4.0</div>
-				</div>
-			</div>
-		</div>
-		<div class = "feed_subzone">
-			<div class="feed_photo">
-				<div class="photo_name">새벽집 강남점1</div>
-				<div class="photo_star">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/star.png" class="stars">
-					<img src="resources/image/empty_star.png" class="stars">
-					<div class="star_grade">4.0</div>
-				</div>
-			</div>
-		</div>
 
-		<form action="#" id="actionForm" method="post">
-			<table class="board_table">
-				<thead>
-					<tr>
-						<th>피드번호</th>
-						<th>피드사진</th>
-						<th>가게이름</th>
-						<th>별점</th>
-					</tr>
-				</thead>
-				<tbody></tbody>
-			</table>
-		</form>
+
 	</div>
 </div>
 </body>
