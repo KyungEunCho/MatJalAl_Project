@@ -54,5 +54,50 @@ public class MjaService implements IMjaService {
 		return mjaMapper.addFeed(params);
 	}
 
+	@Override
+	public String getStoreSeq(String store) throws Throwable {
+		return mjaMapper.getStoreSeq(store);
+	}
+
+	@Override
+	public void feedStore(HashMap<String, String> params) throws Throwable {
+		mjaMapper.feedStore(params);
+	}
+
+	@Override
+	public void feedWrite(HashMap<String, String> params) throws Throwable {
+		mjaMapper.feedWrite(params);
+	}
+
+	@Override
+	public String getFeedSeq(String feed) throws Throwable {
+		return mjaMapper.getFeedSeq(feed);
+	}
+
+	@Override
+	public String getHashTagSeq(String hashtag) throws Throwable {
+		return mjaMapper.getHashTagSeq(hashtag);
+	}
+
+	@Override
+	public void feedPhoto(HashMap<String, String> params) throws Throwable {
+		mjaMapper.feedPhoto(params);
+	}
+
+	@Override
+	public void hashTag(HashMap<String, String> params) throws Throwable {
+		mjaMapper.hashTag(params);
+	}
+
+	@Override
+	public void hashTagFeed(HashMap<String, String> params) throws Throwable {
+		mjaMapper.hashTagFeed(params);
+	}
+
+	@Override
+	public HashMap<String, String> feedView(HashMap<String, String> params) throws Throwable {
+		return mjaMapper.feedView(params);
+	}
+
 
 	}

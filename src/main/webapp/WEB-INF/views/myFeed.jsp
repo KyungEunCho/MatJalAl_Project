@@ -8,9 +8,12 @@
 <meta charset="UTF-8">
 <title>My Feed</title>
 <script type="text/javascript"
-		src="../resources/js/jquery/jquery-1.12.4.min.js"></script>  
+		src="../resources/js/jquery/jquery-1.12.4.min.js"></script>
+<!-- 카카오 js -->		  
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e24d198715a0256d57d641e892714cdd&libraries=services,clusterer,drawing"></script>
+<!-- 팝업 js -->
 <script type="text/javascript" src="../resources/js/common/popup.js"></script>	<!-- popup end script -->
+
 <link rel="stylesheet" href ="../resources/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/popup.css" />
 <link rel="stylesheet" type="text/css" href="../resources/css/cmn.css" />
@@ -34,7 +37,7 @@ html {
 	height : 450px;
 	width : 450px;
 	position: absolute;
-	top : calc(25% - 25%);
+	top : calc(30% - 25%);
 	left : calc(40% - 360px);
 }
 
@@ -50,6 +53,8 @@ html {
 	display: block;
 	height: 35px;
 	width: auto;
+	color: ##85898F;
+	font-weight: bold;
 }
 
 .profile {
@@ -79,7 +84,7 @@ html {
 	line-height: 20px;
 	cursor: pointer;
 	font-size: 8pt;
-	margin-left: 30px;
+	margin-left: 5px;
 }
 
 .feed_cont {
@@ -87,6 +92,7 @@ html {
 	width: auto;
 	margin-left: 20px;
 	margin-top: 20px;
+	font-size: 12pt;
 }
 
 .hashTag {
@@ -216,6 +222,9 @@ html {
 .store_name {
 	display : inline-block;
 	font-size: 15pt;
+	color: #fc6902;
+	font-weight: bold;
+	margin-right: 5px;
 }
 
 .star {
@@ -431,6 +440,15 @@ td {
 	vertical-align: top;
 }
 
+.star_grade {
+	vertical-align: middle;
+	display: inline-block;
+	color: black;
+	font-weight: bold;
+	font-size: 14pt;
+	margin-left: 5px;
+}
+
 .second_newFeed_star_img {
 	margin-right: -7px;
 	margin-left: 2px;
@@ -460,6 +478,19 @@ td {
 	position: relative;
 	left : calc(43%);
 }
+
+.list_btn {
+   display : inline-block;
+   height: 20px;
+   width: 40px;
+   background-color: #ff6600b8;
+   text-align: center;
+   border-radius : 3px;
+   color : white;
+   line-height: 20px;
+   cursor: pointer;
+   font-size: 8pt;
+} 
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 .map_wrap {position:relative;width:100%;height:500px;}
@@ -502,7 +533,12 @@ td {
 <script type="text/javascript">
 $(document).ready(function() {
 	
-	$(".cmnt_add_button").on("click", function() {
+	$(".list_btn").on("click", function() {
+	      $("#actionForm").attr("action", "feed");
+	      $("#actionForm").submit();
+	   });
+	
+	$("").on("click", function() {
 		
 		var html = "";
 		
@@ -588,12 +624,7 @@ $(document).ready(function() {
 								closePopup();
 							});
 						},
- 		/* 				buttons : [{
-							name : "다음",
-							func : function() {
-								closePopup();
-							}
-						}] */
+
 					}); // popup end
 				} // 상위 function end
 			}, {
@@ -601,27 +632,37 @@ $(document).ready(function() {
 						func : function() {
 							closePopup();
 						}
+					
+			
+			
 			}] // buttons end
 		}); // makePopup end
 	}); // click end
 }); // ready end
 
-
 </script>
+
+<form action="#" id="actionForm" method="post">
+   <input type="hidden" id="feedsq" name="feedsq"/>
+   <input type="hidden" id="hashTagName" name="hashTagName" />
+</form>
+
 	<div class = "cont_wrap">
 		<div class = "feed_photo">
-		<img src = "../resources/image/noimage.jpeg" width = "450px" height = "450px"/>
+		<img src = "${data.ATT_FILE}" width = "450px" height = "350px"/>
 		</div>
 		<div class = "feed_right">
 			<div class = "user_info">
 				<div class = "profile">
-					<img src = "../resources/image/noimage.jpeg" width = "30px" height="30px"/>
+					<img src = "../resources/image/profileCat.jpg" width = "30px" height="30px"/>
 				</div>
-				<div class = "nick">this is nickname</div>
+				<div class = "nick">${nName}</div>
+				<div class = "list_btn">목록</div>
 				<div class = "update_btn">수정</div>
 			</div>
-			<div class = "feed_cont">안녕
-			<div class = "hashTag">#맥도날드</div>
+			
+			<div class = "feed_cont">${data.FEED_CMNT}
+			<div class = "hashTag">${data.HASHTAG_NAME}</div>
 			</div>
 			<div class = "feed_cmnt">
 				<div class = "cmnt_user_info">
@@ -659,15 +700,65 @@ $(document).ready(function() {
 	
 		<div class = "map_page">
 			<div class = "place_info">
-				<div class = "store_name">맥도날드</div>
+				<div class = "store_name">${data.STORE_NAME}</div>
 				<div class = "star">
-					<img src = "../resources/image/yellowStar.png" class = "star_img"/>
-					<img src = "../resources/image/yellowStar.png" class = "star_img"/>
-					<img src = "../resources/image/yellowStar.png" class = "star_img"/>
-					<img src = "../resources/image/yellowStar.png" class = "star_img"/>
-					<img src = "../resources/image/whiteStar.png" class = "star_img"/>
+					
+					<div class = "star">
+		               <c:if test="${data.STAR eq 0.5}">
+		                  <img src = "../resources/image/half_star.png" class = "star_img"/>
+		               </c:if>
+		               <c:if test="${data.STAR eq 1.0}">
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		               </c:if>
+		               <c:if test="${data.STAR eq 1.5}">
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		                  <img src = "../resources/image/half_star.png" class = "star_img"/>
+		               </c:if>
+		               <c:if test="${data.STAR eq 2.0}">
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		               </c:if>
+		               <c:if test="${data.STAR eq 2.5}">
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		                  <img src = "../resources/image/half_star.png" class = "star_img"/>
+		               </c:if>
+		               <c:if test="${data.STAR eq 3.0}">
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		               </c:if>
+		               <c:if test="${data.STAR eq 3.5}">
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		                  <img src = "../resources/image/half_star.png" class = "star_img"/>
+		               </c:if>
+		               <c:if test="${data.STAR eq 4.0}">
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		               </c:if>
+		               <c:if test="${data.STAR eq 4.5}">
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		                  <img src = "../resources/image/half_star.png" class = "star_img"/>
+		                  
+		               </c:if>
+		               <c:if test="${data.STAR eq 5.0}">
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		                  <img src = "../resources/image/yellowStar.png" class = "star_img"/>
+		               </c:if>
+            		</div>
+            <div class = "star_grade">${data.STAR}</div>
 				</div>
-				<div class = "adress">서울 금천구 벚꽃로 298 대륭포스트6차 1층</div>
+				<div class = "adress">${data.STORE_ADRS}</div>
 			</div> <!-- map_page end -->
 			
 			<div class = "portal_info">
@@ -690,7 +781,7 @@ $(document).ready(function() {
 			        <div class="option">
 			            <div>
 			                <form onsubmit="searchPlaces(); return false;">
-			                    키워드 : <input type="text" value="이태원" id="keyword" size="15">
+			                    키워드 : <input type="text" value="${data.STORE_NAME}" id="keyword" size="15">
 			                    <button type="submit">검색하기</button> 
 			                </form>
 			            </div>
@@ -946,7 +1037,11 @@ $(document).ready(function() {
 		        el.removeChild (el.lastChild);
 		    }
 		}
-		
 	</script>
+	
+
+	
+	
+	
 </body>
 </html>

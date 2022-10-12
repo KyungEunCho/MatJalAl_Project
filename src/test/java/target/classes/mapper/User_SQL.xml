@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dto.UserVo">
+	<select id="idCheck" parameterType="String" resultType="int">
+		SELECT COUNT(id) 
+		FROM MJA_USER_INFO 
+		WHERE id= #{id}
+	</select>
+	
+	<select id="emailCheck" parameterType="String" resultType="int">
+		SELECT COUNT(email) 
+		FROM MJA_USER_INFO 
+		WHERE email= #{email}
+	</select>
+	
+	<select id="nicknameCheck" parameterType="String" resultType="int">
+		SELECT COUNT(nick_name) 
+		FROM MJA_USER_INFO 
+		WHERE nick_name = #{nick_name}
+	</select>
+</mapper>

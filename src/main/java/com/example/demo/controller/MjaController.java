@@ -27,25 +27,6 @@ public class MjaController {
 
 	@Autowired
 	private IMjaService iMjaService;
-	
-	/*
-	 * @GetMapping("/findAll")
-	 * 
-	 * @ResponseBody public List <HashMap<String, Object>> findAll() {
-	 * 
-	 * // return iMjaService.findAll(); // test // test by kwak
-	 * 
-	 * // 9exg branch test 9exg 111
-	 * 
-	 * // test 16:36 // push 테스트 }
-	 */	
-	/*
-	 * @GetMapping("/findAll")
-	 * 
-	 * @ResponseBody public List <HashMap<String, Object>> findAll() {
-	 * 
-	 * return iMjaService.findAll(); }
-	 */	
 
 	
 	@GetMapping("/main")
@@ -57,18 +38,13 @@ public class MjaController {
 	public String place() {
 		return "place";
 	}
-	
-	/*
-	 * @GetMapping("/login") public String login() { System.out.println("여긴가");
-	 * return "login"; }
-	 */
+
 	
 	@RequestMapping(value = "loginAjax", method = RequestMethod.POST, produces = "text/json;charset=UTF-8")
 	@ResponseBody
 	public String loginAjax(@RequestParam HashMap<String, String> params, HttpSession session) throws Throwable {
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> modelMap = new HashMap<String, Object>();
-		System.out.println("여긴가2");
 		try {
 			//패스워드 암호화
 			params.put("pw", Utils.encryptAES128(params.get("pw")));
@@ -77,7 +53,7 @@ public class MjaController {
 			
 			if (data != null && !data.isEmpty()) {
 				session.setAttribute("nName", data.get("NICK_NAME"));
-
+				session.setAttribute("uNum", data.get("USER_NUM"));
 				modelMap.put("res", CommonProperties.RESULT_SUCCESS);
 			} else {
 				modelMap.put("res", CommonProperties.RESULT_FAILED);
@@ -101,8 +77,15 @@ public class MjaController {
 
 	@RequestMapping(value = "/myFeed")
 	public ModelAndView myFeed(@RequestParam HashMap<String, String> params,
-									ModelAndView mav) {
-		System.out.println("####");
+									ModelAndView mav) throws Throwable {
+		
+		HashMap<String, String> data = iMjaService.feedView(params);
+		
+		System.out.println("리스트" + data);
+		System.out.println("파람" + params);
+		
+		mav.addObject("data", data);
+		
 		mav.setViewName("myFeed");
 		
 		return mav;
@@ -111,27 +94,41 @@ public class MjaController {
 	
 	@RequestMapping(value = "/feed")
 	public ModelAndView feed(@RequestParam HashMap<String, String> params,
-									ModelAndView mav) {
+									ModelAndView mav) throws Throwable {
 		
 		mav.setViewName("feed");
 		
 		return mav;
 	}
 	
-	@RequestMapping(value = "/feedAjax", method = RequestMethod.POST, 
-			produces = "text/json;charset=UTF-8")
-	@ResponseBody
-	public String feedAjax(@RequestParam HashMap<String, String> params, HttpSession session) throws Throwable {
-		ObjectMapper mapper = new ObjectMapper();
+	@RequestMapping(value = "/login")
+	public ModelAndView login(@RequestParam HashMap<String, String> params,
+									ModelAndView mav) {
 		
-		Map<String, Object> modelMap = new HashMap<String, Object>();
+		mav.setViewName("login");
 		
-		List<HashMap<String, String>> list = iMjaService.feedList(params);
-			
-		modelMap.put("list", list);
-		
-		return mapper.writeValueAsString(modelMap);
+		return mav;
 	}
+	
+	
+	@RequestMapping(value = "/feedAjax", method = RequestMethod.POST, 
+	         produces = "text/json;charset=UTF-8")
+	@ResponseBody
+	   public String feedAjax(@RequestParam HashMap<String, String> params, 
+			   										HttpSession session) throws Throwable {
+	      ObjectMapper mapper = new ObjectMapper();
+	      
+	      Map<String, Object> modelMap = new HashMap<String, Object>();
+	      
+	      params.put("nName", String.valueOf(session.getAttribute("nName")));
+	      params.put("uNum", String.valueOf(session.getAttribute("uNum")));
+	      
+	      
+	      List<HashMap<String, String>> list = iMjaService.feedList(params);
+	      
+	      modelMap.put("list", list);
+	      return mapper.writeValueAsString(modelMap);
+	   }
 	
 	
 	
@@ -141,17 +138,31 @@ public class MjaController {
 	
 	@ResponseBody
 	public String addFeedAjax(@RequestParam HashMap<String, String> params, HttpSession session) throws Throwable {
-		
 		ObjectMapper mapper = new ObjectMapper();
 		
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		
-//		params.put("sEmpNum", String.valueOf(session.getAttribute("sEmpNum")));
+	    params.put("uNum", String.valueOf(session.getAttribute("uNum")));
+	    
+	    String store = iMjaService.getStoreSeq("com.example.demo.mapper.MjaMapper");
+        params.put("storesq", store);
+        
+	    String feed = iMjaService.getFeedSeq("com.example.demo.mapper.MjaMapper");
+        params.put("feedsq", feed);
 		
-		List<HashMap<String, String>> list = iMjaService.addFeed(params) ;
-		
-		modelMap.put("list", list);
-		
+		String hashtag = iMjaService.getHashTagSeq("com.example.demo.mapper.MjaMapper");
+		params.put("hashTagsq", hashtag);
+		 
+        
+        iMjaService.feedStore(params);
+        iMjaService.feedWrite(params);
+        iMjaService.feedPhoto(params);
+        
+        iMjaService.hashTag(params);
+        iMjaService.hashTagFeed(params);
+        
+        modelMap.put("res", "success");
+        
 		return mapper.writeValueAsString(modelMap);
 	}
 	
